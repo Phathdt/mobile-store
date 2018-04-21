@@ -14,6 +14,36 @@ import DashboardPage from 'pages/DashboardPage';
 
 import './styles/reduction.css';
 
+const fakeAuth = {
+  isAuthenticated: true,
+  authenticate(cb) {
+    this.isAuthenticated = true;
+    setTimeout(cb, 100); // fake async
+  },
+  signout(cb) {
+    this.isAuthenticated = false;
+    setTimeout(cb, 100);
+  }
+};
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      fakeAuth.isAuthenticated ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/signin',
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
+);
+
 class Admin extends React.Component {
   static isSidebarOpen() {
     return document
@@ -77,7 +107,7 @@ class Admin extends React.Component {
             <Header />
             <Switch>
               <Redirect exact from="/admin" to="/admin/dashboard" />
-              <Route path="/admin/dashboard" component={DashboardPage} />
+              <PrivateRoute path="/admin/dashboard" component={DashboardPage} />
             </Switch>
             <Footer />
           </Content>
