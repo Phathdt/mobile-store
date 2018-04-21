@@ -23,6 +23,7 @@
     "react-router-dom": "^4.2.2",
     "react-simple-maps": "^0.11.2",
     "react-sizeme": "^2.3.6",
+    "react-tap-event-plugin": "^3.0.2",
     "react-transition-group": "^2.2.1",
     "reactstrap": "^5.0.0",
     "victory": "^0.24.0"
