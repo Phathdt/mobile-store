@@ -12,7 +12,7 @@ import {
   ListGroup,
   ListGroupItem,
   Badge,
-  Button,
+  Button
 } from 'reactstrap';
 
 import {
@@ -22,9 +22,8 @@ import {
   MdShowChart,
   MdPersonPin,
   MdRateReview,
-  MdSupervisorAccount,
   MdThumbUp,
-  MdShare,
+  MdShare
 } from 'react-icons/lib/md';
 
 import InfiniteCalendar from 'react-infinite-calendar';
@@ -37,7 +36,7 @@ import {
   userProgressTableData,
   avatarsData,
   todosData,
-  chartjs,
+  chartjs
 } from 'demos/dashboardPage';
 import { getStackLineChart, stackLineChartOptions } from 'demos/chartjs';
 
@@ -75,7 +74,8 @@ class DashboardPage extends React.Component {
       <Page
         className="DashboardPage"
         title="Dashboard"
-        breadcrumbs={[{ name: 'Dashboard', active: true }]}>
+        breadcrumbs={[{ name: 'Dashboard', active: true }]}
+      >
         <Row>
           <Col lg={3} md={6} sm={6} xs={12}>
             <NumberWidget
@@ -85,7 +85,7 @@ class DashboardPage extends React.Component {
               color="secondary"
               progress={{
                 value: 75,
-                label: 'Last month',
+                label: 'Last month'
               }}
             />
           </Col>
@@ -98,7 +98,7 @@ class DashboardPage extends React.Component {
               color="secondary"
               progress={{
                 value: 45,
-                label: 'Last month',
+                label: 'Last month'
               }}
             />
           </Col>
@@ -111,7 +111,7 @@ class DashboardPage extends React.Component {
               color="secondary"
               progress={{
                 value: 90,
-                label: 'Last month',
+                label: 'Last month'
               }}
             />
           </Col>
@@ -124,7 +124,7 @@ class DashboardPage extends React.Component {
               color="secondary"
               progress={{
                 value: 60,
-                label: 'Last month',
+                label: 'Last month'
               }}
             />
           </Col>
@@ -201,7 +201,7 @@ class DashboardPage extends React.Component {
                     'name',
                     'date',
                     'participation',
-                    '%',
+                    '%'
                   ]}
                   usersData={userProgressTableData}
                 />
@@ -222,15 +222,16 @@ class DashboardPage extends React.Component {
                     'April',
                     'May',
                     'June',
-                    'July',
+                    'July'
                   ],
-                  data: [0, 13000, 5000, 24000, 16000, 25000, 10000],
+                  data: [0, 13000, 5000, 24000, 16000, 25000, 10000]
                 })}
                 options={stackLineChartOptions}
               />
               <CardBody
                 className="text-primary"
-                style={{ position: 'absolute' }}>
+                style={{ position: 'absolute' }}
+              >
                 <CardTitle>
                   <MdInsertChart /> Sales
                 </CardTitle>
@@ -249,15 +250,16 @@ class DashboardPage extends React.Component {
                     'April',
                     'May',
                     'June',
-                    'July',
+                    'July'
                   ],
-                  data: [10000, 15000, 5000, 10000, 5000, 10000, 10000],
+                  data: [10000, 15000, 5000, 10000, 5000, 10000, 10000]
                 })}
                 options={stackLineChartOptions}
               />
               <CardBody
                 className="text-primary"
-                style={{ position: 'absolute' }}>
+                style={{ position: 'absolute' }}
+              >
                 <CardTitle>
                   <MdInsertChart /> Revenue
                 </CardTitle>
@@ -275,15 +277,16 @@ class DashboardPage extends React.Component {
                     'April',
                     'May',
                     'June',
-                    'July',
+                    'July'
                   ],
-                  data: [0, 13000, 5000, 24000, 16000, 25000, 10000].reverse(),
+                  data: [0, 13000, 5000, 24000, 16000, 25000, 10000].reverse()
                 })}
                 options={stackLineChartOptions}
               />
               <CardBody
                 className="text-primary"
-                style={{ position: 'absolute', right: 0 }}>
+                style={{ position: 'absolute', right: 0 }}
+              >
                 <CardTitle>
                   <MdInsertChart /> Profit
                 </CardTitle>
@@ -339,16 +342,16 @@ class DashboardPage extends React.Component {
                 floatingNav: {
                   background: secondaryColor,
                   chevron: primaryColor,
-                  color: '#FFF',
+                  color: '#FFF'
                 },
                 headerColor: primaryColor,
                 selectionColor: secondaryColor,
                 textColor: {
                   active: '#FFF',
-                  default: '#333',
+                  default: '#333'
                 },
                 todayColor: secondaryColor,
-                weekdayColor: primaryColor,
+                weekdayColor: primaryColor
               }}
             />
           </Col>
@@ -375,7 +378,7 @@ class DashboardPage extends React.Component {
               date="1 hour ago"
               text="Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy euismod tinciduntut laoreet doloremagna"
               buttonProps={{
-                children: 'show',
+                children: 'show'
               }}
               style={{ height: 500 }}
             />

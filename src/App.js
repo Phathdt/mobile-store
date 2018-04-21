@@ -1,15 +1,6 @@
 import React from 'react';
 
-import { NOTIFICATION_SYSTEM_STYLE } from 'utils/constants';
-
 import componentQueries from 'react-component-queries';
-
-import {
-  // MdCardGiftcard,
-  MdLoyalty,
-  MdImportantDevices
-} from 'react-icons/lib/md';
-import NotificationSystem from 'react-notification-system';
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
@@ -20,20 +11,6 @@ import GAListener from 'components/GAListener';
 
 // pages
 import DashboardPage from 'pages/DashboardPage';
-import WidgetPage from 'pages/WidgetPage';
-import ButtonPage from 'pages/ButtonPage';
-import TypographyPage from 'pages/TypographyPage';
-import AlertPage from 'pages/AlertPage';
-import TablePage from 'pages/TablePage';
-import CardPage from 'pages/CardPage';
-import BadgePage from 'pages/BadgePage';
-import ButtonGroupPage from 'pages/ButtonGroupPage';
-import DropdownPage from 'pages/DropdownPage';
-import ProgressPage from 'pages/ProgressPage';
-import ModalPage from 'pages/ModalPage';
-import FormPage from 'pages/FormPage';
-import InputGroupPage from 'pages/InputGroupPage';
-import ChartPage from 'pages/ChartPage';
 
 import './styles/reduction.css';
 

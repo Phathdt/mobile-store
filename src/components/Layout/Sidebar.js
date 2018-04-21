@@ -2,35 +2,10 @@ import React from 'react';
 
 import bn from 'utils/bemnames';
 
-import {
-  Navbar,
-  Nav,
-  NavItem,
-  NavLink as BSNavLink,
-  Collapse
-} from 'reactstrap';
+import { Navbar, Nav, NavItem, NavLink as BSNavLink } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
-import {
-  MdDashboard,
-  MdWidgets,
-  MdTextFields,
-  MdNotificationsActive,
-  MdBorderAll,
-  MdRadioButtonChecked,
-  MdWeb,
-  MdStar,
-  MdGroupWork,
-  MdArrowDropDownCircle,
-  MdBrush,
-  MdViewDay,
-  MdChromeReaderMode,
-  MdViewList,
-  MdInsertChart,
-  MdExtension,
-  MdSend,
-  MdKeyboardArrowDown
-} from 'react-icons/lib/md';
+import { MdDashboard } from 'react-icons/lib/md';
 import FaGithub from 'react-icons/lib/fa/github';
 
 import SourceLink from 'components/SourceLink';
