@@ -25,7 +25,8 @@ const bem = bn.create('sidebar');
 class Sidebar extends React.Component {
   state = {
     isOpenComponents: true,
-    isOpenContents: true
+    isOpenContents: true,
+    isShow: true
   };
 
   handleClick = name => () => {

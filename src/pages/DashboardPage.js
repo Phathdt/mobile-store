@@ -20,10 +20,7 @@ import {
   MdBubbleChart,
   MdPieChart,
   MdShowChart,
-  MdPersonPin,
-  MdRateReview,
-  MdThumbUp,
-  MdShare
+  MdPersonPin
 } from 'react-icons/lib/md';
 
 import InfiniteCalendar from 'react-infinite-calendar';
@@ -34,7 +31,6 @@ import {
   supportTicketsData,
   productsData,
   userProgressTableData,
-  avatarsData,
   todosData,
   chartjs
 } from 'demos/dashboardPage';
@@ -48,10 +44,9 @@ import UserProgressTable from 'components/UserProgressTable';
 
 import { AnnouncementCard, TodosCard } from 'components/Card';
 
-import { NumberWidget, IconWidget } from 'components/Widget';
+import { NumberWidget } from 'components/Widget';
 
 import MapWithBubbles from 'components/MapWithBubbles';
-import HorizontalAvatarList from 'components/HorizontalAvatarList';
 
 const today = new Date();
 const lastWeek = new Date(
@@ -292,42 +287,6 @@ class DashboardPage extends React.Component {
                 </CardTitle>
               </CardBody>
             </Card>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col xl={3} lg={6} md={6} sm={6} xs={12}>
-            <Card body style={{ overflowX: 'auto' }}>
-              <HorizontalAvatarList avatars={avatarsData} />
-            </Card>
-          </Col>
-
-          <Col xl={3} lg={6} md={6} sm={6} xs={12}>
-            <IconWidget
-              bgColor="light"
-              inverse={false}
-              icon={MdRateReview}
-              title="10+ Reviews"
-              subtitle="New Reviews"
-            />
-          </Col>
-
-          <Col xl={3} lg={6} md={6} sm={6} xs={12}>
-            <IconWidget
-              bgColor="primary"
-              icon={MdThumbUp}
-              title="50+ Likes"
-              subtitle="People you like"
-            />
-          </Col>
-
-          <Col xl={3} lg={6} md={6} sm={6} xs={12}>
-            <IconWidget
-              bgColor="secondary"
-              icon={MdShare}
-              title="30+ Shares"
-              subtitle="New Shares"
-            />
           </Col>
         </Row>
 
