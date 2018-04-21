@@ -22,7 +22,6 @@ class SignInPage extends Component {
   };
 
   handleSubmit = event => {
-    console.log(1);
     event.preventDefault();
   };
 
