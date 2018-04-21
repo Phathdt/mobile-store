@@ -101,20 +101,6 @@ class App extends React.Component {
               <Header />
               <Switch>
                 <Route exact path="/" component={DashboardPage} />
-                <Route path="/buttons" component={ButtonPage} />
-                <Route path="/cards" component={CardPage} />
-                <Route path="/widgets" component={WidgetPage} />
-                <Route path="/typography" component={TypographyPage} />
-                <Route path="/alerts" component={AlertPage} />
-                <Route path="/tables" component={TablePage} />
-                <Route path="/badges" component={BadgePage} />
-                <Route path="/button-groups" component={ButtonGroupPage} />
-                <Route path="/dropdowns" component={DropdownPage} />
-                <Route path="/progress" component={ProgressPage} />
-                <Route path="/modals" component={ModalPage} />
-                <Route path="/forms" component={FormPage} />
-                <Route path="/input-groups" component={InputGroupPage} />
-                <Route path="/charts" component={ChartPage} />
                 <Redirect to="/" />
               </Switch>
               <Footer />
