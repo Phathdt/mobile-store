@@ -50,7 +50,7 @@ class NewBrandPage extends Component {
           body: JSON.stringify({
             name: this.state.name,
             country: this.state.country,
-            desc: this.state.desc
+            description: this.state.desc
           })
         }
       );

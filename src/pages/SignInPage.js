@@ -42,7 +42,8 @@ class SignInPage extends Component {
         alert('something went wrong');
       } else {
         let resJson = await res.json();
-        localStorage.setItem('token', resJson.Authorization);
+        await localStorage.setItem('token', resJson.Authorization);
+        this.props.history.push('/admin');
       }
     } catch (error) {
       console.log(error);
