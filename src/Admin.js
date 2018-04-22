@@ -11,11 +11,15 @@ import GAListener from 'components/GAListener';
 
 // pages
 import DashboardPage from 'pages/DashboardPage';
+import ListBrandPage from 'pages/brand/ListBrandPage';
+import NewBrandPage from 'pages/brand/NewBrandPage';
 
 import './styles/reduction.css';
 
 const fakeAuth = {
   isAuthenticated: true,
+  token:
+    'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUyNTI2NTg1N30.s8-ZUiHemqdEPWoEFvYsPEuSDVi7OqhiTJmyMlIQSxJ5BjBdgwoGVHcZ-SL7RC-QjFJY2feAkACspmpr0H6pgw',
   authenticate(cb) {
     this.isAuthenticated = true;
     setTimeout(cb, 100); // fake async
@@ -31,7 +35,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     {...rest}
     render={props =>
       fakeAuth.isAuthenticated ? (
-        <Component {...props} />
+        <Component {...props} token={fakeAuth.token} />
       ) : (
         <Redirect
           to={{
@@ -108,6 +112,12 @@ class Admin extends React.Component {
             <Switch>
               <Redirect exact from="/admin" to="/admin/dashboard" />
               <PrivateRoute path="/admin/dashboard" component={DashboardPage} />
+              <PrivateRoute
+                exact
+                path="/admin/brands"
+                component={ListBrandPage}
+              />
+              <PrivateRoute path="/admin/brands/new" component={NewBrandPage} />
             </Switch>
             <Footer />
           </Content>
