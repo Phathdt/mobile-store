@@ -8,6 +8,11 @@ class SignInPage extends Component {
   constructor(props) {
     super(props);
 
+    let token = localStorage.getItem('token');
+    if (token && token.length === 158) {
+      this.props.history.push('/admin');
+    }
+
     this.state = {
       username: '',
       password: ''
