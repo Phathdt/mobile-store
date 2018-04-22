@@ -39,7 +39,7 @@ class SignInPage extends Component {
         })
       });
       if (res.status === 401) {
-        alert('something went wrong');
+        alert('Tài khoản hoặc mật khẩu sai, xin kiểm tra lại');
       } else {
         let resJson = await res.json();
         await localStorage.setItem('token', resJson.Authorization);
