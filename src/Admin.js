@@ -16,13 +16,18 @@ import NewBrandPage from 'pages/brand/NewBrandPage';
 // comment
 import './styles/reduction.css';
 
-const fakeAuth = {
-  isAuthenticated: true,
-  token:
-    'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTUyNTI2NTg1N30.s8-ZUiHemqdEPWoEFvYsPEuSDVi7OqhiTJmyMlIQSxJ5BjBdgwoGVHcZ-SL7RC-QjFJY2feAkACspmpr0H6pgw',
+const Authen = {
+  isAuthenticated: false,
+  token: '',
   authenticate(cb) {
-    this.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
+    let token = localStorage.getItem('token');
+    if (token && token.length === 158) {
+      this.isAuthenticated = true;
+      this.token = token;
+      return true;
+    } else {
+      return false;
+    }
   },
   signout(cb) {
     this.isAuthenticated = false;
@@ -34,8 +39,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      fakeAuth.isAuthenticated ? (
-        <Component {...props} token={fakeAuth.token} />
+      Authen.isAuthenticated || Authen.authenticate() ? (
+        <Component {...props} token={Authen.token} />
       ) : (
         <Redirect
           to={{
