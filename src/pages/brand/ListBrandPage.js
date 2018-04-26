@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListBrand from '../../components/brand/ListBrand';
+import { HOST } from '../../Constants';
 
 class ListBrandPage extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class ListBrandPage extends Component {
 
   getListBrand = async page => {
     try {
-      let res = await fetch(`/brand/list/10/${page}`, {
+      let res = await fetch(`${HOST}/brand/list/10/${page}`, {
         method: 'GET',
         headers: {
           Accept: 'application/json',

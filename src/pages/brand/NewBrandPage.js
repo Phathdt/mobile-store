@@ -13,6 +13,8 @@ import {
   Input
 } from 'reactstrap';
 
+import { HOST } from '../../Constants';
+
 import Page from 'components/Page';
 
 class NewBrandPage extends Component {
@@ -36,7 +38,7 @@ class NewBrandPage extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     try {
-      let res = await fetch('/brand/add', {
+      let res = await fetch(`${HOST}/brand/add`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',

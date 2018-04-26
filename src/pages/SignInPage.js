@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
+import { HOST } from '../Constants';
 injectTapEventPlugin();
 
 class SignInPage extends Component {
@@ -32,17 +33,16 @@ class SignInPage extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     try {
-      const body = JSON.stringify({
-        userName: this.state.username,
-        password: this.state.password
-      });
-      let res = await fetch('/login', {
+      let res = await fetch(`${HOST}/login`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json'
         },
-        body: body
+        body: JSON.stringify({
+          userName: this.state.username,
+          password: this.state.password
+        })
       });
 
       if (res.status === 401) {
