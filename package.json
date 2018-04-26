@@ -26,6 +26,7 @@
     "react-sizeme": "^2.3.6",
     "react-tap-event-plugin": "^3.0.2",
     "react-transition-group": "^2.2.1",
+    "react-ultimate-pagination-bootstrap-4": "^1.1.0",
     "reactstrap": "^5.0.0",
     "victory": "^0.24.0"
   },
@@ -41,10 +42,8 @@
     "stylelint-scss": "^2.1.0"
   },
   "scripts": {
-    "build-css":
-      "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css":
-      "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",

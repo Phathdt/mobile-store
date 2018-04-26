@@ -9,11 +9,13 @@ import {
   Table,
   Button
 } from 'reactstrap';
+
 import { Link } from 'react-router-dom';
-
+import UltimatePagination from 'react-ultimate-pagination-bootstrap-4';
 import Page from 'components/Page';
-
 import Brand from './Brand';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class ListBrand extends Component {
   render() {
@@ -50,6 +52,11 @@ class ListBrand extends Component {
                     {data.map((row, i) => <Brand row={row} key={i} />)}
                   </tbody>
                 </Table>
+                <UltimatePagination
+                  currentPage={this.props.currentPage}
+                  totalPages={this.props.totalPages}
+                  onChange={this.props.PageChange}
+                />
               </CardBody>
             </Card>
           </Col>

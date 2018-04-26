@@ -8,22 +8,25 @@ class ListBrandPage extends Component {
     this.state = {
       token: this.props.token,
       currentPage: 0,
+      totalPages: 0,
+      totalElements: 0,
       data: []
     };
   }
 
   async componentWillMount() {
-    let response = await this.getListBrand();
+    let response = await this.getListBrand(0);
     this.setState({
       data: response.content,
-      currentPage: this.state.currentPage + 1,
-      totalPages: response.totalPages
+      currentPage: response.number,
+      totalPages: response.totalPages,
+      totalElements: response.totalElements
     });
   }
 
-  getListBrand = async () => {
+  getListBrand = async page => {
     try {
-      let res = await fetch(`/brand/list/10/${this.state.currentPage}`, {
+      let res = await fetch(`/brand/list/10/${page}`, {
         method: 'GET',
         headers: {
           Accept: 'application/json',
@@ -43,12 +46,30 @@ class ListBrandPage extends Component {
     }
   };
 
+  onPageChange = async page => {
+    let response = await this.getListBrand(page - 1);
+    this.setState({
+      currentPage: response.number,
+      data: response.content
+    });
+  };
+
   render() {
-    return (
-      <div>
-        <ListBrand data={this.state.data} />
-      </div>
-    );
+    if (this.state.data.length !== 0) {
+      return (
+        <div>
+          <ListBrand
+            data={this.state.data}
+            currentPage={this.state.currentPage + 1}
+            totalElements={this.state.totalElements}
+            totalPages={this.state.totalPages}
+            PageChange={this.onPageChange}
+          />
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
