@@ -36,22 +36,20 @@ class NewBrandPage extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     try {
-      let res = await fetch(
-        'https://mobile-store-612.herokuapp.com/brand/add',
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: this.state.token
-          },
-          body: JSON.stringify({
-            name: this.state.name,
-            country: this.state.country,
-            description: this.state.desc
-          })
-        }
-      );
+      let res = await fetch('/brand/add', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: this.state.token
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+          country: this.state.country,
+          description: this.state.desc
+        })
+      });
+
       if (res.status === 401) {
         alert('something went wrong');
       } else {
