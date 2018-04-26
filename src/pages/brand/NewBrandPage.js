@@ -53,8 +53,7 @@ class NewBrandPage extends Component {
       if (res.status === 401) {
         alert('something went wrong');
       } else {
-        let resJson = await res.json();
-        console.log(resJson);
+        this.props.history.push('/admin/brands');
       }
     } catch (error) {
       console.log(error);
