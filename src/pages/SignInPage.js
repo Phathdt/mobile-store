@@ -32,17 +32,19 @@ class SignInPage extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     try {
-      let res = await fetch('https://mobile-store-612.herokuapp.com/login', {
+      const body = JSON.stringify({
+        userName: this.state.username,
+        password: this.state.password
+      });
+      let res = await fetch('/login', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          userName: this.state.username,
-          password: this.state.password
-        })
+        body: body
       });
+
       if (res.status === 401) {
         alert('Tài khoản hoặc mật khẩu sai, xin kiểm tra lại');
       } else {

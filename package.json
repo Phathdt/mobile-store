@@ -2,6 +2,7 @@
   "name": "react-reduction",
   "version": "1.0.0",
   "private": true,
+  "proxy": "https://mobile-store-612.herokuapp.com/",
   "dependencies": {
     "bootstrap": "4.0.0",
     "chart.js": "^2.7.2",
@@ -40,8 +41,10 @@
     "stylelint-scss": "^2.1.0"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "build-css":
+      "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css":
+      "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
