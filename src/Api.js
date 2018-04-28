@@ -85,4 +85,28 @@ const editBrand = async (token, id, body) => {
   }
 };
 
-export default { signIn, getListBrand, createBrand, getBrand, editBrand };
+const deleteBrand = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/brand/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    });
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default {
+  signIn,
+  getListBrand,
+  createBrand,
+  getBrand,
+  editBrand,
+  deleteBrand
+};

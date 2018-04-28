@@ -50,7 +50,7 @@ class ListBrandPage extends Component {
     });
   };
 
-  deleteBrand = param => e => {
+  deleteBrand = brandId => e => {
     swal({
       title: 'Are you sure?',
       text: 'You will not be able to recover this brand!',
@@ -60,7 +60,22 @@ class ListBrandPage extends Component {
       cancelButtonText: 'No, keep it'
     }).then(result => {
       if (result.value) {
-        swal('Deleted!', 'Your brand has been deleted.', 'success');
+        let { token } = this.state;
+        Api.deleteBrand(token, brandId).then(res => {
+          if (res.status === 200) {
+            swal('Deleted!', 'Your brand has been deleted.', 'success');
+            let { token, currentPage } = this.state;
+            Api.getListBrand(token, currentPage)
+              .then(response => response.json())
+              .then(responseJson => {
+                this.setState({
+                  currentPage: responseJson.data.number,
+                  data: responseJson.data.content,
+                  totalPages: responseJson.data.totalPages
+                });
+              });
+          }
+        });
       } else if (result.dismiss === swal.DismissReason.cancel) {
         swal('Cancelled', 'Your brand is safe :)', 'error');
       }
