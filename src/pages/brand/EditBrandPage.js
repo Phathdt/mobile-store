@@ -85,6 +85,7 @@ class EditBrandPage extends Component {
             validateForm={this.validateForm}
             handleChange={this.handleChange}
             disabled={false}
+            action="edit"
             formData={{
               name: this.state.name,
               country: this.state.country,

@@ -13,6 +13,8 @@ import {
   Input
 } from 'reactstrap';
 
+import { Link } from 'react-router-dom';
+
 class FormBrand extends Component {
   render() {
     const buttonSummit = !this.props.disabled ? (
@@ -28,11 +30,26 @@ class FormBrand extends Component {
       </FormGroup>
     ) : null;
 
+    const buttonEdit = this.props.show ? (
+      <Link to={`/admin/brands/${this.props.id}/edit`}>
+        <Button outline color="success">
+          Edit
+        </Button>
+      </Link>
+    ) : null;
+
+    const title =
+      this.props.action === 'new'
+        ? 'New Brand'
+        : this.props.action === 'show' ? 'Show Brand' : 'Edit Brand';
     return (
       <Row>
         <Col xl={12} lg={12} md={12}>
           <Card>
-            <CardHeader>New Brands</CardHeader>
+            <CardHeader>
+              {title}
+              {buttonEdit}
+            </CardHeader>
             <CardBody>
               <Form>
                 <FormGroup>

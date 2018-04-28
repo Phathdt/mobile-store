@@ -57,6 +57,7 @@ class NewBrandPage extends Component {
           handleSubmit={this.handleSubmit}
           validateForm={this.validateForm}
           handleChange={this.handleChange}
+          action="new"
           disabled={false}
           formData={{
             name: this.state.name,

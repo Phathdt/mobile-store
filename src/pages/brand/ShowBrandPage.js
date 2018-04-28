@@ -50,6 +50,9 @@ class ShowBrandPage extends Component {
         >
           <FormBrand
             disabled={true}
+            show={true}
+            action="show"
+            id={this.state.id}
             formData={{
               name: this.state.name,
               country: this.state.country,

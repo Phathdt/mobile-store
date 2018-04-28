@@ -14,6 +14,11 @@ class Brand extends Component {
         <td>{row.description}</td>
         <td>{row.active ? 'Active' : 'Disable'}</td>
         <td>
+          <Link to={`/admin/brands/${row.brandId}`}>
+            <Button outline color="info">
+              View
+            </Button>
+          </Link>
           <Link to={`/admin/brands/${row.brandId}/edit`}>
             <Button outline color="success">
               Edit
