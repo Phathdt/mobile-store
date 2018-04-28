@@ -55,6 +55,10 @@ class ListBrandPage extends Component {
     });
   };
 
+  deleteBrand = param => e => {
+    console.log(param);
+  };
+
   render() {
     if (this.state.data.length !== 0) {
       return (
@@ -65,6 +69,7 @@ class ListBrandPage extends Component {
             totalElements={this.state.totalElements}
             totalPages={this.state.totalPages}
             PageChange={this.onPageChange}
+            deleteBrand={this.deleteBrand}
           />
         </div>
       );

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
+import { Button } from 'reactstrap';
 class Brand extends Component {
   render() {
     let row = this.props.row;
@@ -10,7 +13,20 @@ class Brand extends Component {
         <td>{row.country}</td>
         <td>{row.description}</td>
         <td>{row.active ? 'Active' : 'Disable'}</td>
-        <td>{row.name}</td>
+        <td>
+          <Link to={`/admin/brands/${row.brandId}/edit`}>
+            <Button outline color="success">
+              Edit
+            </Button>
+          </Link>
+          <Button
+            outline
+            color="danger"
+            onClick={this.props.deleteBrand(row.brandId)}
+          >
+            Delete
+          </Button>
+        </td>
       </tr>
     );
   }

@@ -49,7 +49,13 @@ class ListBrand extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.map((row, i) => <Brand row={row} key={i} />)}
+                    {data.map((row, i) => (
+                      <Brand
+                        row={row}
+                        key={i}
+                        deleteBrand={this.props.deleteBrand}
+                      />
+                    ))}
                   </tbody>
                 </Table>
                 <UltimatePagination
