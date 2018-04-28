@@ -13,6 +13,7 @@ import GAListener from 'components/GAListener';
 import DashboardPage from 'pages/DashboardPage';
 import ListBrandPage from 'pages/brand/ListBrandPage';
 import NewBrandPage from 'pages/brand/NewBrandPage';
+import ShowBrandPage from 'pages/brand/ShowBrandPage';
 // comment
 import './styles/reduction.css';
 
@@ -35,12 +36,12 @@ const Authen = {
   }
 };
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, customProps, ...rest }) => (
   <Route
     {...rest}
     render={props =>
       Authen.authenticate() ? (
-        <Component {...props} token={Authen.token} />
+        <Component {...props} token={Authen.token} customProps={customProps} />
       ) : (
         <Redirect
           to={{
@@ -123,6 +124,10 @@ class Admin extends React.Component {
                 component={ListBrandPage}
               />
               <PrivateRoute path="/admin/brands/new" component={NewBrandPage} />
+              <PrivateRoute
+                path="/admin/brands/:id"
+                component={ShowBrandPage}
+              />
             </Switch>
             <Footer />
           </Content>
