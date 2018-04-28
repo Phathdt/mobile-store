@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListBrand from '../../components/brand/ListBrand';
-import { HOST } from '../../Constants';
+import Api from 'Api';
 import swal from 'sweetalert2';
 
 class ListBrandPage extends Component {
@@ -28,14 +28,8 @@ class ListBrandPage extends Component {
 
   getListBrand = async page => {
     try {
-      let res = await fetch(`${HOST}/brand/list/10/${page}`, {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: this.state.token
-        }
-      });
+      let { token } = this.state;
+      let res = await Api.getListBrand(token, page);
 
       if (res.status === 401) {
         alert('something went wrong');
