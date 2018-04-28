@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { HOST } from '../../Constants';
-
 import Page from 'components/Page';
 import FormBrand from './FormBrand';
+import Api from 'Api';
+
 class ShowBrandPage extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class ShowBrandPage extends Component {
   }
 
   async componentWillMount() {
-    let response = await this.getBrandId(this.props.match.params.id);
+    let response = await this.getBrand(this.props.match.params.id);
     await this.setState({
       id: response.brandId,
       name: response.name,
@@ -29,24 +29,15 @@ class ShowBrandPage extends Component {
     });
   }
 
-  getBrandId = async id => {
-    try {
-      let res = await fetch(`${HOST}/brand/get/${id}`, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: this.state.token
-        }
-      });
+  getBrand = async id => {
+    let { token } = this.state;
+    let res = await Api.getBrand(token, id);
 
-      if (res.status === 401) {
-        alert('something went wrong');
-      } else {
-        let resJson = await res.json();
-        return resJson.data;
-      }
-    } catch (error) {
-      console.log(error);
+    if (res.status === 401) {
+      alert('something went wrong');
+    } else {
+      let resJson = await res.json();
+      return resJson.data;
     }
   };
 
@@ -54,8 +45,8 @@ class ShowBrandPage extends Component {
     if (this.state.isLoaded) {
       return (
         <Page
-          title="Show Brands"
-          breadcrumbs={[{ name: 'Show Brands', active: true }]}
+          title="Show Brand"
+          breadcrumbs={[{ name: 'Show Brand', active: true }]}
         >
           <FormBrand
             disabled={true}

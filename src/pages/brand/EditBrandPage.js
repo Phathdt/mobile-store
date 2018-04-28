@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import { HOST } from '../../Constants';
-
 import Page from 'components/Page';
 import FormBrand from './FormBrand';
+import Api from 'Api';
 
 class EditBrandPage extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class EditBrandPage extends Component {
   }
 
   async componentWillMount() {
-    let response = await this.getBrandId(this.props.match.params.id);
+    let response = await this.getBrand(this.props.match.params.id);
     await this.setState({
       id: response.brandId,
       name: response.name,
@@ -36,51 +35,33 @@ class EditBrandPage extends Component {
     });
   };
 
-  getBrandId = async id => {
-    try {
-      let res = await fetch(`${HOST}/brand/get/${id}`, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: this.state.token
-        }
-      });
+  getBrand = async id => {
+    let { token } = this.state;
+    let res = await Api.getBrand(token, id);
 
-      if (res.status === 401) {
-        alert('something went wrong');
-      } else {
-        let resJson = await res.json();
-        return resJson.data;
-      }
-    } catch (error) {
-      console.log(error);
+    if (res.status === 401) {
+      alert('something went wrong');
+    } else {
+      let resJson = await res.json();
+      return resJson.data;
     }
   };
 
   handleSubmit = async event => {
     event.preventDefault();
-    try {
-      let res = await fetch(`${HOST}/brand/update/${this.state.id}`, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: this.state.token
-        },
-        body: JSON.stringify({
-          name: this.state.name,
-          country: this.state.country,
-          description: this.state.desc
-        })
-      });
 
-      if (res.status === 401) {
-        alert('something went wrong');
-      } else {
-        this.props.history.push('/admin/brands');
-      }
-    } catch (error) {
-      console.log(error);
+    let { token, id } = this.state;
+    const body = {
+      name: this.state.name,
+      country: this.state.country,
+      description: this.state.desc
+    };
+    let res = await Api.editBrand(token, id, body);
+
+    if (res.status === 401) {
+      alert('something went wrong');
+    } else {
+      this.props.history.push('/admin/brands');
     }
   };
 

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import { HOST } from '../../Constants';
-
 import Page from 'components/Page';
 import FormBrand from './FormBrand';
+import Api from 'Api';
 
 class NewBrandPage extends Component {
   constructor(props) {
@@ -25,28 +24,18 @@ class NewBrandPage extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    try {
-      let res = await fetch(`${HOST}/brand/add`, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: this.state.token
-        },
-        body: JSON.stringify({
-          name: this.state.name,
-          country: this.state.country,
-          description: this.state.desc
-        })
-      });
+    const body = {
+      name: this.state.name,
+      country: this.state.country,
+      description: this.state.desc
+    };
+    let { token } = this.state;
+    let res = await Api.createBrand(token, body);
 
-      if (res.status === 401) {
-        alert('something went wrong');
-      } else {
-        this.props.history.push('/admin/brands');
-      }
-    } catch (error) {
-      console.log(error);
+    if (res.status === 401) {
+      alert('something went wrong');
+    } else {
+      this.props.history.push('/admin/brands');
     }
   };
 
