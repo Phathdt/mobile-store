@@ -15,6 +15,19 @@ import {
 
 class FormBrand extends Component {
   render() {
+    const buttonSummit = !this.props.disabled ? (
+      <FormGroup check row>
+        <Col sm={{ size: 10, offset: 2 }}>
+          <Button
+            onClick={this.props.handleSubmit}
+            disabled={!this.props.validateForm()}
+          >
+            Submit
+          </Button>
+        </Col>
+      </FormGroup>
+    ) : null;
+
     return (
       <Row>
         <Col xl={12} lg={12} md={12}>
@@ -55,16 +68,7 @@ class FormBrand extends Component {
                     name="text"
                   />
                 </FormGroup>
-                <FormGroup check row>
-                  <Col sm={{ size: 10, offset: 2 }}>
-                    <Button
-                      onClick={this.props.handleSubmit}
-                      disabled={!this.props.validateForm()}
-                    >
-                      Submit
-                    </Button>
-                  </Col>
-                </FormGroup>
+                {buttonSummit}
               </Form>
             </CardBody>
           </Card>

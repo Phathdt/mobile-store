@@ -14,6 +14,7 @@ import DashboardPage from 'pages/DashboardPage';
 import ListBrandPage from 'pages/brand/ListBrandPage';
 import NewBrandPage from 'pages/brand/NewBrandPage';
 import ShowBrandPage from 'pages/brand/ShowBrandPage';
+import EditBrandPage from 'pages/brand/EditBrandPage';
 // comment
 import './styles/reduction.css';
 
@@ -124,6 +125,10 @@ class Admin extends React.Component {
                 component={ListBrandPage}
               />
               <PrivateRoute path="/admin/brands/new" component={NewBrandPage} />
+              <PrivateRoute
+                path="/admin/brands/:id/edit"
+                component={EditBrandPage}
+              />
               <PrivateRoute
                 path="/admin/brands/:id"
                 component={ShowBrandPage}
