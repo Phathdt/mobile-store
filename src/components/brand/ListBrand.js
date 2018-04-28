@@ -20,6 +20,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class ListBrand extends Component {
   render() {
     let data = this.props.data;
+    const paginate =
+      this.props.totalPages > 0 ? (
+        <UltimatePagination
+          currentPage={this.props.currentPage}
+          totalPages={this.props.totalPages}
+          onChange={this.props.PageChange}
+        />
+      ) : null;
+    console.log(231312);
     return (
       <Page
         title="List Brand"
@@ -58,11 +67,7 @@ class ListBrand extends Component {
                     ))}
                   </tbody>
                 </Table>
-                <UltimatePagination
-                  currentPage={this.props.currentPage}
-                  totalPages={this.props.totalPages}
-                  onChange={this.props.PageChange}
-                />
+                {paginate}
               </CardBody>
             </Card>
           </Col>
