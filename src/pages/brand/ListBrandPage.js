@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListBrand from '../../components/brand/ListBrand';
 import { HOST } from '../../Constants';
+import swal from 'sweetalert2';
 
 class ListBrandPage extends Component {
   constructor(props) {
@@ -56,7 +57,20 @@ class ListBrandPage extends Component {
   };
 
   deleteBrand = param => e => {
-    console.log(param);
+    swal({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this brand!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then(result => {
+      if (result.value) {
+        swal('Deleted!', 'Your brand has been deleted.', 'success');
+      } else if (result.dismiss === swal.DismissReason.cancel) {
+        swal('Cancelled', 'Your brand is safe :)', 'error');
+      }
+    });
   };
 
   render() {
