@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button } from 'reactstrap';
+
 class Brand extends Component {
   render() {
     let row = this.props.row;
