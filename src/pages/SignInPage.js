@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-import { HOST } from '../Constants';
 import Api from 'Api';
 injectTapEventPlugin();
 
@@ -33,22 +32,19 @@ class SignInPage extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    try {
-      const body = {
-        userName: this.state.username,
-        password: this.state.password
-      };
-      let res = await Api.signIn(body);
 
-      if (res.status === 401) {
-        alert('Tài khoản hoặc mật khẩu sai, xin kiểm tra lại');
-      } else {
-        let resJson = await res.json();
-        await localStorage.setItem('token', resJson.Authorization);
-        this.props.history.push('/admin');
-      }
-    } catch (error) {
-      console.log(error);
+    const body = {
+      userName: this.state.username,
+      password: this.state.password
+    };
+    let res = await Api.signIn(body);
+
+    if (res.status === 401) {
+      alert('Tài khoản hoặc mật khẩu sai, xin kiểm tra lại');
+    } else {
+      let resJson = await res.json();
+      await localStorage.setItem('token', resJson.Authorization);
+      this.props.history.push('/admin');
     }
   };
 
