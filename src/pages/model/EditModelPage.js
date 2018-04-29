@@ -4,12 +4,13 @@ import Page from 'components/Page';
 import FormModel from './FormModel';
 import Api from 'Api';
 
-class NewModelPage extends Component {
+class EditModelPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       token: this.props.token,
+      id: '',
       name: '',
       color: '',
       specification: '',
@@ -22,12 +23,38 @@ class NewModelPage extends Component {
   }
 
   async componentWillMount() {
-    let response = await this.getAllBrand();
+    let response = await this.getModel(this.props.match.params.id);
+    console.log(response);
     await this.setState({
-      brandOptions: response.content,
+      id: response.modelID,
+      name: response.name,
+      color: response.color,
+      specification: response.specification,
+      brandID: response.brandID,
+      description: response.description,
+      type: response.type
+    });
+
+    let responseBrands = await this.getAllBrand();
+    await this.setState({
+      brandOptions: responseBrands.content,
       isLoaded: true
     });
+
+    console.log(this.state);
   }
+
+  getModel = async id => {
+    let { token } = this.state;
+    let res = await Api.getModel(token, id);
+
+    if (res.status === 401) {
+      alert('something went wrong');
+    } else {
+      let resJson = await res.json();
+      return resJson.data;
+    }
+  };
 
   getAllBrand = async () => {
     try {
@@ -49,6 +76,7 @@ class NewModelPage extends Component {
     await this.setState({
       [event.target.id]: event.target.value
     });
+    console.log(this.state);
   };
 
   handleSubmit = async event => {
@@ -61,8 +89,8 @@ class NewModelPage extends Component {
       specification: this.state.specification,
       type: this.state.type
     };
-    let { token } = this.state;
-    let res = await Api.createModel(token, body);
+    let { token, id } = this.state;
+    let res = await Api.editModel(token, id, body);
 
     if (res.status === 401) {
       alert('something went wrong');
@@ -86,8 +114,8 @@ class NewModelPage extends Component {
     if (this.state.isLoaded) {
       return (
         <Page
-          title="New Model"
-          breadcrumbs={[{ name: 'New Model', active: true }]}
+          title="Show Model"
+          breadcrumbs={[{ name: 'Show Model', active: true }]}
         >
           <FormModel
             handleSubmit={this.handleSubmit}
@@ -95,7 +123,7 @@ class NewModelPage extends Component {
             handleChange={this.handleChange}
             brandOptions={this.state.brandOptions}
             list
-            action="new"
+            action="edit"
             disabled={false}
             formData={{
               name: this.state.name,
@@ -114,4 +142,4 @@ class NewModelPage extends Component {
   }
 }
 
-export default NewModelPage;
+export default EditModelPage;

@@ -81,6 +81,7 @@ class ShowModelPage extends Component {
             list
             action="show"
             disabled={true}
+            id={this.state.id}
             formData={{
               name: this.state.name,
               color: this.state.color,

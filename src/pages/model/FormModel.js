@@ -30,13 +30,14 @@ class FormModel extends Component {
       </FormGroup>
     ) : null;
 
-    const buttonEdit = this.props.show ? (
-      <Link to={`/admin/models/${this.props.id}/edit`}>
-        <Button outline color="success">
-          Edit
-        </Button>
-      </Link>
-    ) : null;
+    const buttonEdit =
+      this.props.action === 'show' ? (
+        <Link to={`/admin/models/${this.props.id}/edit`}>
+          <Button outline color="success">
+            Edit
+          </Button>
+        </Link>
+      ) : null;
 
     const title =
       this.props.action === 'new'
@@ -44,6 +45,8 @@ class FormModel extends Component {
         : this.props.action === 'show' ? 'Show Model' : 'Edit Model';
 
     let options = [];
+    options.push(<option key={''} value={''} />);
+
     this.props.brandOptions.length > 0 &&
       this.props.brandOptions.forEach(option =>
         options.push(
@@ -112,13 +115,30 @@ class FormModel extends Component {
                 <FormGroup>
                   <Label for="name">Type</Label>
                   <Input
-                    type="text"
+                    type="select"
                     id="type"
                     value={this.props.formData.type}
                     onChange={this.props.handleChange}
                     disabled={this.props.disabled}
-                    name="text"
-                  />
+                    name="select"
+                  >
+                    <option key={''} value={''} />
+                    <option key={1} value={1}>
+                      1
+                    </option>
+                    <option key={2} value={2}>
+                      2
+                    </option>
+                    <option key={3} value={3}>
+                      3
+                    </option>
+                    <option key={4} value={4}>
+                      4
+                    </option>
+                    <option key={5} value={5}>
+                      5
+                    </option>
+                  </Input>
                 </FormGroup>
                 <FormGroup>
                   <Label for="name">Description</Label>

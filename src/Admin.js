@@ -19,6 +19,8 @@ import EditBrandPage from 'pages/brand/EditBrandPage';
 import ListModelPage from 'pages/model/ListModelPage';
 import NewModelPage from 'pages/model/NewModelPage';
 import ShowModelPage from 'pages/model/ShowModelPage';
+import EditModelPage from 'pages/model/EditModelPage';
+
 // comment
 import './styles/reduction.css';
 
@@ -123,6 +125,7 @@ class Admin extends React.Component {
             <Switch>
               <Redirect exact from="/admin" to="/admin/dashboard" />
               <PrivateRoute path="/admin/dashboard" component={DashboardPage} />
+
               <PrivateRoute
                 exact
                 path="/admin/brands"
@@ -137,12 +140,17 @@ class Admin extends React.Component {
                 path="/admin/brands/:id"
                 component={ShowBrandPage}
               />
+
               <PrivateRoute
                 exact
                 path="/admin/models"
                 component={ListModelPage}
               />
               <PrivateRoute path="/admin/models/new" component={NewModelPage} />
+              <PrivateRoute
+                path="/admin/models/:id/edit"
+                component={EditModelPage}
+              />
               <PrivateRoute
                 path="/admin/models/:id"
                 component={ShowModelPage}

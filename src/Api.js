@@ -152,6 +152,24 @@ const getModel = async (token, id) => {
   }
 };
 
+const editModel = async (token, id, body) => {
+  try {
+    let res = await fetch(`${HOST}/model/update/${id}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
+      body: JSON.stringify(body)
+    });
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default {
   signIn,
   getListBrand,
@@ -161,5 +179,6 @@ export default {
   deleteBrand,
   getListModel,
   createModel,
-  getModel
+  getModel,
+  editModel
 };
