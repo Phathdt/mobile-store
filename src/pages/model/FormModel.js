@@ -12,7 +12,6 @@ import {
   Label,
   Input
 } from 'reactstrap';
-import Select from 'react-select';
 
 import { Link } from 'react-router-dom';
 
@@ -43,6 +42,17 @@ class FormModel extends Component {
       this.props.action === 'new'
         ? 'New Model'
         : this.props.action === 'show' ? 'Show Model' : 'Edit Model';
+
+    let options = [];
+    this.props.brandOptions.length > 0 &&
+      this.props.brandOptions.forEach(option =>
+        options.push(
+          <option key={option.brandId} value={option.brandId}>
+            {option.name}
+          </option>
+        )
+      );
+
     return (
       <Row>
         <Col xl={12} lg={12} md={12}>
@@ -88,16 +98,16 @@ class FormModel extends Component {
                 </FormGroup>
                 <FormGroup>
                   <Label for="name">Brand</Label>
-                  <Select
-                    name="name"
+                  <Input
+                    type="select"
+                    name="select"
                     id="brandID"
-                    valueKey="id"
-                    labelKey="name"
                     value={this.props.formData.brandID}
-                    onChange={this.props.handleChangeSelect}
+                    onChange={this.props.handleChange}
                     disabled={this.props.disabled}
-                    options={this.props.brandOptions}
-                  />
+                  >
+                    {options}
+                  </Input>
                 </FormGroup>
                 <FormGroup>
                   <Label for="name">Type</Label>

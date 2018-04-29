@@ -16,17 +16,16 @@ class NewModelPage extends Component {
       brandID: '',
       description: '',
       type: '',
-      brandOptions: []
+      brandOptions: [],
+      isLoaded: false
     };
   }
 
   async componentWillMount() {
     let response = await this.getAllBrand();
-    let options = response.content.map(row => {
-      return { value: row.brandId, label: row.name };
-    });
     await this.setState({
-      brandOptions: options
+      brandOptions: response.content,
+      isLoaded: true
     });
   }
 
@@ -46,14 +45,10 @@ class NewModelPage extends Component {
     }
   };
 
-  handleChange = event => {
-    this.setState({
+  handleChange = async event => {
+    await this.setState({
       [event.target.id]: event.target.value
     });
-  };
-
-  handleChangeSelect = async selectedOption => {
-    await this.setState({ brandID: selectedOption });
   };
 
   handleSubmit = async event => {
@@ -62,7 +57,7 @@ class NewModelPage extends Component {
       name: this.state.name,
       color: this.state.color,
       description: this.state.description,
-      brandID: this.state.brandID.value,
+      brandID: this.state.brandID,
       specification: this.state.specification,
       type: this.state.type
     };
@@ -81,39 +76,42 @@ class NewModelPage extends Component {
       this.state.name.length > 0 &&
       this.state.color.length > 0 &&
       this.state.specification.length > 0 &&
-      this.state.brandID &&
-      this.state.brandID.value !== 0 &&
+      this.state.brandID.length > 0 &&
       this.state.type.length > 0 &&
       this.state.description.length > 0
     );
   };
 
   render() {
-    return (
-      <Page
-        title="New Model"
-        breadcrumbs={[{ name: 'New Model', active: true }]}
-      >
-        <FormModel
-          handleSubmit={this.handleSubmit}
-          validateForm={this.validateForm}
-          handleChange={this.handleChange}
-          handleChangeSelect={this.handleChangeSelect}
-          brandOptions={this.state.brandOptions}
-          list
-          action="new"
-          disabled={false}
-          formData={{
-            name: this.state.name,
-            color: this.state.color,
-            specification: this.state.specification,
-            brandID: this.state.brandID,
-            type: this.state.type,
-            description: this.state.description
-          }}
-        />
-      </Page>
-    );
+    if (this.state.isLoaded) {
+      return (
+        <Page
+          title="New Model"
+          breadcrumbs={[{ name: 'New Model', active: true }]}
+        >
+          <FormModel
+            handleSubmit={this.handleSubmit}
+            validateForm={this.validateForm}
+            handleChange={this.handleChange}
+            handleChangeSelect={this.handleChangeSelect}
+            brandOptions={this.state.brandOptions}
+            list
+            action="new"
+            disabled={false}
+            formData={{
+              name: this.state.name,
+              color: this.state.color,
+              specification: this.state.specification,
+              brandID: this.state.brandID,
+              type: this.state.type,
+              description: this.state.description
+            }}
+          />
+        </Page>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
