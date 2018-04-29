@@ -13,7 +13,6 @@ class Brand extends Component {
         <td>{row.name}</td>
         <td>{row.country}</td>
         <td>{row.description}</td>
-        <td>{row.active ? 'Active' : 'Disable'}</td>
         <td>
           <Link to={`/admin/brands/${row.brandId}`}>
             <Button outline color="info">

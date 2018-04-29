@@ -53,7 +53,6 @@ class ListBrand extends Component {
                       <th>Name</th>
                       <th>Country</th>
                       <th>Description</th>
-                      <th>Active</th>
                       <th>Action</th>
                     </tr>
                   </thead>
