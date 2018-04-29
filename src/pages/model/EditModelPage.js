@@ -114,8 +114,8 @@ class EditModelPage extends Component {
     if (this.state.isLoaded) {
       return (
         <Page
-          title="Show Model"
-          breadcrumbs={[{ name: 'Show Model', active: true }]}
+          title="Edit Model"
+          breadcrumbs={[{ name: 'Edit Model', active: true }]}
         >
           <FormModel
             handleSubmit={this.handleSubmit}
