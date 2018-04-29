@@ -35,7 +35,7 @@ const ListBrand = props => {
               </Link>
             </CardHeader>
             <CardBody>
-              <Table responsive>
+              <Table responsive {...{ hover: true, bordered: true }}>
                 <thead>
                   <tr>
                     <th>#</th>
