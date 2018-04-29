@@ -120,6 +120,38 @@ const createModel = async (token, body) => {
   }
 };
 
+const getListModel = async (token, page, size = 10) => {
+  try {
+    let res = await fetch(`${HOST}/brand/model/${size}/${page}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    });
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getModel = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/model/get/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    });
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default {
   signIn,
   getListBrand,
@@ -127,5 +159,7 @@ export default {
   getBrand,
   editBrand,
   deleteBrand,
-  createModel
+  getListModel,
+  createModel,
+  getModel
 };
