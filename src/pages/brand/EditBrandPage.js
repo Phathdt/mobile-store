@@ -77,8 +77,8 @@ class EditBrandPage extends Component {
     if (this.state.isLoaded) {
       return (
         <Page
-          title="New Brands"
-          breadcrumbs={[{ name: 'Edit Brands', active: true }]}
+          title="Edit Brand"
+          breadcrumbs={[{ name: 'Edit Brand', active: true }]}
         >
           <FormBrand
             handleSubmit={this.handleSubmit}
