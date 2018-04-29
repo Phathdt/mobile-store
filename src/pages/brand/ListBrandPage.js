@@ -50,36 +50,37 @@ class ListBrandPage extends Component {
     });
   };
 
-  deleteBrand = brandId => e => {
-    swal({
+  deleteBrand = brandId => async e => {
+    let result = await swal({
       title: 'Are you sure?',
       text: 'You will not be able to recover this brand!',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'No, keep it'
-    }).then(result => {
-      if (result.value) {
-        let { token } = this.state;
-        Api.deleteBrand(token, brandId).then(res => {
-          if (res.status === 200) {
-            swal('Deleted!', 'Your brand has been deleted.', 'success');
-            let { token, currentPage } = this.state;
-            Api.getListBrand(token, currentPage)
-              .then(response => response.json())
-              .then(responseJson => {
-                this.setState({
-                  currentPage: responseJson.data.number,
-                  data: responseJson.data.content,
-                  totalPages: responseJson.data.totalPages
-                });
-              });
-          }
-        });
-      } else if (result.dismiss === swal.DismissReason.cancel) {
-        swal('Cancelled', 'Your brand is safe :)', 'error');
-      }
     });
+
+    if (result.value) {
+      let { token, currentPage } = this.state;
+      let res = await Api.deleteBrand(token, brandId);
+
+      if (res.status === 200) {
+        swal('Deleted!', 'Your brand has been deleted.', 'success');
+        let res = await Api.getListBrand(token, currentPage);
+        if (res.status === 401) {
+          alert('something went wrong');
+        } else {
+          let resJson = await res.json();
+          await this.setState({
+            currentPage: resJson.data.number,
+            data: resJson.data.content,
+            totalPages: resJson.data.totalPages
+          });
+        }
+      }
+    } else {
+      swal('Cancelled', 'Your brand is safe :)', 'error');
+    }
   };
 
   render() {

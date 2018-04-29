@@ -28,7 +28,7 @@ class ListBrand extends Component {
           onChange={this.props.PageChange}
         />
       ) : null;
-    console.log(231312);
+
     return (
       <Page
         title="List Brand"
