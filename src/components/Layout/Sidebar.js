@@ -18,7 +18,8 @@ const sidebarBackground = {
 
 const navItems = [
   { to: '/admin/dashboard', name: 'dashboard', exact: true, Icon: MdDashboard },
-  { to: '/admin/brands', name: 'brands', exact: true, Icon: MdDashboard }
+  { to: '/admin/brands', name: 'brands', exact: true, Icon: MdDashboard },
+  { to: '/admin/models', name: 'models', exact: true, Icon: MdDashboard }
 ];
 
 const bem = bn.create('sidebar');
