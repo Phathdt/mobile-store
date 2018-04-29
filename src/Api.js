@@ -17,9 +17,9 @@ const signIn = async body => {
   }
 };
 
-const getListBrand = async (token, page) => {
+const getListBrand = async (token, page, size = 10) => {
   try {
-    let res = await fetch(`${HOST}/brand/list/10/${page}`, {
+    let res = await fetch(`${HOST}/brand/list/${size}/${page}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -102,11 +102,30 @@ const deleteBrand = async (token, id) => {
   }
 };
 
+const createModel = async (token, body) => {
+  try {
+    let res = await fetch(`${HOST}/model/add`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
+      body: JSON.stringify(body)
+    });
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default {
   signIn,
   getListBrand,
   createBrand,
   getBrand,
   editBrand,
-  deleteBrand
+  deleteBrand,
+  createModel
 };

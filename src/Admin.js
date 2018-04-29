@@ -15,6 +15,9 @@ import ListBrandPage from 'pages/brand/ListBrandPage';
 import NewBrandPage from 'pages/brand/NewBrandPage';
 import ShowBrandPage from 'pages/brand/ShowBrandPage';
 import EditBrandPage from 'pages/brand/EditBrandPage';
+
+import ListModelPage from 'pages/model/ListModelPage';
+import NewModelPage from 'pages/model/NewModelPage';
 // comment
 import './styles/reduction.css';
 
@@ -133,6 +136,12 @@ class Admin extends React.Component {
                 path="/admin/brands/:id"
                 component={ShowBrandPage}
               />
+              <PrivateRoute
+                exact
+                path="/admin/models"
+                component={ListModelPage}
+              />
+              <PrivateRoute path="/admin/models/new" component={NewModelPage} />
             </Switch>
             <Footer />
           </Content>
