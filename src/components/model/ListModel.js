@@ -17,66 +17,60 @@ import Model from './Model';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class ListModel extends Component {
-  render() {
-    let data = this.props.data;
-    const paginate =
-      this.props.totalPages > 0 ? (
-        <UltimatePagination
-          currentPage={this.props.currentPage}
-          totalPages={this.props.totalPages}
-          onChange={this.props.PageChange}
-        />
-      ) : null;
-
-    return (
-      <Page
-        title="List Model"
-        breadcrumbs={[{ name: 'List Model', active: true }]}
-        className="ModelPage"
-      >
-        <Row>
-          <Col>
-            <Card className="mb-3">
-              <CardHeader>
-                <Link to="/admin/models/new">
-                  <Button color="success" active>
-                    Add new Models
-                  </Button>
-                </Link>
-              </CardHeader>
-              <CardBody>
-                <Table responsive>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Name</th>
-                      <th>Color</th>
-                      <th>Specification</th>
-                      <th>Brand</th>
-                      <th>Type</th>
-                      <th>Description</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.map((row, i) => (
-                      <Model
-                        row={row}
-                        key={i}
-                        // deleteBrand={this.props.deleteBrand}
-                      />
-                    ))}
-                  </tbody>
-                </Table>
-                {paginate}
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </Page>
-    );
-  }
-}
+const ListModel = props => {
+  return (
+    <Page
+      title="List Model"
+      breadcrumbs={[{ name: 'List Model', active: true }]}
+      className="ModelPage"
+    >
+      <Row>
+        <Col>
+          <Card className="mb-3">
+            <CardHeader>
+              <Link to="/admin/models/new">
+                <Button color="success" active>
+                  Add new Models
+                </Button>
+              </Link>
+            </CardHeader>
+            <CardBody>
+              <Table responsive>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Color</th>
+                    <th>Specification</th>
+                    <th>Brand</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {props.data.map((row, i) => (
+                    <Model
+                      row={row}
+                      key={i}
+                      // deleteBrand={props.deleteBrand}
+                    />
+                  ))}
+                </tbody>
+              </Table>
+              {props.totalPages > 0 ? (
+                <UltimatePagination
+                  currentPage={props.currentPage}
+                  totalPages={props.totalPages}
+                  onChange={props.PageChange}
+                />
+              ) : null}
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+    </Page>
+  );
+};
 
 export default ListModel;
