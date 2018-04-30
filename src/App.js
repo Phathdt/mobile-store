@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import Admin from './Admin';
+import Admin from './Admin'
 
 // pages
-import UserPage from 'pages/UserPage';
-import SignInPage from 'pages/SignInPage';
+import UserPage from 'pages/UserPage'
+import SignInPage from 'pages/SignInPage'
 
-import './styles/reduction.css';
+import './styles/reduction.css'
 
 class App extends React.Component {
   render() {
@@ -25,8 +25,8 @@ class App extends React.Component {
           </Switch>
         </div>
       </BrowserRouter>
-    );
+    )
   }
 }
 
-export default App;
+export default App

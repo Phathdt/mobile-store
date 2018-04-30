@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import bn from 'utils/bemnames';
+import bn from 'utils/bemnames'
 
 import {
   Navbar,
@@ -13,7 +13,7 @@ import {
   ListGroup,
   ListGroupItem,
   Button
-} from 'reactstrap';
+} from 'reactstrap'
 
 import {
   MdNotificationsActive,
@@ -25,18 +25,18 @@ import {
   MdHelp,
   MdClearAll,
   MdExitToApp
-} from 'react-icons/lib/md';
+} from 'react-icons/lib/md'
 
-import Avatar from 'components/Avatar';
-import { UserCard } from 'components/Card';
-import Notifications from 'components/Notifications';
-import SearchInput from 'components/SearchInput';
+import Avatar from 'components/Avatar'
+import { UserCard } from 'components/Card'
+import Notifications from 'components/Notifications'
+import SearchInput from 'components/SearchInput'
 
-import withBadge from 'hocs/withBadge';
+import withBadge from 'hocs/withBadge'
 
-import { notificationsData } from 'demos/header';
+import { notificationsData } from 'demos/header'
 
-const bem = bn.create('header');
+const bem = bn.create('header')
 
 const MdNotificationsActiveWithBadge = withBadge({
   size: 'md',
@@ -49,40 +49,40 @@ const MdNotificationsActiveWithBadge = withBadge({
     alignItems: 'center'
   },
   children: <small>5</small>
-})(MdNotificationsActive);
+})(MdNotificationsActive)
 
 class Header extends React.Component {
   state = {
     isOpenNotificationPopover: false,
     isNotificationConfirmed: false,
     isOpenUserCardPopover: false
-  };
+  }
 
   toggleNotificationPopover = () => {
     this.setState({
       isOpenNotificationPopover: !this.state.isOpenNotificationPopover
-    });
+    })
 
     if (!this.state.isNotificationConfirmed) {
-      this.setState({ isNotificationConfirmed: true });
+      this.setState({ isNotificationConfirmed: true })
     }
-  };
+  }
 
   toggleUserCardPopover = () => {
     this.setState({
       isOpenUserCardPopover: !this.state.isOpenUserCardPopover
-    });
-  };
+    })
+  }
 
   handleSidebarControlButton = event => {
-    event.preventDefault();
-    event.stopPropagation();
+    event.preventDefault()
+    event.stopPropagation()
 
-    document.querySelector('.cr-sidebar').classList.toggle('cr-sidebar--open');
-  };
+    document.querySelector('.cr-sidebar').classList.toggle('cr-sidebar--open')
+  }
 
   render() {
-    const { isNotificationConfirmed } = this.state;
+    const { isNotificationConfirmed } = this.state
 
     return (
       <Navbar light expand className={bem.b('bg-white')}>
@@ -172,8 +172,8 @@ class Header extends React.Component {
           </NavItem>
         </Nav>
       </Navbar>
-    );
+    )
   }
 }
 
-export default Header;
+export default Header

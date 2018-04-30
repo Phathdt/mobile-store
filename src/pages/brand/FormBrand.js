@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import {
   Row,
@@ -11,9 +11,9 @@ import {
   FormGroup,
   Label,
   Input
-} from 'reactstrap';
+} from 'reactstrap'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 class FormBrand extends Component {
   render() {
@@ -28,7 +28,7 @@ class FormBrand extends Component {
           </Button>
         </Col>
       </FormGroup>
-    ) : null;
+    ) : null
 
     const buttonEdit = this.props.show ? (
       <Link to={`/admin/brands/${this.props.id}/edit`}>
@@ -36,12 +36,12 @@ class FormBrand extends Component {
           Edit
         </Button>
       </Link>
-    ) : null;
+    ) : null
 
     const title =
       this.props.action === 'new'
         ? 'New Brand'
-        : this.props.action === 'show' ? 'Show Brand' : 'Edit Brand';
+        : this.props.action === 'show' ? 'Show Brand' : 'Edit Brand'
     return (
       <Row>
         <Col xl={12} lg={12} md={12}>
@@ -91,8 +91,8 @@ class FormBrand extends Component {
           </Card>
         </Col>
       </Row>
-    );
+    )
   }
 }
 
-export default FormBrand;
+export default FormBrand

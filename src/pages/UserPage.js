@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 class UserPage extends Component {
   render() {
@@ -9,8 +9,8 @@ class UserPage extends Component {
         <h1>page user</h1>
         <Link to="/signin">Signin</Link>
       </div>
-    );
+    )
   }
 }
 
-export default UserPage;
+export default UserPage

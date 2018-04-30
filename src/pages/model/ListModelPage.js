@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import ListModel from '../../components/model/ListModel';
-import Api from 'Api';
-import swal from 'sweetalert2';
+import ListModel from '../../components/model/ListModel'
+import Api from 'Api'
+import swal from 'sweetalert2'
 class ListModelPage extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       token: this.props.token,
@@ -13,7 +13,7 @@ class ListModelPage extends Component {
       totalPages: 0,
       totalElements: 0,
       data: []
-    };
+    }
   }
 
   // async componentWillMount() {
@@ -55,8 +55,8 @@ class ListModelPage extends Component {
       <div>
         <h1>List Model</h1>
       </div>
-    );
+    )
   }
 }
 
-export default ListModelPage;
+export default ListModelPage

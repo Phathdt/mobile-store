@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-import { Button } from 'reactstrap';
+import { Button } from 'reactstrap'
 
 const Model = props => {
   return (
@@ -30,7 +30,7 @@ const Model = props => {
         </Button>
       </td>
     </tr>
-  );
-};
+  )
+}
 
-export default Model;
+export default Model

@@ -1,4 +1,4 @@
-import { HOST } from 'Constants';
+import { HOST } from 'Constants'
 
 const signIn = async body => {
   try {
@@ -9,13 +9,13 @@ const signIn = async body => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 const getListBrand = async (token, page, size = 10) => {
   try {
@@ -25,13 +25,13 @@ const getListBrand = async (token, page, size = 10) => {
         'Content-Type': 'application/json',
         Authorization: token
       }
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 const createBrand = async (token, body) => {
   try {
@@ -43,13 +43,13 @@ const createBrand = async (token, body) => {
         Authorization: token
       },
       body: JSON.stringify(body)
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 const getBrand = async (token, id) => {
   try {
@@ -59,13 +59,13 @@ const getBrand = async (token, id) => {
         'Content-Type': 'application/json',
         Authorization: token
       }
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 const editBrand = async (token, id, body) => {
   try {
@@ -77,13 +77,13 @@ const editBrand = async (token, id, body) => {
         Authorization: token
       },
       body: JSON.stringify(body)
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 const deleteBrand = async (token, id) => {
   try {
@@ -94,13 +94,13 @@ const deleteBrand = async (token, id) => {
         'Content-Type': 'application/json',
         Authorization: token
       }
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 const createModel = async (token, body) => {
   try {
@@ -112,13 +112,13 @@ const createModel = async (token, body) => {
         Authorization: token
       },
       body: JSON.stringify(body)
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 const getListModel = async (token, page, size = 10) => {
   try {
@@ -128,13 +128,13 @@ const getListModel = async (token, page, size = 10) => {
         'Content-Type': 'application/json',
         Authorization: token
       }
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 const getModel = async (token, id) => {
   try {
@@ -144,13 +144,13 @@ const getModel = async (token, id) => {
         'Content-Type': 'application/json',
         Authorization: token
       }
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 const editModel = async (token, id, body) => {
   try {
@@ -162,13 +162,13 @@ const editModel = async (token, id, body) => {
         Authorization: token
       },
       body: JSON.stringify(body)
-    });
+    })
 
-    return res;
+    return res
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
 export default {
   signIn,
@@ -181,4 +181,4 @@ export default {
   createModel,
   getModel,
   editModel
-};
+}

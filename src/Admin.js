@@ -1,47 +1,47 @@
-import React from 'react';
+import React from 'react'
 
-import componentQueries from 'react-component-queries';
+import componentQueries from 'react-component-queries'
 
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 // layouts
-import { Header, Sidebar, Content, Footer } from 'components/Layout';
+import { Header, Sidebar, Content, Footer } from 'components/Layout'
 
-import GAListener from 'components/GAListener';
+import GAListener from 'components/GAListener'
 
 // pages
-import DashboardPage from 'pages/DashboardPage';
-import ListBrandPage from 'pages/brand/ListBrandPage';
-import NewBrandPage from 'pages/brand/NewBrandPage';
-import ShowBrandPage from 'pages/brand/ShowBrandPage';
-import EditBrandPage from 'pages/brand/EditBrandPage';
+import DashboardPage from 'pages/DashboardPage'
+import ListBrandPage from 'pages/brand/ListBrandPage'
+import NewBrandPage from 'pages/brand/NewBrandPage'
+import ShowBrandPage from 'pages/brand/ShowBrandPage'
+import EditBrandPage from 'pages/brand/EditBrandPage'
 
-import ListModelPage from 'pages/model/ListModelPage';
-import NewModelPage from 'pages/model/NewModelPage';
-import ShowModelPage from 'pages/model/ShowModelPage';
-import EditModelPage from 'pages/model/EditModelPage';
+import ListModelPage from 'pages/model/ListModelPage'
+import NewModelPage from 'pages/model/NewModelPage'
+import ShowModelPage from 'pages/model/ShowModelPage'
+import EditModelPage from 'pages/model/EditModelPage'
 
 // comment
-import './styles/reduction.css';
+import './styles/reduction.css'
 
 const Authen = {
   isAuthenticated: false,
   token: '',
   authenticate(cb) {
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem('token')
     if (token && token.length === 158) {
-      this.isAuthenticated = true;
-      this.token = token;
-      return true;
+      this.isAuthenticated = true
+      this.token = token
+      return true
     } else {
-      return false;
+      return false
     }
   },
   signout(cb) {
-    this.isAuthenticated = false;
-    setTimeout(cb, 100);
+    this.isAuthenticated = false
+    setTimeout(cb, 100)
   }
-};
+}
 
 const PrivateRoute = ({ component: Component, customProps, ...rest }) => (
   <Route
@@ -59,23 +59,23 @@ const PrivateRoute = ({ component: Component, customProps, ...rest }) => (
       )
     }
   />
-);
+)
 
 class Admin extends React.Component {
   static isSidebarOpen() {
     return document
       .querySelector('.cr-sidebar')
-      .classList.contains('cr-sidebar--open');
+      .classList.contains('cr-sidebar--open')
   }
 
   componentWillReceiveProps({ breakpoint }) {
     if (breakpoint !== this.props.breakpoint) {
-      this.checkBreakpoint(breakpoint);
+      this.checkBreakpoint(breakpoint)
     }
   }
 
   componentDidMount() {
-    this.checkBreakpoint(this.props.breakpoint);
+    this.checkBreakpoint(this.props.breakpoint)
   }
 
   // close sidebar when
@@ -87,21 +87,21 @@ class Admin extends React.Component {
         this.props.breakpoint === 'sm' ||
         this.props.breakpoint === 'md')
     ) {
-      this.openSidebar('close');
+      this.openSidebar('close')
     }
-  };
+  }
 
   checkBreakpoint(breakpoint) {
     switch (breakpoint) {
       case 'xs':
       case 'sm':
       case 'md':
-        return this.openSidebar('close');
+        return this.openSidebar('close')
 
       case 'lg':
       case 'xl':
       default:
-        return this.openSidebar('open');
+        return this.openSidebar('open')
     }
   }
 
@@ -109,10 +109,10 @@ class Admin extends React.Component {
     if (openOrClose === 'open') {
       return document
         .querySelector('.cr-sidebar')
-        .classList.add('cr-sidebar--open');
+        .classList.add('cr-sidebar--open')
     }
 
-    document.querySelector('.cr-sidebar').classList.remove('cr-sidebar--open');
+    document.querySelector('.cr-sidebar').classList.remove('cr-sidebar--open')
   }
 
   render() {
@@ -160,32 +160,32 @@ class Admin extends React.Component {
           </Content>
         </main>
       </GAListener>
-    );
+    )
   }
 }
 
 const query = ({ width }) => {
   if (width < 575) {
-    return { breakpoint: 'xs' };
+    return { breakpoint: 'xs' }
   }
 
   if (576 < width && width < 767) {
-    return { breakpoint: 'sm' };
+    return { breakpoint: 'sm' }
   }
 
   if (768 < width && width < 991) {
-    return { breakpoint: 'md' };
+    return { breakpoint: 'md' }
   }
 
   if (992 < width && width < 1199) {
-    return { breakpoint: 'lg' };
+    return { breakpoint: 'lg' }
   }
 
   if (width > 1200) {
-    return { breakpoint: 'xl' };
+    return { breakpoint: 'xl' }
   }
 
-  return { breakpoint: 'xs' };
-};
+  return { breakpoint: 'xs' }
+}
 
-export default componentQueries(query)(Admin);
+export default componentQueries(query)(Admin)

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import ListBrand from '../../components/brand/ListBrand';
-import Api from 'Api';
-import swal from 'sweetalert2';
+import React, { Component } from 'react'
+import ListBrand from '../../components/brand/ListBrand'
+import Api from 'Api'
+import swal from 'sweetalert2'
 
 class ListBrandPage extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       token: this.props.token,
@@ -13,42 +13,42 @@ class ListBrandPage extends Component {
       totalPages: 0,
       totalElements: 0,
       data: []
-    };
+    }
   }
 
   async componentWillMount() {
-    let response = await this.getListBrand(0);
+    let response = await this.getListBrand(0)
     this.setState({
       data: response.content,
       currentPage: response.number,
       totalPages: response.totalPages,
       totalElements: response.totalElements
-    });
+    })
   }
 
   getListBrand = async page => {
     try {
-      let { token } = this.state;
-      let res = await Api.getListBrand(token, page);
+      let { token } = this.state
+      let res = await Api.getListBrand(token, page)
 
       if (res.status === 401) {
-        alert('something went wrong');
+        alert('something went wrong')
       } else {
-        let resJson = await res.json();
-        return resJson.data;
+        let resJson = await res.json()
+        return resJson.data
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   onPageChange = async page => {
-    let response = await this.getListBrand(page - 1);
+    let response = await this.getListBrand(page - 1)
     this.setState({
       currentPage: response.number,
       data: response.content
-    });
-  };
+    })
+  }
 
   deleteBrand = brandId => async e => {
     let result = await swal({
@@ -58,30 +58,30 @@ class ListBrandPage extends Component {
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
       cancelButtonText: 'No, keep it'
-    });
+    })
 
     if (result.value) {
-      let { token, currentPage } = this.state;
-      let res = await Api.deleteBrand(token, brandId);
+      let { token, currentPage } = this.state
+      let res = await Api.deleteBrand(token, brandId)
 
       if (res.status === 200) {
-        swal('Deleted!', 'Your brand has been deleted.', 'success');
-        let res = await Api.getListBrand(token, currentPage);
+        swal('Deleted!', 'Your brand has been deleted.', 'success')
+        let res = await Api.getListBrand(token, currentPage)
         if (res.status === 401) {
-          alert('something went wrong');
+          alert('something went wrong')
         } else {
-          let resJson = await res.json();
+          let resJson = await res.json()
           await this.setState({
             currentPage: resJson.data.number,
             data: resJson.data.content,
             totalPages: resJson.data.totalPages
-          });
+          })
         }
       }
     } else {
-      swal('Cancelled', 'Your brand is safe :)', 'error');
+      swal('Cancelled', 'Your brand is safe :)', 'error')
     }
-  };
+  }
 
   render() {
     if (this.state.data.length >= 0) {
@@ -96,11 +96,11 @@ class ListBrandPage extends Component {
             deleteBrand={this.deleteBrand}
           />
         </div>
-      );
+      )
     } else {
-      return null;
+      return null
     }
   }
 }
 
-export default ListBrandPage;
+export default ListBrandPage

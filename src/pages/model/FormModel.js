@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import {
   Row,
@@ -11,9 +11,9 @@ import {
   FormGroup,
   Label,
   Input
-} from 'reactstrap';
+} from 'reactstrap'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 class FormModel extends Component {
   render() {
@@ -28,7 +28,7 @@ class FormModel extends Component {
           </Button>
         </Col>
       </FormGroup>
-    ) : null;
+    ) : null
 
     const buttonEdit =
       this.props.action === 'show' ? (
@@ -37,15 +37,15 @@ class FormModel extends Component {
             Edit
           </Button>
         </Link>
-      ) : null;
+      ) : null
 
     const title =
       this.props.action === 'new'
         ? 'New Model'
-        : this.props.action === 'show' ? 'Show Model' : 'Edit Model';
+        : this.props.action === 'show' ? 'Show Model' : 'Edit Model'
 
-    let options = [];
-    options.push(<option key={''} value={''} />);
+    let options = []
+    options.push(<option key={''} value={''} />)
 
     this.props.brandOptions.length > 0 &&
       this.props.brandOptions.forEach(option =>
@@ -54,7 +54,7 @@ class FormModel extends Component {
             {option.name}
           </option>
         )
-      );
+      )
 
     return (
       <Row>
@@ -157,8 +157,8 @@ class FormModel extends Component {
           </Card>
         </Col>
       </Row>
-    );
+    )
   }
 }
 
-export default FormModel;
+export default FormModel

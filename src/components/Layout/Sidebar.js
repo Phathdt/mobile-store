@@ -1,45 +1,45 @@
-import React from 'react';
+import React from 'react'
 
-import bn from 'utils/bemnames';
+import bn from 'utils/bemnames'
 
-import { Navbar, Nav, NavItem, NavLink as BSNavLink } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { Navbar, Nav, NavItem, NavLink as BSNavLink } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 
-import { MdDashboard } from 'react-icons/lib/md';
-import FaGithub from 'react-icons/lib/fa/github';
+import { MdDashboard } from 'react-icons/lib/md'
+import FaGithub from 'react-icons/lib/fa/github'
 
-import SourceLink from 'components/SourceLink';
+import SourceLink from 'components/SourceLink'
 
 const sidebarBackground = {
   backgroundImage: 'url("/img/sidebar/sidebar-4.jpg")',
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat'
-};
+}
 
 const navItems = [
   { to: '/admin/dashboard', name: 'dashboard', exact: true, Icon: MdDashboard },
   { to: '/admin/brands', name: 'brands', exact: true, Icon: MdDashboard },
   { to: '/admin/models', name: 'models', exact: true, Icon: MdDashboard }
-];
+]
 
-const bem = bn.create('sidebar');
+const bem = bn.create('sidebar')
 
 class Sidebar extends React.Component {
   state = {
     isOpenComponents: true,
     isOpenContents: true,
     isShow: true
-  };
+  }
 
   handleClick = name => () => {
     this.setState(prevState => {
-      const isOpen = prevState[`isOpen${name}`];
+      const isOpen = prevState[`isOpen${name}`]
 
       return {
         [`isOpen${name}`]: !isOpen
-      };
-    });
-  };
+      }
+    })
+  }
 
   render() {
     return (
@@ -79,8 +79,8 @@ class Sidebar extends React.Component {
           </Nav>
         </div>
       </aside>
-    );
+    )
   }
 }
 
-export default Sidebar;
+export default Sidebar

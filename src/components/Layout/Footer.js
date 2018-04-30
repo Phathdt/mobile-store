@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { Navbar, Nav, NavItem } from 'reactstrap';
+import { Navbar, Nav, NavItem } from 'reactstrap'
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
         <NavItem>Mobile Store - J2EE</NavItem>
       </Nav>
     </Navbar>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

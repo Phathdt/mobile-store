@@ -1,21 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Row,
-  Col,
-  Table,
-  Button
-} from 'reactstrap';
+import { Card, CardHeader, CardBody, Row, Col, Table, Button } from 'reactstrap'
 
-import { Link } from 'react-router-dom';
-import UltimatePagination from 'react-ultimate-pagination-bootstrap-4';
-import Page from 'components/Page';
-import Brand from './Brand';
+import { Link } from 'react-router-dom'
+import UltimatePagination from 'react-ultimate-pagination-bootstrap-4'
+import Page from 'components/Page'
+import Brand from './Brand'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const ListBrand = props => {
   return (
@@ -63,7 +55,7 @@ const ListBrand = props => {
         </Col>
       </Row>
     </Page>
-  );
-};
+  )
+}
 
-export default ListBrand;
+export default ListBrand

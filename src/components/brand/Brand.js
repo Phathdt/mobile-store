@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-import { Button } from 'reactstrap';
+import { Button } from 'reactstrap'
 
 const Brand = props => {
   return (
@@ -31,7 +31,7 @@ const Brand = props => {
         </Button>
       </td>
     </tr>
-  );
-};
+  )
+}
 
-export default Brand;
+export default Brand

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import Page from 'components/Page';
-import FormModel from './FormModel';
-import Api from 'Api';
+import Page from 'components/Page'
+import FormModel from './FormModel'
+import Api from 'Api'
 
 class NewModelPage extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       token: this.props.token,
@@ -18,41 +18,41 @@ class NewModelPage extends Component {
       type: '',
       brandOptions: [],
       isLoaded: false
-    };
+    }
   }
 
   async componentWillMount() {
-    let response = await this.getAllBrand();
+    let response = await this.getAllBrand()
     await this.setState({
       brandOptions: response.content,
       isLoaded: true
-    });
+    })
   }
 
   getAllBrand = async () => {
     try {
-      let { token } = this.state;
-      let res = await Api.getListBrand(token, 0, 100);
+      let { token } = this.state
+      let res = await Api.getListBrand(token, 0, 100)
 
       if (res.status === 401) {
-        alert('something went wrong');
+        alert('something went wrong')
       } else {
-        let resJson = await res.json();
-        return resJson.data;
+        let resJson = await res.json()
+        return resJson.data
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   handleChange = async event => {
     await this.setState({
       [event.target.id]: event.target.value
-    });
-  };
+    })
+  }
 
   handleSubmit = async event => {
-    event.preventDefault();
+    event.preventDefault()
     const body = {
       name: this.state.name,
       color: this.state.color,
@@ -60,16 +60,16 @@ class NewModelPage extends Component {
       brandID: this.state.brandID,
       specification: this.state.specification,
       type: this.state.type
-    };
-    let { token } = this.state;
-    let res = await Api.createModel(token, body);
+    }
+    let { token } = this.state
+    let res = await Api.createModel(token, body)
 
     if (res.status === 401) {
-      alert('something went wrong');
+      alert('something went wrong')
     } else {
-      this.props.history.push('/admin/models');
+      this.props.history.push('/admin/models')
     }
-  };
+  }
 
   validateForm = () => {
     return (
@@ -79,8 +79,8 @@ class NewModelPage extends Component {
       this.state.brandID !== 0 &&
       this.state.type >= 0 &&
       this.state.description.length > 0
-    );
-  };
+    )
+  }
 
   render() {
     if (this.state.isLoaded) {
@@ -107,11 +107,11 @@ class NewModelPage extends Component {
             }}
           />
         </Page>
-      );
+      )
     } else {
-      return null;
+      return null
     }
   }
 }
 
-export default NewModelPage;
+export default NewModelPage

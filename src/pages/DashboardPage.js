@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { getColor } from 'utils/colors';
+import { getColor } from 'utils/colors'
 
 import {
   Card,
@@ -13,7 +13,7 @@ import {
   ListGroupItem,
   Badge,
   Button
-} from 'reactstrap';
+} from 'reactstrap'
 
 import {
   MdInsertChart,
@@ -21,11 +21,11 @@ import {
   MdPieChart,
   MdShowChart,
   MdPersonPin
-} from 'react-icons/lib/md';
+} from 'react-icons/lib/md'
 
-import InfiniteCalendar from 'react-infinite-calendar';
+import InfiniteCalendar from 'react-infinite-calendar'
 
-import { Line, Bar } from 'react-chartjs-2';
+import { Line, Bar } from 'react-chartjs-2'
 
 import {
   supportTicketsData,
@@ -33,37 +33,37 @@ import {
   userProgressTableData,
   todosData,
   chartjs
-} from 'demos/dashboardPage';
-import { getStackLineChart, stackLineChartOptions } from 'demos/chartjs';
+} from 'demos/dashboardPage'
+import { getStackLineChart, stackLineChartOptions } from 'demos/chartjs'
 
-import Page from 'components/Page';
+import Page from 'components/Page'
 
-import SupportTicket from 'components/SupportTicket';
-import ProductMedia from 'components/ProductMedia';
-import UserProgressTable from 'components/UserProgressTable';
+import SupportTicket from 'components/SupportTicket'
+import ProductMedia from 'components/ProductMedia'
+import UserProgressTable from 'components/UserProgressTable'
 
-import { AnnouncementCard, TodosCard } from 'components/Card';
+import { AnnouncementCard, TodosCard } from 'components/Card'
 
-import { NumberWidget } from 'components/Widget';
+import { NumberWidget } from 'components/Widget'
 
-import MapWithBubbles from 'components/MapWithBubbles';
+import MapWithBubbles from 'components/MapWithBubbles'
 
-const today = new Date();
+const today = new Date()
 const lastWeek = new Date(
   today.getFullYear(),
   today.getMonth(),
   today.getDate() - 7
-);
+)
 
 class DashboardPage extends React.Component {
   componentDidMount() {
     // this is needed, because InfiniteCalendar forces window scroll
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   render() {
-    const primaryColor = getColor('primary');
-    const secondaryColor = getColor('secondary');
+    const primaryColor = getColor('primary')
+    const secondaryColor = getColor('secondary')
 
     return (
       <Page
@@ -366,7 +366,7 @@ class DashboardPage extends React.Component {
           </Col>
         </Row>
       </Page>
-    );
+    )
   }
 }
-export default DashboardPage;
+export default DashboardPage
