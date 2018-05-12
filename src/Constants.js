@@ -1,1 +1,1 @@
-export const HOST = 'https://mobile-store-612.herokuapp.com'
+export const HOST = 'http://18.233.9.137'

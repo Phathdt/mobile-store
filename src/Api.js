@@ -44,7 +44,7 @@ const createBrand = async (token, body) => {
       },
       body: JSON.stringify(body)
     })
-
+    
     return res
   } catch (error) {
     console.log(error)
@@ -122,7 +122,7 @@ const createModel = async (token, body) => {
 
 const getListModel = async (token, page, size = 10) => {
   try {
-    let res = await fetch(`${HOST}/brand/model/${size}/${page}`, {
+    let res = await fetch(`${HOST}/model/list/${size}/${page}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -170,6 +170,23 @@ const editModel = async (token, id, body) => {
   }
 }
 
+const deleteModel = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/model/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   signIn,
   getListBrand,
@@ -180,5 +197,6 @@ export default {
   getListModel,
   createModel,
   getModel,
-  editModel
+  editModel,
+  deleteModel
 }

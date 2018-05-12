@@ -45,7 +45,7 @@ const ListModel = props => {
                     <Model
                       row={row}
                       key={i}
-                      // deleteBrand={props.deleteBrand}
+                      deleteModel={props.deleteModel}
                     />
                   ))}
                 </tbody>
