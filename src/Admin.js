@@ -21,6 +21,11 @@ import NewModelPage from 'pages/model/NewModelPage'
 import ShowModelPage from 'pages/model/ShowModelPage'
 import EditModelPage from 'pages/model/EditModelPage'
 
+import ListVariantPage from 'pages/variant/ListVariantPage'
+import NewVariantPage from 'pages/variant/NewVariantPage'
+import ShowVariantPage from 'pages/variant/ShowVariantPage'
+import EditVariantPage from 'pages/variant/EditVariantPage'
+
 // comment
 import './styles/reduction.css'
 
@@ -154,6 +159,20 @@ class Admin extends React.Component {
               <PrivateRoute
                 path="/admin/models/:id"
                 component={ShowModelPage}
+              />
+
+              <PrivateRoute
+                path="/admin/variants"
+                component={ListVariantPage}
+              />
+              <PrivateRoute path="/admin/variants/new" component={NewVariantPage} />
+              <PrivateRoute
+                path="/admin/variants/:id/edit"
+                component={EditVariantPage}
+              />
+              <PrivateRoute
+                path="/admin/variants/:id"
+                component={ShowVariantPage}
               />
             </Switch>
             <Footer />

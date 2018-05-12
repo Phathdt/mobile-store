@@ -187,6 +187,22 @@ const deleteModel = async (token, id) => {
   }
 }
 
+const getListVariant = async (token, page, size = 10) => {
+  try {
+    let res = await fetch(`${HOST}/variant/list/${size}/${page}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   signIn,
   getListBrand,
@@ -198,5 +214,6 @@ export default {
   createModel,
   getModel,
   editModel,
-  deleteModel
+  deleteModel,
+  getListVariant
 }
