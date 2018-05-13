@@ -162,6 +162,7 @@ class Admin extends React.Component {
               />
 
               <PrivateRoute
+                exact
                 path="/admin/variants"
                 component={ListVariantPage}
               />

@@ -203,6 +203,74 @@ const getListVariant = async (token, page, size = 10) => {
   }
 }
 
+const createVariant = async (token, body) => {
+  try {
+    let res = await fetch(`${HOST}/variant/add`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
+      body: JSON.stringify(body)
+    })
+    
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getVariant = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/variant/get/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const editVariant = async (token, id, body) => {
+  try {
+    let res = await fetch(`${HOST}/variant/update/${id}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
+      body: JSON.stringify(body)
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const deleteVariant = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/variant/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
 export default {
   signIn,
   getListBrand,
@@ -215,5 +283,9 @@ export default {
   getModel,
   editModel,
   deleteModel,
-  getListVariant
+  getListVariant,
+  createVariant,
+  getVariant,
+  editVariant,
+  deleteVariant
 }

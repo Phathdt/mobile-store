@@ -12,9 +12,9 @@ class NewVariantPage extends Component {
       token: this.props.token,
       name: '',
       color: '',
-      images: '',
       modelID: '',
       pricesold: '',
+      images: '',
       storage: '',
       modelOptions: [],
       isLoaded: false
@@ -67,7 +67,8 @@ class NewVariantPage extends Component {
     if (res.status === 401) {
       alert('something went wrong')
     } else {
-      this.props.history.push('/admin/Variants')
+      console.log("res",res)
+      this.props.history.push('/admin/variants')
     }
   }
 
@@ -77,8 +78,9 @@ class NewVariantPage extends Component {
       this.state.color.length > 0 &&
       this.state.pricesold.length > 0 &&
       this.state.modelID !== 0 &&
-    //   this.state.images >= 0 &&
       this.state.storage.length > 0
+    //   this.state.images >= 0 &&
+      
     )
   }
 
