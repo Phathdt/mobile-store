@@ -102,8 +102,8 @@ class EditVariantPage extends Component {
       this.state.color.length > 0 &&
       this.state.pricesold.length > 0 &&
       this.state.modelID !== 0 &&
-      this.state.storage.length > 0
-      //   this.state.images >= 0 &&
+      this.state.storage.length > 0 &&
+      this.state.images.length >= 0
     )
   }
 

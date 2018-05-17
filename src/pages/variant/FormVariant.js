@@ -21,10 +21,10 @@ class FormVariant extends Component {
   generateImageList = images => {
     return (
       <div className="row">
-        {images.map(image => {
+        {images.map((image, i) => {
           return (
-            <div className="mb-3 col-12 col-sm-6 col-md-4">
-              <img key={image} src={image} alt="" className="card-img-top" />
+            <div className="mb-3 col-12 col-sm-6 col-md-4" key={i}>
+              <img key={i} src={image} alt="" className="card-img-top" />
             </div>
           )
         })}
