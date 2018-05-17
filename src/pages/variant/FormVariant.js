@@ -66,6 +66,7 @@ class FormVariant extends Component {
           token={this.props.token}
           handleAddImageSuccess={this.props.handleAddImageSuccess}
           handleRemoveImage={this.props.handleRemoveImage}
+          images={this.props.formData.images}
         />
       ) : (
         this.generateImageList(this.props.formData.images)
