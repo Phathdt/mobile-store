@@ -31,7 +31,7 @@ class ShowVariantPage extends Component {
       storage: response.storage,
       modelID: response.modelID,
       pricesold: response.pricesold,
-    //   images: response.images
+      images: response.images.map(image => image.imageURL)
     })
 
     let responseModels = await this.getAllModel()
@@ -88,7 +88,7 @@ class ShowVariantPage extends Component {
               storage: this.state.storage,
               modelID: this.state.modelID,
               pricesold: this.state.pricesold,
-            //   images: this.state.images
+              images: this.state.images
             }}
           />
         </Page>

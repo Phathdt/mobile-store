@@ -33,6 +33,7 @@
   "devDependencies": {
     "node-sass-chokidar": "^1.1.0",
     "npm-run-all": "^4.1.2",
+    "react-dropzone-component": "^3.2.0",
     "react-scripts": "1.1.1",
     "serve": "^6.4.1",
     "stylelint": "^8.2.0",

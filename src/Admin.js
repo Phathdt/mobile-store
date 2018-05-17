@@ -166,7 +166,10 @@ class Admin extends React.Component {
                 path="/admin/variants"
                 component={ListVariantPage}
               />
-              <PrivateRoute path="/admin/variants/new" component={NewVariantPage} />
+              <PrivateRoute
+                path="/admin/variants/new"
+                component={NewVariantPage}
+              />
               <PrivateRoute
                 path="/admin/variants/:id/edit"
                 component={EditVariantPage}

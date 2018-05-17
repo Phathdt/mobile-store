@@ -15,7 +15,23 @@ import {
 
 import { Link } from 'react-router-dom'
 
+import UploadComponent from '../share/UploadComponent'
+
 class FormVariant extends Component {
+  generateImageList = images => {
+    return (
+      <div className="row">
+        {images.map(image => {
+          return (
+            <div className="mb-3 col-12 col-sm-6 col-md-4">
+              <img key={image} src={image} alt="" className="card-img-top" />
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
   render() {
     const buttonSummit = !this.props.disabled ? (
       <FormGroup check row>
@@ -43,6 +59,17 @@ class FormVariant extends Component {
       this.props.action === 'new'
         ? 'New Variant'
         : this.props.action === 'show' ? 'Show Variant' : 'Edit Variant'
+
+    const imagesList =
+      this.props.action === 'new' || this.props.action === 'edit' ? (
+        <UploadComponent
+          token={this.props.token}
+          handleAddImageSuccess={this.props.handleAddImageSuccess}
+          handleRemoveImage={this.props.handleRemoveImage}
+        />
+      ) : (
+        this.generateImageList(this.props.formData.images)
+      )
 
     let options = []
     options.push(<option key={''} value={''} />)
@@ -88,17 +115,7 @@ class FormVariant extends Component {
                     name="text"
                   />
                 </FormGroup>
-                <FormGroup>
-                  <Label for="name">Images</Label>
-                  <Input
-                    type="text"
-                    id="images"
-                    value={this.props.formData.images}
-                    onChange={this.props.handleChange}
-                    disabled={this.props.disabled}
-                    name="text"
-                  />
-                </FormGroup>
+                <FormGroup>{imagesList}</FormGroup>
                 <FormGroup>
                   <Label for="name">Model</Label>
                   <Input
