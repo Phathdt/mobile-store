@@ -78,7 +78,8 @@ class NewVariantPage extends Component {
       color: this.state.color,
       pricesold: this.state.pricesold,
       modelID: this.state.modelID,
-      storage: this.state.storage
+      storage: this.state.storage,
+      images: this.state.images
     }
     let { token } = this.state
     let res = await Api.createVariant(token, body)

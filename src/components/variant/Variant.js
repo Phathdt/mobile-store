@@ -25,7 +25,11 @@ const Variant = props => {
             Edit
           </Button>
         </Link>
-        <Button outline color="danger" onClick={props.deleteVariant(props.row.variantId)}>
+        <Button
+          outline
+          color="danger"
+          onClick={props.deleteVariant(props.row.variantId)}
+        >
           Delete
         </Button>
       </td>

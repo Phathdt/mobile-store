@@ -33,7 +33,6 @@ const ListVariant = props => {
                     <th>#</th>
                     <th>Name</th>
                     <th>Color</th>
-                    {/* <th>Images</th> */}
                     <th>ModelID</th>
                     <th>PriceSold</th>
                     <th>Storage</th>
