@@ -98,7 +98,7 @@ class NewVariantPage extends Component {
       this.state.pricesold.length > 0 &&
       this.state.modelID !== 0 &&
       this.state.storage.length > 0 &&
-      this.state.images.length >= 0
+      this.state.images.length >= 1
     )
   }
 

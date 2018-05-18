@@ -133,7 +133,7 @@ class FormVariant extends Component {
                 <FormGroup>
                   <Label for="name">Price Sold</Label>
                   <Input
-                    type="text"
+                    type="number"
                     id="pricesold"
                     value={this.props.formData.pricesold}
                     onChange={this.props.handleChange}
