@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Page from 'components/Page'
 import FormSupplier from './FormSupplier'
 import Api from 'Api'
+import Validate from 'Validate'
 
 class NewSupplierPage extends Component {
   constructor(props) {
@@ -43,11 +44,13 @@ class NewSupplierPage extends Component {
   }
 
   validateForm = () => {
+    let { name, email, address, phone } = this.state
+
     return (
-      this.state.name.length > 0 &&
-      this.state.email.length > 0 &&
-      this.state.address.length > 0 &&
-      this.state.phone.length > 0
+      name.length > 0 &&
+      Validate.isEmail(email) &&
+      address.length > 0 &&
+      phone.length > 0
     )
   }
 

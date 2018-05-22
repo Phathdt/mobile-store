@@ -7,13 +7,13 @@ import {
   CardHeader,
   CardBody,
   Button,
-  Form,
   FormGroup,
   Label,
   Input
 } from 'reactstrap'
 
 import { Link } from 'react-router-dom'
+import { AvForm, AvField } from 'availity-reactstrap-validation'
 
 class FormSupplier extends Component {
   render() {
@@ -51,7 +51,7 @@ class FormSupplier extends Component {
               {buttonEdit}
             </CardHeader>
             <CardBody>
-              <Form>
+              <AvForm>
                 <FormGroup>
                   <Label for="name">Name</Label>
                   <Input
@@ -63,10 +63,11 @@ class FormSupplier extends Component {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="email">Email</Label>
-                  <Input
+                  <AvField
+                    name="email"
+                    label="Email Address"
                     type="email"
-                    id="email"
+                    required
                     value={this.props.formData.email}
                     onChange={this.props.handleChange}
                     disabled={this.props.disabled}
@@ -93,7 +94,7 @@ class FormSupplier extends Component {
                   />
                 </FormGroup>
                 {buttonSummit}
-              </Form>
+              </AvForm>
             </CardBody>
           </Card>
         </Col>
