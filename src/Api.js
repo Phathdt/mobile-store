@@ -274,7 +274,7 @@ const deleteVariant = async (token, id) => {
 
 const getListSupplier = async (token, page, size = 10) => {
   try {
-    let res = await fetch(`${HOST}/brand/list/${size}/${page}`, {
+    let res = await fetch(`${HOST}/supplier/list/${size}/${page}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
