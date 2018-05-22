@@ -44,7 +44,7 @@ const createBrand = async (token, body) => {
       },
       body: JSON.stringify(body)
     })
-    
+
     return res
   } catch (error) {
     console.log(error)
@@ -214,7 +214,7 @@ const createVariant = async (token, body) => {
       },
       body: JSON.stringify(body)
     })
-    
+
     return res
   } catch (error) {
     console.log(error)
@@ -271,6 +271,91 @@ const deleteVariant = async (token, id) => {
     console.log(error)
   }
 }
+
+const getListSupplier = async (token, page, size = 10) => {
+  try {
+    let res = await fetch(`${HOST}/brand/list/${size}/${page}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const createSupplier = async (token, body) => {
+  try {
+    let res = await fetch(`${HOST}/supplier/add`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
+      body: JSON.stringify(body)
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getSupplier = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/supplier/get/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const editSupplier = async (token, id, body) => {
+  try {
+    let res = await fetch(`${HOST}/supplier/update/${id}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
+      body: JSON.stringify(body)
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const deleteSupplier = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/supplier/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
 export default {
   signIn,
   getListBrand,
@@ -287,5 +372,10 @@ export default {
   createVariant,
   getVariant,
   editVariant,
-  deleteVariant
+  deleteVariant,
+  getListSupplier,
+  createSupplier,
+  getSupplier,
+  editSupplier,
+  deleteSupplier
 }
