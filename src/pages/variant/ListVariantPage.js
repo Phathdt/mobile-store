@@ -17,39 +17,38 @@ class ListVariantPage extends Component {
   }
 
   async componentWillMount() {
-    let response = await this.getListVariant(0);
+    let response = await this.getListVariant(0)
     this.setState({
       data: response.content,
       currentPage: response.number,
       totalPages: response.totalPages,
       totalElements: response.totalElements
-    });
+    })
   }
 
   getListVariant = async page => {
     try {
-      let { token } = this.state;
-      let res = await Api.getListVariant(token, page);
+      let { token } = this.state
+      let res = await Api.getListVariant(token, page)
 
       if (res.status === 401) {
-        alert('something went wrong');
+        alert('something went wrong')
       } else {
-        let resJson = await res.json();
-        console.log("resJson",resJson)
-        return resJson.data;
+        let resJson = await res.json()
+        return resJson.data
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   onPageChange = async page => {
-    let response = await this.getListVariant(page - 1);
+    let response = await this.getListVariant(page - 1)
     this.setState({
       currentPage: response.number,
       data: response.content
-    });
-  };
+    })
+  }
 
   deleteVariant = variantId => async e => {
     let result = await swal({
