@@ -14,7 +14,7 @@ class NewVariantPage extends Component {
       color: '',
       modelID: '',
       pricesold: '',
-      images: '',
+      images: [],
       storage: '',
       modelOptions: [],
       isLoaded: false
@@ -51,6 +51,26 @@ class NewVariantPage extends Component {
     })
   }
 
+  handleAddImageSuccess = async imageURL => {
+    let { images } = this.state
+    images.push(imageURL)
+
+    await this.setState({
+      images: images
+    })
+  }
+
+  handleRemoveImage = async file => {
+    let { images } = this.state
+
+    // remove image has name match removed file
+    images = images.filter(image => !image.includes(file.name))
+
+    await this.setState({
+      images: images
+    })
+  }
+
   handleSubmit = async event => {
     event.preventDefault()
     const body = {
@@ -67,7 +87,6 @@ class NewVariantPage extends Component {
     if (res.status === 401) {
       alert('something went wrong')
     } else {
-      console.log("res",res)
       this.props.history.push('/admin/variants')
     }
   }
@@ -78,9 +97,8 @@ class NewVariantPage extends Component {
       this.state.color.length > 0 &&
       this.state.pricesold.length > 0 &&
       this.state.modelID !== 0 &&
-      this.state.storage.length > 0
-    //   this.state.images >= 0 &&
-      
+      this.state.storage.length > 0 &&
+      this.state.images.length >= 1
     )
   }
 
@@ -96,6 +114,9 @@ class NewVariantPage extends Component {
             validateForm={this.validateForm}
             handleChange={this.handleChange}
             modelOptions={this.state.modelOptions}
+            handleAddImageSuccess={this.handleAddImageSuccess}
+            handleRemoveImage={this.handleRemoveImage}
+            token={this.state.token}
             list
             action="new"
             disabled={false}

@@ -26,6 +26,11 @@ import NewVariantPage from 'pages/variant/NewVariantPage'
 import ShowVariantPage from 'pages/variant/ShowVariantPage'
 import EditVariantPage from 'pages/variant/EditVariantPage'
 
+import ListSupplierPage from 'pages/supplier/ListSupplierPage'
+import NewSupplierPage from 'pages/supplier/NewSupplierPage'
+import ShowSupplierPage from 'pages/supplier/ShowSupplierPage'
+import EditSupplierPage from 'pages/supplier/EditSupplierPage'
+
 // comment
 import './styles/reduction.css'
 
@@ -166,7 +171,10 @@ class Admin extends React.Component {
                 path="/admin/variants"
                 component={ListVariantPage}
               />
-              <PrivateRoute path="/admin/variants/new" component={NewVariantPage} />
+              <PrivateRoute
+                path="/admin/variants/new"
+                component={NewVariantPage}
+              />
               <PrivateRoute
                 path="/admin/variants/:id/edit"
                 component={EditVariantPage}
@@ -174,6 +182,24 @@ class Admin extends React.Component {
               <PrivateRoute
                 path="/admin/variants/:id"
                 component={ShowVariantPage}
+              />
+
+              <PrivateRoute
+                exact
+                path="/admin/suppliers"
+                component={ListSupplierPage}
+              />
+              <PrivateRoute
+                path="/admin/suppliers/new"
+                component={NewSupplierPage}
+              />
+              <PrivateRoute
+                path="/admin/suppliers/:id/edit"
+                component={EditSupplierPage}
+              />
+              <PrivateRoute
+                path="/admin/suppliers/:id"
+                component={ShowSupplierPage}
               />
             </Switch>
             <Footer />

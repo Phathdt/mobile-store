@@ -4,23 +4,21 @@ import { Link } from 'react-router-dom'
 
 import { Button } from 'reactstrap'
 
-const Variant = props => {
+const Supplier = props => {
   return (
     <tr>
-      <th scope="row">{props.row.variantId}</th>
+      <th scope="row">{props.row.supplierID}</th>
       <td>{props.row.name}</td>
-      <td>{props.row.color}</td>
-      {/* <td>{props.row.images}</td> */}
-      <td>{props.row.modelID}</td>
-      <td>{props.row.pricesold}</td>
-      <td>{props.row.storage}</td>
+      <td>{props.row.address}</td>
+      <td>{props.row.phone}</td>
+      <td>{props.row.email}</td>
       <td>
-        <Link to={`/admin/variants/${props.row.variantId}`}>
+        <Link to={`/admin/suppliers/${props.row.supplierID}`}>
           <Button outline color="info">
             View
           </Button>
         </Link>
-        <Link to={`/admin/variants/${props.row.variantId}/edit`}>
+        <Link to={`/admin/Suppliers/${props.row.supplierID}/edit`}>
           <Button outline color="success">
             Edit
           </Button>
@@ -28,7 +26,7 @@ const Variant = props => {
         <Button
           outline
           color="danger"
-          onClick={props.deleteVariant(props.row.variantId)}
+          onClick={props.deleteSupplier(props.row.supplierID)}
         >
           Delete
         </Button>
@@ -37,4 +35,4 @@ const Variant = props => {
   )
 }
 
-export default Variant
+export default Supplier

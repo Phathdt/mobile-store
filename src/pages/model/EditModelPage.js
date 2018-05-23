@@ -24,7 +24,7 @@ class EditModelPage extends Component {
 
   async componentWillMount() {
     let response = await this.getModel(this.props.match.params.id)
-    console.log(response)
+
     await this.setState({
       id: response.modelID,
       name: response.name,
@@ -40,8 +40,6 @@ class EditModelPage extends Component {
       brandOptions: responseBrands.content,
       isLoaded: true
     })
-
-    console.log(this.state)
   }
 
   getModel = async id => {
@@ -76,7 +74,6 @@ class EditModelPage extends Component {
     await this.setState({
       [event.target.id]: event.target.value
     })
-    console.log(this.state)
   }
 
   handleSubmit = async event => {

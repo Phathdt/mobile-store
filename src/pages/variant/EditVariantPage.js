@@ -15,7 +15,7 @@ class EditVariantPage extends Component {
       color: '',
       modelID: '',
       pricesold: '',
-      images: '',
+      images: [],
       storage: '',
       modelOptions: [],
       isLoaded: false
@@ -24,15 +24,14 @@ class EditVariantPage extends Component {
 
   async componentWillMount() {
     let response = await this.getVariant(this.props.match.params.id)
-    console.log(response)
     await this.setState({
-        id: response.variantId,
-        name: response.name,
-        color: response.color,
-        storage: response.storage,
-        modelID: response.modelID,
-        pricesold: response.pricesold,
-      //   images: response.images
+      id: response.variantId,
+      name: response.name,
+      color: response.color,
+      storage: response.storage,
+      modelID: response.modelID,
+      pricesold: response.pricesold,
+      images: response.images.map(image => image.imageURL)
     })
 
     let responsemodels = await this.getAllModel()
@@ -40,8 +39,6 @@ class EditVariantPage extends Component {
       modelOptions: responsemodels.content,
       isLoaded: true
     })
-
-    console.log(this.state)
   }
 
   getVariant = async id => {
@@ -76,20 +73,19 @@ class EditVariantPage extends Component {
     await this.setState({
       [event.target.id]: event.target.value
     })
-    console.log(this.state)
   }
 
   handleSubmit = async event => {
     event.preventDefault()
     const body = {
-        id: this.state.variantId,
-        name: this.state.name,
-        color: this.state.color,
-        storage: this.state.storage,
-        modelID: this.state.modelID,
-        pricesold: this.state.pricesold,
-      //   images: this.state.images
+      id: this.state.variantId,
+      name: this.state.name,
+      color: this.state.color,
+      storage: this.state.storage,
+      modelID: this.state.modelID,
+      pricesold: this.state.pricesold
     }
+
     let { token, id } = this.state
     let res = await Api.editVariant(token, id, body)
 
@@ -102,12 +98,12 @@ class EditVariantPage extends Component {
 
   validateForm = () => {
     return (
-        this.state.name.length > 0 &&
-        this.state.color.length > 0 &&
-        this.state.pricesold.length > 0 &&
-        this.state.modelID !== 0 &&
-        this.state.storage.length > 0
-      //   this.state.images >= 0 &&
+      this.state.name.length > 0 &&
+      this.state.color.length > 0 &&
+      this.state.pricesold.length > 0 &&
+      this.state.modelID !== 0 &&
+      this.state.storage.length > 0 &&
+      this.state.images.length >= 0
     )
   }
 
@@ -127,12 +123,12 @@ class EditVariantPage extends Component {
             action="edit"
             disabled={false}
             formData={{
-                name: this.state.name,
-                color: this.state.color,
-                storage: this.state.storage,
-                modelID: this.state.modelID,
-                pricesold: this.state.pricesold,
-                images: this.state.images
+              name: this.state.name,
+              color: this.state.color,
+              storage: this.state.storage,
+              modelID: this.state.modelID,
+              pricesold: this.state.pricesold,
+              images: this.state.images
             }}
           />
         </Page>

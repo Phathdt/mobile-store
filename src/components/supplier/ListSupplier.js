@@ -5,24 +5,24 @@ import { Card, CardHeader, CardBody, Row, Col, Table, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import UltimatePagination from 'react-ultimate-pagination-bootstrap-4'
 import Page from 'components/Page'
-import Variant from './Variant'
+import Supplier from './Supplier'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const ListVariant = props => {
+const ListSupplier = props => {
   return (
     <Page
-      title="List Variant"
-      breadcrumbs={[{ name: 'List Variant', active: true }]}
-      className="VariantPage"
+      title="List Supplier"
+      breadcrumbs={[{ name: 'List Supplier', active: true }]}
+      className="SupplierPage"
     >
       <Row>
         <Col>
           <Card className="mb-3">
             <CardHeader>
-              <Link to="/admin/variants/new">
+              <Link to="/admin/suppliers/new">
                 <Button color="success" active>
-                  Add new Variant
+                  Add new Supplier
                 </Button>
               </Link>
             </CardHeader>
@@ -32,19 +32,18 @@ const ListVariant = props => {
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Color</th>
-                    <th>ModelID</th>
-                    <th>PriceSold</th>
-                    <th>Storage</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Email</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {props.data.map((row, i) => (
-                    <Variant
+                    <Supplier
                       row={row}
                       key={i}
-                      deleteVariant={props.deleteVariant}
+                      deleteSupplier={props.deleteSupplier}
                     />
                   ))}
                 </tbody>
@@ -64,4 +63,4 @@ const ListVariant = props => {
   )
 }
 
-export default ListVariant
+export default ListSupplier

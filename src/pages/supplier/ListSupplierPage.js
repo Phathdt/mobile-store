@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-
-import ListVariant from '../../components/variant/ListVariant'
+import ListSupplier from '../../components/supplier/ListSupplier'
 import Api from 'Api'
 import swal from 'sweetalert2'
-class ListVariantPage extends Component {
+
+class ListSupplierPage extends Component {
   constructor(props) {
     super(props)
 
@@ -17,7 +17,7 @@ class ListVariantPage extends Component {
   }
 
   async componentWillMount() {
-    let response = await this.getListVariant(0)
+    let response = await this.getLisSupplier(0)
     this.setState({
       data: response.content,
       currentPage: response.number,
@@ -26,10 +26,10 @@ class ListVariantPage extends Component {
     })
   }
 
-  getListVariant = async page => {
+  getLisSupplier = async page => {
     try {
       let { token } = this.state
-      let res = await Api.getListVariant(token, page)
+      let res = await Api.getListSupplier(token, page)
 
       if (res.status === 401) {
         alert('something went wrong')
@@ -43,17 +43,17 @@ class ListVariantPage extends Component {
   }
 
   onPageChange = async page => {
-    let response = await this.getListVariant(page - 1)
+    let response = await this.getLisSupplier(page - 1)
     this.setState({
       currentPage: response.number,
       data: response.content
     })
   }
 
-  deleteVariant = variantId => async e => {
+  deleteSupplier = supplierId => async e => {
     let result = await swal({
       title: 'Are you sure?',
-      text: 'You will not be able to recover this variant!',
+      text: 'You will not be able to recover this supplier!',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
@@ -62,11 +62,11 @@ class ListVariantPage extends Component {
 
     if (result.value) {
       let { token, currentPage } = this.state
-      let res = await Api.deleteVariant(token, variantId)
+      let res = await Api.deleteSupplier(token, supplierId)
 
       if (res.status === 200) {
-        swal('Deleted!', 'Your variant has been deleted.', 'success')
-        let res = await Api.getListVariant(token, currentPage)
+        swal('Deleted!', 'Your Supplier has been deleted.', 'success')
+        let res = await Api.getListSupplier(token, currentPage)
         if (res.status === 401) {
           alert('something went wrong')
         } else {
@@ -79,7 +79,7 @@ class ListVariantPage extends Component {
         }
       }
     } else {
-      swal('Cancelled', 'Your Variant is safe :)', 'error')
+      swal('Cancelled', 'Your Supplier is safe :)', 'error')
     }
   }
 
@@ -87,13 +87,13 @@ class ListVariantPage extends Component {
     if (this.state.data.length >= 0) {
       return (
         <div>
-          <ListVariant
+          <ListSupplier
             data={this.state.data}
             currentPage={this.state.currentPage + 1}
             totalElements={this.state.totalElements}
             totalPages={this.state.totalPages}
             PageChange={this.onPageChange}
-            deleteVariant={this.deleteVariant}
+            deleteSupplier={this.deleteSupplier}
           />
         </div>
       )
@@ -103,4 +103,4 @@ class ListVariantPage extends Component {
   }
 }
 
-export default ListVariantPage
+export default ListSupplierPage
