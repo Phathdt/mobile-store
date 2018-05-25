@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 
-import { Link } from 'react-router-dom'
+import UserPageHeader from './UserPageHeader.js'
+import UserPageBody from './UserPageBody.js'
+
 
 class UserPage extends Component {
   render() {
     return (
       <div>
-        <h1>page user</h1>
-        <Link to="/signin">Signin</Link>
+        <UserPageHeader/>
+        <UserPageBody/>
       </div>
     )
   }

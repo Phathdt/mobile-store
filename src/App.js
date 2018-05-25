@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Admin from './Admin'
 
 // pages
-import UserPage from 'pages/UserPage'
+import UserPage from 'pages/customer/UserPage'
 import SignInPage from 'pages/SignInPage'
 
 import './styles/reduction.css'
