@@ -77,11 +77,14 @@ class UserPageBody extends Component{
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-lg-3">
-                        <div role="group" className="btn-group-vertical">
-                            <button className="btn btn-secondary">Samsung</button>
-                            <button className="btn btn-secondary">Oppo</button>
-                        </div>
+                    <div className="col-lg-3" >
+                        <div className="list-brand">Samsung</div>
+                        <div className="list-brand">Oppo</div>
+                        <div className="list-brand">Apple</div>
+                        <div className="list-brand">Q-mobile</div>
+                        <div className="list-brand">S-mobile</div>
+                        <div className="list-brand">Windows Phone</div>
+                        
                     </div>
                     <div className="col-lg-9">
                         <div className="row">

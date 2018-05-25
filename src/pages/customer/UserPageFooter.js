@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import '../../styles/customs/customer.css'
 
-const justifyContent={
+const horizontalJustifyContent={
     'display': 'flex',
-    
     'justify-content': 'space-between'
 }
 
@@ -12,7 +11,7 @@ class UserPageFooter extends Component {
     render() {
       return (
         <div>
-              <div style={justifyContent}>
+              <div style={horizontalJustifyContent}>
                 <div> 
                     <ul>
                         <li><a href="/tra-gop" title="Hướng dẫn mua trả góp">Tìm hiểu về mua trả góp</a></li>

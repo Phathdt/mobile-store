@@ -1,22 +1,25 @@
-.list-brand {
+/* .list-brand {
     border: 1px solid #F7F7F0;
     padding-bottom: 20px;
     padding-top: 15px;
     height: 100%
-}
+} */
 
-.list-brand li a {
-    background-color: #FFFFFF;
-    color: #696763;
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
-    padding: 5px 25px;
+.list-brand {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 2px 1px;
+    cursor: pointer;
     text-transform: uppercase;
-
 }
 
-.list-brand li a:hover {
+.list-brand:hover {
     background-color: #696763;
     color: #fff;
 }
