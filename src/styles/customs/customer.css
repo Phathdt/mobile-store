@@ -5,22 +5,40 @@
     height: 100%
 } */
 
-.list-brand {
-    background-color: #4CAF50;
+.header-widget{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.title{
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #696763;
+    color: #e7ff0d;
+    padding: 5px;
+    font-size: 20px;
+    
+}
+
+.list-menu{
+    background-color: #fff;
+    border: #696763 1px;
+    margin-bottom: 50px;
+}
+
+.list-item {
     border: none;
-    color: white;
-    padding: 15px 32px;
+    color: rgb(0, 0, 0);
+    padding: 8px 32px;
     text-align: center;
     text-decoration: none;
     display: block;
     font-size: 16px;
-    margin: 2px 1px;
     cursor: pointer;
     text-transform: uppercase;
 }
 
-.list-brand:hover {
-    background-color: #696763;
+.list-item:hover {
+    background-color: #7c7b79a9;
     color: #fff;
 }
 

@@ -7,6 +7,7 @@ const headerStyle={
     'padding-top': '10px',
     'padding-bottom': '10px',
     'background-color': '#fcff28',
+    'margin-bottom': '10px'
 }
 
 class UserPageHeader extends Component{

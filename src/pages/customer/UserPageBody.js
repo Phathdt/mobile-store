@@ -11,24 +11,24 @@ const centerContent={
 const verticalJustifyContent={
     'display': 'flex',
     'flex-direction': 'column',
-    'justify-content': 'space-between'
+    'justify-content': 'space-between',
+    'padding-left': '0'
 }
 
 class UserPageBody extends Component{
 
     render(){
         var settings = {
-            dots: true,
+            autoPlay: true,
             infinite: true,
+            autoplaySpeed: 1000,
             speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
         };
 
         return (
             <div style={centerContent}>
                 <div className="row">
-                    <div className="col-lg-9" style={{'margin-bottom':'20px'}}>
+                    <div className="col-lg-9">
                         <Slider {...settings}>
                             <div>
                                 <img src={require("../../styles/images/slider1.png")}/>
@@ -45,46 +45,65 @@ class UserPageBody extends Component{
                         </Slider>
                     </div>
                     <div className="col-lg-3" style={verticalJustifyContent}>
-                        <div class="cr-widget bg-primary card text-white">
-                            <div class="cr-widget__icon card-body">
+                        <div className="cr-widget bg-primary card text-white">
+                            <div className="cr-widget__icon card-body ">
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Primary</h5>
-                                <h6 class="card-subtitle">widget subtitle</h6>
-                            </div>
-                        </div>
-                        <div class="cr-widget bg-primary card text-white">
-                            <div class="cr-widget__icon card-body">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Primary</h5>
-                                <h6 class="card-subtitle">widget subtitle</h6>
+                            <div className="card-body header-widget">
+                                <h5 className="card-title">Primary</h5>
+                                <h6 className="card-subtitle">widget subtitle</h6>
                             </div>
                         </div>
-                        <div class="cr-widget bg-primary card text-white">
-                            <div class="cr-widget__icon card-body">
+                        <div className="cr-widget bg-primary card text-white">
+                            <div className="cr-widget__icon card-body ">
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Primary</h5>
-                                <h6 class="card-subtitle">widget subtitle</h6>
+                            <div className="card-body header-widget">
+                                <h5 className="card-title">Primary</h5>
+                                <h6 className="card-subtitle">widget subtitle</h6>
+                            </div>
+                        </div>
+                        <div className="cr-widget bg-primary card text-white">
+                            <div className="cr-widget__icon card-body ">
+                            </div>
+                            <div className="card-body header-widget">
+                                <h5 className="card-title">Primary</h5>
+                                <h6 className="card-subtitle">widget subtitle</h6>
+                            </div>
+                        </div>
+                        <div className="cr-widget bg-primary card text-white">
+                            <div className="cr-widget__icon card-body ">
+                            </div>
+                            <div className="card-body header-widget">
+                                <h5 className="card-title">Primary</h5>
+                                <h6 className="card-subtitle">widget subtitle</h6>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-lg-12">
-                    <img src={require("../../styles/images/promotion.png")} style={{'max-width': '1100px'}}/>
+                    <div className="col-lg-12" style={{'margin-bottom':'15px'}}>
+                        <img src={require("../../styles/images/promotion.png")} style={{'max-width': '1100px'}}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-lg-3" >
-                        <div className="list-brand">Samsung</div>
-                        <div className="list-brand">Oppo</div>
-                        <div className="list-brand">Apple</div>
-                        <div className="list-brand">Q-mobile</div>
-                        <div className="list-brand">S-mobile</div>
-                        <div className="list-brand">Windows Phone</div>
-                        
+                        <div className="title">Brands</div>
+                        <div className="list-menu">
+                            <div className="list-item">Samsung</div>
+                            <div className="list-item">Oppo</div>
+                            <div className="list-item">Apple</div>
+                            <div className="list-item">Q-mobile</div>
+                            <div className="list-item">S-mobile</div>
+                            <div className="list-item">Windows Phone</div>
+                        </div>
+                        <div className="title">New Models</div>
+                        <div className="list-menu">
+                            <div className="list-item">Samsung</div>
+                            <div className="list-item">Oppo</div>
+                            <div className="list-item">Apple</div>
+                            <div className="list-item">Q-mobile</div>
+                            <div className="list-item">S-mobile</div>
+                            <div className="list-item">Windows Phone</div>
+                        </div>
                     </div>
                     <div className="col-lg-9">
                         <div className="row">
