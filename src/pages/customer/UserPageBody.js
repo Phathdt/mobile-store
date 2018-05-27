@@ -8,12 +8,6 @@ const centerContent={
     'max-width': '1100px',
     'margin': 'auto',
 }
-const verticalJustifyContent={
-    'display': 'flex',
-    'flex-direction': 'column',
-    'justify-content': 'space-between',
-    'padding-left': '0'
-}
 
 class UserPageBody extends Component{
 
@@ -44,37 +38,29 @@ class UserPageBody extends Component{
                             </div>
                         </Slider>
                     </div>
-                    <div className="col-lg-3" style={verticalJustifyContent}>
-                        <div className="cr-widget bg-primary card text-white">
-                            <div className="cr-widget__icon card-body ">
-                            </div>
-                            <div className="card-body header-widget">
-                                <h5 className="card-title">Primary</h5>
-                                <h6 className="card-subtitle">widget subtitle</h6>
+                    <div className="col-lg-3 vJustifySpace">
+                        <div className="cr-widget  card text-white">
+                            <div className="card-body">
+                                <div className="card-title">Đảm bảo uy tín</div>
+                                <div className="card-subtitle">Đổi trả miễn phí nếu sản phẩm lỗi</div>
                             </div>
                         </div>
-                        <div className="cr-widget bg-primary card text-white">
-                            <div className="cr-widget__icon card-body ">
-                            </div>
+                        <div className="cr-widget  card text-white">
                             <div className="card-body header-widget">
-                                <h5 className="card-title">Primary</h5>
-                                <h6 className="card-subtitle">widget subtitle</h6>
+                                <div className="card-title">Trả góp 0%</div>
+                                <div className="card-subtitle">Áp dụng cho sản phẩm Oppo</div>
                             </div>
                         </div>
-                        <div className="cr-widget bg-primary card text-white">
-                            <div className="cr-widget__icon card-body ">
-                            </div>
+                        <div className="cr-widget  card text-white">
                             <div className="card-body header-widget">
-                                <h5 className="card-title">Primary</h5>
-                                <h6 className="card-subtitle">widget subtitle</h6>
+                                <div className="card-title">Bảo hành 2 năm</div>
+                                <div className="card-subtitle">Cho tất cả các sản phẩm điện thoại của Apple</div>
                             </div>
                         </div>
-                        <div className="cr-widget bg-primary card text-white">
-                            <div className="cr-widget__icon card-body ">
-                            </div>
+                        <div className="cr-widget  card text-white">
                             <div className="card-body header-widget">
-                                <h5 className="card-title">Primary</h5>
-                                <h6 className="card-subtitle">widget subtitle</h6>
+                                <div className="card-title">Giao hàng miễn phí</div>
+                                <div className="card-subtitle">Cho các đơn hàng trên 5 triệu đồng</div>
                             </div>
                         </div>
                     </div>
