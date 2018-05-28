@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import Slider from "react-slick";
 import { Link } from 'react-router-dom'
 import UserPageFooter from './UserPageFooter.js'
+import SideMenu from './SideMenu'
 import '../../styles/customs/customer.css'
-
-const centerContent={
-    'max-width': '1100px',
-    'margin': 'auto',
-}
 
 class UserPageBody extends Component{
 
@@ -20,7 +16,7 @@ class UserPageBody extends Component{
         };
 
         return (
-            <div style={centerContent}>
+            <div className="centerContent">
                 <div className="row">
                     <div className="col-lg-9">
                         <Slider {...settings}>
@@ -72,24 +68,7 @@ class UserPageBody extends Component{
                 </div>
                 <div className="row">
                     <div className="col-lg-3" >
-                        <div className="title">Brands</div>
-                        <div className="list-menu">
-                            <div className="list-item">Samsung</div>
-                            <div className="list-item">Oppo</div>
-                            <div className="list-item">Apple</div>
-                            <div className="list-item">Q-mobile</div>
-                            <div className="list-item">S-mobile</div>
-                            <div className="list-item">Windows Phone</div>
-                        </div>
-                        <div className="title">New Models</div>
-                        <div className="list-menu">
-                            <div className="list-item">Samsung</div>
-                            <div className="list-item">Oppo</div>
-                            <div className="list-item">Apple</div>
-                            <div className="list-item">Q-mobile</div>
-                            <div className="list-item">S-mobile</div>
-                            <div className="list-item">Windows Phone</div>
-                        </div>
+                        <SideMenu/> 
                     </div>
                     <div className="col-lg-9">
                         <div className="row">
@@ -101,9 +80,11 @@ class UserPageBody extends Component{
                                     </div>
                                     <div class="product-overlay">
                                             <div class="overlay-content">
-                                                <h2>Giá: 4.500.000đ</h2>
-                                                <p>Oppo S3564 D2</p>
-                                                <a href="/Cart/Index" class="btn btn-default add-to-cart">
+                                                <a href="/model/details/1">
+                                                    <h2>Giá: 4.500.000đ</h2>
+                                                    <p>Oppo S3564 D2</p>
+                                                </a>
+                                                <a href="/Cart" class="btn btn-default add-to-cart">
                                                     Thêm vào giỏ
                                                 </a>
                                             </div>
@@ -120,7 +101,7 @@ class UserPageBody extends Component{
                                             <div class="overlay-content">
                                                 <h2>Giá: 4.500.000đ</h2>
                                                 <p>Oppo S3564 D2</p>
-                                                <a href="/Cart/Index" class="btn btn-default add-to-cart">
+                                                <a href="/Cart" class="btn btn-default add-to-cart">
                                                     Thêm vào giỏ
                                                 </a>
                                             </div>
@@ -137,60 +118,7 @@ class UserPageBody extends Component{
                                             <div class="overlay-content">
                                                 <h2>Giá: 4.500.000đ</h2>
                                                 <p>Oppo S3564 D2</p>
-                                                <a href="/Cart/Index" class="btn btn-default add-to-cart">
-                                                    Thêm vào giỏ
-                                                </a>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-lg-4">
-                                <div className="product-image-wrapper">
-                                    <div class="productinfo">
-                                        <img src={require("../../styles/images/phone_sample.png")} />
-                                        <p>Oppo S26255</p>
-                                    </div>
-                                    <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>Giá: 4.500.000đ</h2>
-                                                <p>Oppo S3564 D2</p>
-                                                <a href="/Cart/Index" class="btn btn-default add-to-cart">
-                                                    Thêm vào giỏ
-                                                </a>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="product-image-wrapper">
-                                    <div class="productinfo">
-                                        <img src={require("../../styles/images/phone_sample.png")} />
-                                        <p>Oppo S26255</p>
-                                    </div>
-                                    <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>Giá: 4.500.000đ</h2>
-                                                <p>Oppo S3564 D2</p>
-                                                <a href="/Cart/Index" class="btn btn-default add-to-cart">
-                                                    Thêm vào giỏ
-                                                </a>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="product-image-wrapper">
-                                    <div class="productinfo">
-                                        <img src={require("../../styles/images/phone_sample.png")} />
-                                        <p>Oppo S26255</p>
-                                    </div>
-                                    <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>Giá: 4.500.000đ</h2>
-                                                <p>Oppo S3564 D2</p>
-                                                <a href="/Cart/Index" class="btn btn-default add-to-cart">
+                                                <a href="/Cart" class="btn btn-default add-to-cart">
                                                     Thêm vào giỏ
                                                 </a>
                                             </div>
@@ -209,7 +137,7 @@ class UserPageBody extends Component{
                                             <div class="overlay-content">
                                                 <h2>Giá: 4.500.000đ</h2>
                                                 <p>Oppo S3564 D2</p>
-                                                <a href="/Cart/Index" class="btn btn-default add-to-cart">
+                                                <a href="/Cart" class="btn btn-default add-to-cart">
                                                     Thêm vào giỏ
                                                 </a>
                                             </div>
@@ -226,7 +154,7 @@ class UserPageBody extends Component{
                                             <div class="overlay-content">
                                                 <h2>Giá: 4.500.000đ</h2>
                                                 <p>Oppo S3564 D2</p>
-                                                <a href="/Cart/Index" class="btn btn-default add-to-cart">
+                                                <a href="/Cart" class="btn btn-default add-to-cart">
                                                     Thêm vào giỏ
                                                 </a>
                                             </div>
@@ -243,7 +171,60 @@ class UserPageBody extends Component{
                                             <div class="overlay-content">
                                                 <h2>Giá: 4.500.000đ</h2>
                                                 <p>Oppo S3564 D2</p>
-                                                <a href="/Cart/Index" class="btn btn-default add-to-cart">
+                                                <a href="/Cart" class="btn btn-default add-to-cart">
+                                                    Thêm vào giỏ
+                                                </a>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-4">
+                                <div className="product-image-wrapper">
+                                    <div class="productinfo">
+                                        <img src={require("../../styles/images/phone_sample.png")} />
+                                        <p>Oppo S26255</p>
+                                    </div>
+                                    <div class="product-overlay">
+                                            <div class="overlay-content">
+                                                <h2>Giá: 4.500.000đ</h2>
+                                                <p>Oppo S3564 D2</p>
+                                                <a href="/Cart" class="btn btn-default add-to-cart">
+                                                    Thêm vào giỏ
+                                                </a>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4">
+                                <div className="product-image-wrapper">
+                                    <div class="productinfo">
+                                        <img src={require("../../styles/images/phone_sample.png")} />
+                                        <p>Oppo S26255</p>
+                                    </div>
+                                    <div class="product-overlay">
+                                            <div class="overlay-content">
+                                                <h2>Giá: 4.500.000đ</h2>
+                                                <p>Oppo S3564 D2</p>
+                                                <a href="/Cart" class="btn btn-default add-to-cart">
+                                                    Thêm vào giỏ
+                                                </a>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4">
+                                <div className="product-image-wrapper">
+                                    <div class="productinfo">
+                                        <img src={require("../../styles/images/phone_sample.png")} />
+                                        <p>Oppo S26255</p>
+                                    </div>
+                                    <div class="product-overlay">
+                                            <div class="overlay-content">
+                                                <h2>Giá: 4.500.000đ</h2>
+                                                <p>Oppo S3564 D2</p>
+                                                <a href="/Cart" class="btn btn-default add-to-cart">
                                                     Thêm vào giỏ
                                                 </a>
                                             </div>

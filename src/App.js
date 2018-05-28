@@ -7,7 +7,7 @@ import Admin from './Admin'
 // pages
 import UserPage from 'pages/customer/UserPage'
 import SignInPage from 'pages/SignInPage'
-
+import ModelDetails from 'pages/customer/ModelDetails'
 import './styles/reduction.css'
 
 class App extends React.Component {
@@ -18,6 +18,8 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={UserPage} />
             <Route path="/signin" component={SignInPage} />
+            <Route path="/model/details/1" component={ModelDetails} />
+            
           </Switch>
 
           <Switch>

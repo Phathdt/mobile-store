@@ -1,0 +1,120 @@
+.centerContent {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.product-details {
+    margin-bottom: 40px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.view-product {
+    position: relative;
+}
+
+.view-product img {
+    border: 1px solid #F7F7F0;
+    height: 380px;
+    width: 100%;
+}
+
+.view-product h3 {
+    background: #0fb3bc;
+    bottom: 0;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 0;
+    padding: 8px 20px;
+    position: absolute;
+    right: 0;
+}
+
+
+.product-information h4 {
+    color: rgb(0, 231, 12);
+    float: left;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    margin-right: 20px;
+    margin-top: 0px;
+}
+
+.add-to-cart{
+    border: green 1px solid
+}
+
+.add-to-cart:hover {
+    background: rgb(15, 254, 35);
+    color: #FFFFFF;
+}
+
+#reviews ul {
+    background: #FFFFFF;
+    border: 0 none;
+    list-style: none outside none;
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+    #reviews ul li {
+        display: inline-block;
+    }
+
+        #reviews ul li a {
+            color: #696763;
+            display: block;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            padding-right: 15px;
+        }
+
+            #reviews ul li a i {
+                color: #13e6f2;
+                padding-right: 8px;
+            }
+
+            #reviews ul li a:hover {
+                background: #fff;
+                color: #13e6f2;
+            }
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    background-color: #e8f809;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: rgb(0, 0, 0);
+    color: #fff
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: rgb(0, 0, 0);
+    color: #fff
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: block;
+    padding: 6px 12px;
+    border-top: none;
+}
