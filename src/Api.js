@@ -378,6 +378,22 @@ const createStockOrder = async (token, body) => {
   }
 }
 
+const getListOrderStock = async (token, page, size = 10) => {
+  try {
+    let res = await fetch(`${HOST}/stockReceivingOrder/list/${size}/${page}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   signIn,
   getListBrand,
@@ -400,5 +416,6 @@ export default {
   getSupplier,
   editSupplier,
   deleteSupplier,
-  createStockOrder
+  createStockOrder,
+  getListOrderStock
 }

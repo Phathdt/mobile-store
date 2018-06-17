@@ -7,25 +7,25 @@ import { Button } from 'reactstrap'
 const OrderStock = props => {
   return (
     <tr>
-      <th scope="row">{props.row.brandId}</th>
-      <td>{props.row.name}</td>
-      <td>{props.row.country}</td>
-      <td>{props.row.description}</td>
+      <th scope="row">{props.row.stockReceivingOrderID}</th>
       <td>
-        <Link to={`/admin/brands/${props.row.brandId}`}>
+        {
+          props.suppliers.find(
+            supplier => supplier.supplierID == props.row.supplierID
+          ).name
+        }
+      </td>
+      <td>{new Date(props.row.date).toLocaleDateString()}</td>
+      <td>
+        <Link to={`/admin/order_stocks/${props.row.stockReceivingOrderID}`}>
           <Button outline color="info">
             View
-          </Button>
-        </Link>
-        <Link to={`/admin/brands/${props.row.brandId}/edit`}>
-          <Button outline color="success">
-            Edit
           </Button>
         </Link>
         <Button
           outline
           color="danger"
-          onClick={props.deleteBrand(props.row.brandId)}
+          onClick={props.deleteOrderStock(props.row.stockReceivingOrderID)}
         >
           Delete
         </Button>

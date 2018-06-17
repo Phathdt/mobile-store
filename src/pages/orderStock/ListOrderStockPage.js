@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ListBrand from '../../components/brand/ListBrand'
+import ListOrderStock from '../../components/orderStock/ListOrderStock'
 import Api from 'Api'
 import swal from 'sweetalert2'
 
@@ -12,24 +12,48 @@ class ListOrderStockPage extends Component {
       currentPage: 0,
       totalPages: 0,
       totalElements: 0,
-      data: []
+      data: [],
+      suppliers: [],
+      isLoaded: false
     }
   }
 
   async componentWillMount() {
-    let response = await this.getListBrand(0)
-    this.setState({
+    let response = await this.getListOrderStock(0)
+    await this.setState({
       data: response.content,
       currentPage: response.number,
       totalPages: response.totalPages,
       totalElements: response.totalElements
     })
+
+    let responseSupplier = await this.getAllSupplier()
+    await this.setState({
+      suppliers: responseSupplier.content,
+      isLoaded: true
+    })
   }
 
-  getListBrand = async page => {
+  getAllSupplier = async () => {
     try {
       let { token } = this.state
-      let res = await Api.getListBrand(token, page)
+      let res = await Api.getListSupplier(token, 0, 100)
+
+      if (res.status === 401) {
+        alert('something went wrong')
+      } else {
+        let resJson = await res.json()
+        return resJson.data
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  getListOrderStock = async page => {
+    try {
+      let { token } = this.state
+      let res = await Api.getListOrderStock(token, page)
 
       if (res.status === 401) {
         alert('something went wrong')
@@ -43,17 +67,17 @@ class ListOrderStockPage extends Component {
   }
 
   onPageChange = async page => {
-    let response = await this.getListBrand(page - 1)
+    let response = await this.getListOrderStock(page - 1)
     this.setState({
       currentPage: response.number,
       data: response.content
     })
   }
 
-  deleteBrand = brandId => async e => {
+  deleteOrderStock = orderStockId => async e => {
     let result = await swal({
       title: 'Are you sure?',
-      text: 'You will not be able to recover this brand!',
+      text: 'You will not be able to recover this order Stock!',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
@@ -62,11 +86,11 @@ class ListOrderStockPage extends Component {
 
     if (result.value) {
       let { token, currentPage } = this.state
-      let res = await Api.deleteBrand(token, brandId)
+      let res = await Api.deleteOrderStock(token, orderStockId)
 
       if (res.status === 200) {
-        swal('Deleted!', 'Your brand has been deleted.', 'success')
-        let res = await Api.getListBrand(token, currentPage)
+        swal('Deleted!', 'Your order stock has been deleted.', 'success')
+        let res = await Api.getListOrderStock(token, currentPage)
         if (res.status === 401) {
           alert('something went wrong')
         } else {
@@ -79,21 +103,22 @@ class ListOrderStockPage extends Component {
         }
       }
     } else {
-      swal('Cancelled', 'Your brand is safe :)', 'error')
+      swal('Cancelled', 'Your order stock is safe :)', 'error')
     }
   }
 
   render() {
-    if (this.state.data.length >= 0) {
+    if (this.state.isLoaded) {
       return (
         <div>
-          <ListBrand
+          <ListOrderStock
             data={this.state.data}
             currentPage={this.state.currentPage + 1}
+            suppliers={this.state.suppliers}
             totalElements={this.state.totalElements}
             totalPages={this.state.totalPages}
             PageChange={this.onPageChange}
-            deleteBrand={this.deleteBrand}
+            deleteOrderStock={this.deleteOrderStock}
           />
         </div>
       )

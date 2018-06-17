@@ -31,9 +31,8 @@ const ListOrderStock = props => {
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Country</th>
-                    <th>Description</th>
+                    <th>Supplier</th>
+                    <th>Date</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -41,6 +40,7 @@ const ListOrderStock = props => {
                   {props.data.map((row, i) => (
                     <OrderStock
                       row={row}
+                      suppliers={props.suppliers}
                       key={i}
                       deleteOrderStock={props.deleteOrderStock}
                     />
