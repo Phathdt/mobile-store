@@ -494,6 +494,24 @@ const getOrderBill = async (token, id) => {
   }
 }
 
+const checkOrderDetailValid = async (token, body) => {
+  try {
+    let res = await fetch(`${HOST}/orderDetail/checkOrderDetailValid`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
+      body: JSON.stringify(body)
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   signIn,
   getListBrand,
@@ -523,5 +541,6 @@ export default {
   createOrderBill,
   getListOrderBill,
   deleteOrderBill,
-  getOrderBill
+  getOrderBill,
+  checkOrderDetailValid
 }

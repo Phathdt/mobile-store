@@ -42,8 +42,6 @@ class ShowOrderStockPage extends Component {
       stockReceivingItemList: orderStock.stockReceivingItemList,
       total: total
     })
-
-    console.log(this.state)
   }
 
   getOrderStock = async id => {

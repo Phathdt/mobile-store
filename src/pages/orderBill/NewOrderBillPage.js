@@ -4,6 +4,8 @@ import Page from 'components/Page'
 import FormOrderBill from './FormOrderBill'
 import Api from 'Api'
 
+import swal from 'sweetalert2'
+
 class NewOrderBillPage extends Component {
   constructor(props) {
     super(props)
@@ -97,7 +99,6 @@ class NewOrderBillPage extends Component {
 
   handleChangeProperty = idx => evt => {
     let variant = this.state.orderDetailBindingModelList[idx]
-    console.log(variant)
     variant[evt.target.id] = parseInt(evt.target.value)
 
     variant.total =
@@ -121,29 +122,49 @@ class NewOrderBillPage extends Component {
       JSON.stringify(this.state.orderDetailBindingModelList)
     )
 
-    variants.forEach(variant => {
-      delete variant.total
-    })
-    const body = {
-      address: this.state.address,
-      customerName: this.state.customerName,
-      date: this.state.date,
-      email: this.state.email,
-      note: this.state.note,
-      orderDetailBindingModelList: variants,
-      phone: this.state.phone,
-      status: 'PENDING',
-      total: this.state.total
-    }
+    let options = await this.checkValid(variants)
 
-    let { token } = this.state
-    let res = await Api.createOrderBill(token, body)
+    if (options.length == 0) {
+      const body = {
+        address: this.state.address,
+        customerName: this.state.customerName,
+        date: this.state.date,
+        email: this.state.email,
+        note: this.state.note,
+        orderDetailBindingModelList: variants,
+        phone: this.state.phone,
+        status: 'PENDING',
+        total: this.state.total
+      }
 
-    if (res.status === 401) {
-      alert('something went wrong')
+      let { token } = this.state
+      let res = await Api.createOrderBill(token, body)
+
+      if (res.status === 401) {
+        alert('something went wrong')
+      } else {
+        this.props.history.push('/admin/order_bills')
+      }
     } else {
-      this.props.history.push('/admin/order_bills')
+      let item = this.state.variantOptions.find(v => v.variantId == options[0])
+      swal('Oh noes!', `${item.name} not enough`, 'error')
     }
+  }
+
+  checkValid = async variants => {
+    let valid = true
+    let { token } = this.state
+    let options = []
+    for (let variant of variants) {
+      const res = await Api.checkOrderDetailValid(token, variant)
+      let resJson = await res.json()
+      if (!resJson.success) {
+        options.push(variant.variantID)
+        return options
+      }
+    }
+
+    return options
   }
 
   validateForm = () => {
