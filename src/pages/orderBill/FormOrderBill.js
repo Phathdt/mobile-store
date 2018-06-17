@@ -10,7 +10,8 @@ import {
   Form,
   FormGroup,
   Label,
-  Input
+  Input,
+  Table
 } from 'reactstrap'
 
 import { Link } from 'react-router-dom'
@@ -48,8 +49,36 @@ class FormOrderBill extends Component {
         ? 'New Order Stock'
         : this.props.action === 'show' ? 'Show Order Stock' : 'Edit Order Stock'
 
-    let variants = this.props.formData.orderDetailBindingModelList.map(
-      (rowVariant, idx) => (
+    let header = (
+      <tr>
+        <th>itemID</th>
+        <th>Variant</th>
+        <th>imei</th>
+        <th>serializerNumber</th>
+        <th>Price</th>
+      </tr>
+    )
+
+    let items =
+      this.props.formData.listItems &&
+      this.props.formData.listItems.map((row, idx) => (
+        <tr key={idx}>
+          <td>{row.itemID}</td>
+          <td>
+            {
+              this.props.variantOptions.find(t => t.variantId == row.variantID)
+                .name
+            }
+          </td>
+          <td>{row.imei}</td>
+          <td>{row.serializerNumber}</td>
+          <td>{row.price.toLocaleString()} VND</td>
+        </tr>
+      ))
+
+    let variants =
+      this.props.formData.orderDetailBindingModelList &&
+      this.props.formData.orderDetailBindingModelList.map((rowVariant, idx) => (
         <div className="row" key={idx}>
           <div className="col-md-2">
             <FormGroup>
@@ -106,8 +135,7 @@ class FormOrderBill extends Component {
             </h3>
           </div>
         </div>
-      )
-    )
+      ))
     return (
       <Row>
         <Col xl={12} lg={12} md={12}>
@@ -191,6 +219,16 @@ class FormOrderBill extends Component {
                     ) : null}
                   </div>
                 </div>
+                <CardBody>
+                  <Table responsive {...{ hover: true, bordered: true }}>
+                    <thead>
+                      {this.props.formData.listItems ? header : null}
+                    </thead>
+                    <tbody>
+                      {this.props.formData.listItems ? items : null}
+                    </tbody>
+                  </Table>
+                </CardBody>
                 <div className="row">
                   <Col sm={{ size: 12, offset: 20 }}>
                     <h3 className="text-right">

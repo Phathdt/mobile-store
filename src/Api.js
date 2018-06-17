@@ -494,6 +494,22 @@ const getOrderBill = async (token, id) => {
   }
 }
 
+const getOrderBillDetail = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/orderDetail/getByOrderBillId/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const checkOrderDetailValid = async (token, body) => {
   try {
     let res = await fetch(`${HOST}/orderDetail/checkOrderDetailValid`, {
@@ -542,5 +558,6 @@ export default {
   getListOrderBill,
   deleteOrderBill,
   getOrderBill,
-  checkOrderDetailValid
+  checkOrderDetailValid,
+  getOrderBillDetail
 }

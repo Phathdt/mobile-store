@@ -37,7 +37,7 @@ import ShowOrderStockPage from 'pages/orderStock/ShowOrderStockPage'
 
 import ListOrderBillPage from 'pages/orderBill/ListOrderBillPage'
 import NewOrderBillPage from 'pages/orderBill/NewOrderBillPage'
-// import ShowOrderStockPage from 'pages/orderStock/ShowOrderStockPage'
+import ShowOrderBillPage from 'pages/orderBill/ShowOrderBillPage'
 
 // comment
 import './styles/reduction.css'
@@ -237,6 +237,11 @@ class Admin extends React.Component {
                 exact
                 path="/admin/order_bills/new"
                 component={NewOrderBillPage}
+              />
+
+              <PrivateRoute
+                path="/admin/order_bills/:id"
+                component={ShowOrderBillPage}
               />
             </Switch>
             <Footer />
