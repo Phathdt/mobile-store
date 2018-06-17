@@ -63,7 +63,7 @@ const Authen = {
   isAdmin(cb) {
     let roles = JSON.parse(localStorage.getItem('roles') || '[]')
 
-    if (roles.includes('ADMIN_USER')) {
+    if (roles.includes('ADMIN')) {
       return true
     }
 

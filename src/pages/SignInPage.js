@@ -10,8 +10,14 @@ class SignInPage extends Component {
     super(props)
 
     let token = localStorage.getItem('token')
+    let roles = JSON.parse(localStorage.getItem('roles') || '[]')
+
     if (token && token.length === 158) {
-      this.props.history.push('/admin')
+      if (roles.includes('ADMIN')) {
+        this.props.history.push('/admin')
+      } else {
+        this.props.history.push('/')
+      }
     }
 
     this.state = {
@@ -48,7 +54,7 @@ class SignInPage extends Component {
       await localStorage.setItem('token', resJson.Authorization)
       await localStorage.setItem('roles', JSON.stringify(roles))
       await localStorage.setItem('username', this.state.username)
-      if (roles.includes('ADMIN_USER')) {
+      if (roles.includes('ADMIN')) {
         this.props.history.push('/admin')
       } else {
         this.props.history.push('/')
