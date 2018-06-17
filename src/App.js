@@ -9,6 +9,7 @@ import UserPage from 'pages/customer/UserPage'
 import SignInPage from 'pages/SignInPage'
 import ModelDetails from 'pages/customer/ModelDetails'
 import CartPage from 'pages/customer/CartPage'
+import ProductInBrand from 'pages/customer/ProductInBrand'
 import './styles/reduction.css'
 
 class App extends React.Component {
@@ -19,7 +20,8 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={UserPage} />
             <Route path="/signin" component={SignInPage} />
-            <Route path="/model/details/1" component={ModelDetails} />
+            <Route path="/variant/details/:id" component={ModelDetails} />
+            <Route path="/listproducts/:name" component={ProductInBrand} />
             <Route path="/cart" component={CartPage} />
           </Switch>
 

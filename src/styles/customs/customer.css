@@ -47,6 +47,10 @@
     margin-bottom: 50px;
 }
 
+.list-menu>a{
+    text-decoration: none
+}
+
 .list-item {
     border: none;
     color: rgb(0, 0, 0);
@@ -184,4 +188,8 @@ ul {
     flex-direction: column;
     justify-content: space-between;
     padding-left: 0
+}
+
+.brand-title{
+    text-transform: uppercase;
 }
