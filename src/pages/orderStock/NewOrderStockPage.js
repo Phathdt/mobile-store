@@ -13,6 +13,7 @@ class NewOrderStockPage extends Component {
       token: this.props.token,
       supplierID: '',
       date: '',
+      total: 0,
       stockReceivingItemList: [],
       supplierOptions: [],
       variantOptions: [],
@@ -76,7 +77,8 @@ class NewOrderStockPage extends Component {
       itemList: [],
       priceBought: 0,
       quantity: 0,
-      variantId: ''
+      variantId: '',
+      price: 0
     }
 
     let stock = this.state.stockReceivingItemList
@@ -88,8 +90,12 @@ class NewOrderStockPage extends Component {
   }
 
   handleChangeVariant = idx => evt => {
+    let variant = this.state.variantOptions.find(
+      variant => variant.variantId == evt.target.value
+    )
     let stock = this.state.stockReceivingItemList[idx]
     stock.variantId = evt.target.value
+    stock.price = variant.pricesold
 
     this.setState({
       stockReceivingItemList: this.state.stockReceivingItemList
@@ -113,19 +119,25 @@ class NewOrderStockPage extends Component {
     }
 
     let variant = this.state.stockReceivingItemList[idx]
+    variant.quantity += 1
+    variant.priceBought = variant.quantity * variant.price
     variant.itemList.push(rowItem)
 
     this.setState({
-      stockReceivingItemList: this.state.stockReceivingItemList
+      stockReceivingItemList: this.state.stockReceivingItemList,
+      total: this.state.total + variant.price
     })
   }
 
   handleRemoveItem = (variantIdx, idx) => evt => {
-    let stock = this.state.stockReceivingItemList[variantIdx]
-    stock.itemList.splice(idx, 1)
+    let variant = this.state.stockReceivingItemList[variantIdx]
+    variant.itemList.splice(idx, 1)
+    variant.quantity -= 1
+    variant.priceBought = variant.quantity * variant.price
 
     this.setState({
-      stockReceivingItemList: this.state.stockReceivingItemList
+      stockReceivingItemList: this.state.stockReceivingItemList,
+      total: this.state.total - variant.price
     })
   }
 
@@ -140,21 +152,22 @@ class NewOrderStockPage extends Component {
 
   handleSubmit = async event => {
     event.preventDefault()
-    const body = {
-      name: this.state.name,
-      email: this.state.email,
-      address: this.state.address,
-      phone: this.state.phone
-    }
+    console.log(this.state)
+    // const body = {
+    //   name: this.state.name,
+    //   email: this.state.email,
+    //   address: this.state.address,
+    //   phone: this.state.phone
+    // }
 
-    let { token } = this.state
-    let res = await Api.createSupplier(token, body)
+    // let { token } = this.state
+    // let res = await Api.createSupplier(token, body)
 
-    if (res.status === 401) {
-      alert('something went wrong')
-    } else {
-      this.props.history.push('/admin/suppliers')
-    }
+    // if (res.status === 401) {
+    //   alert('something went wrong')
+    // } else {
+    //   this.props.history.push('/admin/suppliers')
+    // }
   }
 
   validateForm = () => {
@@ -186,7 +199,8 @@ class NewOrderStockPage extends Component {
           formData={{
             supplierID: this.state.supplierID,
             date: this.state.date,
-            stockReceivingItemList: this.state.stockReceivingItemList
+            stockReceivingItemList: this.state.stockReceivingItemList,
+            total: this.state.total
           }}
         />
       </Page>

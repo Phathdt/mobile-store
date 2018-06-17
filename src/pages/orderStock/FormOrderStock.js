@@ -47,7 +47,7 @@ class FormOrderStock extends Component {
           />
         </FormGroup>
         <div className="col-md-3 remove-item">
-          <Col sm={{ size: 10, offset: 2 }}>
+          <Col sm={{ size: 10 }}>
             <Button onClick={this.props.handleRemoveItem(variantIdx, idx)}>
               Remove Item
             </Button>
@@ -113,7 +113,7 @@ class FormOrderStock extends Component {
       (rowVariant, idx) => (
         <div className="rowVariant" key={idx}>
           <div className="row">
-            <div className="col-md-8">
+            <div className="col-md-4">
               <FormGroup>
                 <Input
                   type="select"
@@ -128,18 +128,27 @@ class FormOrderStock extends Component {
               </FormGroup>
             </div>
             <div className="col-md-2">
-              <Col sm={{ size: 10, offset: 2 }}>
+              <Col sm={{ size: 10 }}>
                 <Button onClick={this.props.handleRemoveVariant(idx)}>
                   Remove Variant
                 </Button>
               </Col>
             </div>
-            <div className="col-md-2">
-              <Col sm={{ size: 10, offset: 2 }}>
-                <Button onClick={this.props.handleAddItem(idx)}>
+            <div className="col-md-1">
+              <Col sm={{ size: 10 }}>
+                <Button
+                  onClick={this.props.handleAddItem(idx)}
+                  disabled={rowVariant.variantId == ''}
+                >
                   Add Item
                 </Button>
               </Col>
+            </div>
+            <div className="col-md-2">
+              <h3>Quantity: {rowVariant.quantity}</h3>
+            </div>
+            <div className="col-md-3">
+              <h3>Price: {rowVariant.priceBought.toLocaleString()} VND</h3>
             </div>
           </div>
           <div className="rowItems">{this.renderItemList(rowVariant, idx)}</div>
@@ -181,12 +190,20 @@ class FormOrderStock extends Component {
                   />
                 </FormGroup>
                 {stock}
-
-                <div className="col-md-2">
-                  <Col sm={{ size: 10, offset: 2 }}>
-                    <Button onClick={this.props.handleAddVariant}>
-                      Add Variant
-                    </Button>
+                <div className="row">
+                  <div className="col-md-2">
+                    <Col sm={{ size: 10 }}>
+                      <Button onClick={this.props.handleAddVariant}>
+                        Add Variant
+                      </Button>
+                    </Col>
+                  </div>
+                </div>
+                <div className="row">
+                  <Col sm={{ size: 12, offset: 20 }}>
+                    <h3 className="text-right">
+                      Total: {this.props.formData.total.toLocaleString()} VND
+                    </h3>
                   </Col>
                 </div>
                 {buttonSummit}
