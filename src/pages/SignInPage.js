@@ -43,8 +43,16 @@ class SignInPage extends Component {
       alert('Tài khoản hoặc mật khẩu sai, xin kiểm tra lại')
     } else {
       let resJson = await res.json()
+
+      let roles = resJson.roles.map(r => r.authority)
       await localStorage.setItem('token', resJson.Authorization)
-      this.props.history.push('/admin')
+      await localStorage.setItem('roles', JSON.stringify(roles))
+      await localStorage.setItem('username', this.state.username)
+      if (roles.includes('ADMIN_USER')) {
+        this.props.history.push('/admin')
+      } else {
+        this.props.history.push('/')
+      }
     }
   }
 

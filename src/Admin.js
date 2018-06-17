@@ -45,6 +45,7 @@ import './styles/reduction.css'
 const Authen = {
   isAuthenticated: false,
   token: '',
+  roles: [],
   authenticate(cb) {
     let token = localStorage.getItem('token')
     if (token && token.length === 158) {
@@ -58,6 +59,15 @@ const Authen = {
   signout(cb) {
     this.isAuthenticated = false
     setTimeout(cb, 100)
+  },
+  isAdmin(cb) {
+    let roles = JSON.parse(localStorage.getItem('roles') || '[]')
+
+    if (roles.includes('ADMIN_USER')) {
+      return true
+    }
+
+    return false
   }
 }
 
@@ -65,7 +75,7 @@ const PrivateRoute = ({ component: Component, customProps, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      Authen.authenticate() ? (
+      Authen.authenticate() && Authen.isAdmin() ? (
         <Component {...props} token={Authen.token} customProps={customProps} />
       ) : (
         <Redirect
