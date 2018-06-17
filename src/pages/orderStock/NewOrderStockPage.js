@@ -177,7 +177,7 @@ class NewOrderStockPage extends Component {
     if (res.status === 401) {
       alert('something went wrong')
     } else {
-      this.props.history.push('/admin/suppliers')
+      this.props.history.push('/admin/order_stocks')
     }
   }
 
