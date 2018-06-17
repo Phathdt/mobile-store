@@ -27,6 +27,12 @@ const navItems = [
     name: 'Order Stock',
     exact: true,
     Icon: MdDashboard
+  },
+  {
+    to: '/admin/order_bills',
+    name: 'Order Bill',
+    exact: true,
+    Icon: MdDashboard
   }
 ]
 

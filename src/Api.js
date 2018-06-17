@@ -427,6 +427,73 @@ const getOrderStock = async (token, id) => {
   }
 }
 
+const createOrderBill = async (token, body) => {
+  try {
+    let res = await fetch(`${HOST}/orderBill/stockReceivingOrderInfo/add`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      },
+      body: JSON.stringify(body)
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getListOrderBill = async (token, page, size = 10) => {
+  try {
+    let res = await fetch(`${HOST}/stockReceivingOrder/list/${size}/${page}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const deleteOrderBill = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/stockReceivingOrder/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getOrderBill = async (token, id) => {
+  try {
+    let res = await fetch(`${HOST}/stockReceivingOrder/get/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   signIn,
   getListBrand,
@@ -452,5 +519,9 @@ export default {
   createStockOrder,
   getListOrderStock,
   deleteOrderStock,
-  getOrderStock
+  getOrderStock,
+  createOrderBill,
+  getListOrderBill,
+  deleteOrderBill,
+  getOrderBill
 }
