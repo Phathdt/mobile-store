@@ -356,6 +356,28 @@ const deleteSupplier = async (token, id) => {
     console.log(error)
   }
 }
+
+const createStockOrder = async (token, body) => {
+  try {
+    let res = await fetch(
+      `${HOST}/stockReceivingOrder/stockReceivingOrderInfo/add`,
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: token
+        },
+        body: JSON.stringify(body)
+      }
+    )
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   signIn,
   getListBrand,
@@ -377,5 +399,6 @@ export default {
   createSupplier,
   getSupplier,
   editSupplier,
-  deleteSupplier
+  deleteSupplier,
+  createStockOrder
 }

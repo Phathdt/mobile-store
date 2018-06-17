@@ -115,7 +115,8 @@ class NewOrderStockPage extends Component {
     let rowItem = {
       imei: '',
       note: '',
-      serializerNumber: ''
+      serializerNumber: '',
+      name: ''
     }
 
     let variant = this.state.stockReceivingItemList[idx]
@@ -153,21 +154,31 @@ class NewOrderStockPage extends Component {
   handleSubmit = async event => {
     event.preventDefault()
     console.log(this.state)
-    // const body = {
-    //   name: this.state.name,
-    //   email: this.state.email,
-    //   address: this.state.address,
-    //   phone: this.state.phone
-    // }
+    let stockInfo = JSON.parse(
+      JSON.stringify(this.state.stockReceivingItemList)
+    )
+    stockInfo.forEach(variant => {
+      variant.itemList.forEach(item => {
+        item.variantId = variant.variantId
+        item.status = 'IN_STOCK'
+      })
+      delete variant.price
+      delete variant.variantId
+    })
+    const body = {
+      date: this.state.date,
+      stockReceivingItemList: stockInfo,
+      supplierID: this.state.supplierID
+    }
 
-    // let { token } = this.state
-    // let res = await Api.createSupplier(token, body)
+    let { token } = this.state
+    let res = await Api.createStockOrder(token, body)
 
-    // if (res.status === 401) {
-    //   alert('something went wrong')
-    // } else {
-    //   this.props.history.push('/admin/suppliers')
-    // }
+    if (res.status === 401) {
+      alert('something went wrong')
+    } else {
+      this.props.history.push('/admin/suppliers')
+    }
   }
 
   validateForm = () => {
