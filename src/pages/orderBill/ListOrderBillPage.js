@@ -13,47 +13,25 @@ class ListOrderBillPage extends Component {
       totalPages: 0,
       totalElements: 0,
       data: [],
-      suppliers: [],
       isLoaded: false
     }
   }
 
   async componentWillMount() {
-    let response = await this.getListOrderStock(0)
+    let response = await this.getListOrderBill(0)
     await this.setState({
       data: response.content,
       currentPage: response.number,
       totalPages: response.totalPages,
-      totalElements: response.totalElements
-    })
-
-    let responseSupplier = await this.getAllSupplier()
-    await this.setState({
-      suppliers: responseSupplier.content,
+      totalElements: response.totalElements,
       isLoaded: true
     })
   }
 
-  getAllSupplier = async () => {
+  getListOrderBill = async page => {
     try {
       let { token } = this.state
-      let res = await Api.getListSupplier(token, 0, 100)
-
-      if (res.status === 401) {
-        alert('something went wrong')
-      } else {
-        let resJson = await res.json()
-        return resJson.data
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  getListOrderStock = async page => {
-    try {
-      let { token } = this.state
-      let res = await Api.getListOrderStock(token, page)
+      let res = await Api.getListOrderBill(token, page)
 
       if (res.status === 401) {
         alert('something went wrong')
@@ -67,14 +45,14 @@ class ListOrderBillPage extends Component {
   }
 
   onPageChange = async page => {
-    let response = await this.getListOrderStock(page - 1)
+    let response = await this.getListOrderBill(page - 1)
     this.setState({
       currentPage: response.number,
       data: response.content
     })
   }
 
-  deleteOrderStock = orderStockId => async e => {
+  deleteOrderBill = orderBillId => async e => {
     let result = await swal({
       title: 'Are you sure?',
       text: 'You will not be able to recover this order Stock!',
@@ -86,11 +64,11 @@ class ListOrderBillPage extends Component {
 
     if (result.value) {
       let { token, currentPage } = this.state
-      let res = await Api.deleteOrderStock(token, orderStockId)
+      let res = await Api.deleteOrderBill(token, orderBillId)
 
       if (res.status === 200) {
         swal('Deleted!', 'Your order stock has been deleted.', 'success')
-        let res = await Api.getListOrderStock(token, currentPage)
+        let res = await Api.getListOrderBill(token, currentPage)
         if (res.status === 401) {
           alert('something went wrong')
         } else {
@@ -111,14 +89,14 @@ class ListOrderBillPage extends Component {
     if (this.state.isLoaded) {
       return (
         <div>
-          <ListOrderStock
+          <ListOrderBill
             data={this.state.data}
             currentPage={this.state.currentPage + 1}
             suppliers={this.state.suppliers}
             totalElements={this.state.totalElements}
             totalPages={this.state.totalPages}
             PageChange={this.onPageChange}
-            deleteOrderStock={this.deleteOrderStock}
+            deleteOrderBill={this.deleteOrderBill}
           />
         </div>
       )

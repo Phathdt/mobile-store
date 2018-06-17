@@ -48,7 +48,6 @@ class NewOrderBillPage extends Component {
     this.setState({
       orderDetailBindingModelList: variant
     })
-    console.log(this.state)
   }
 
   getAllVariant = async () => {

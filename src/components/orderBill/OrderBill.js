@@ -7,17 +7,12 @@ import { Button } from 'reactstrap'
 const OrderBill = props => {
   return (
     <tr>
-      <th scope="row">{props.row.stockReceivingOrderID}</th>
-      <td>
-        {
-          props.suppliers.find(
-            supplier => supplier.supplierID == props.row.supplierID
-          ).name
-        }
-      </td>
+      <td scope="row">{props.row.orderBillID}</td>
+      <td scope="row">{props.row.customerName}</td>
+      <td scope="row">{props.row.phone}</td>
       <td>{new Date(props.row.date).toLocaleDateString()}</td>
       <td>
-        <Link to={`/admin/order_stocks/${props.row.stockReceivingOrderID}`}>
+        <Link to={`/admin/order_bills/${props.row.orderBillID}`}>
           <Button outline color="info">
             View
           </Button>
@@ -25,7 +20,7 @@ const OrderBill = props => {
         <Button
           outline
           color="danger"
-          onClick={props.deleteOrderStock(props.row.stockReceivingOrderID)}
+          onClick={props.deleteOrderBill(props.row.orderBillID)}
         >
           Delete
         </Button>

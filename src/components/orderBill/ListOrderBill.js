@@ -5,24 +5,24 @@ import { Card, CardHeader, CardBody, Row, Col, Table, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import UltimatePagination from 'react-ultimate-pagination-bootstrap-4'
 import Page from 'components/Page'
-import OrderStock from './OrderStock'
+import OrderBill from './OrderBill'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const ListOrderBill = props => {
   return (
     <Page
-      title="List Order Stock"
-      breadcrumbs={[{ name: 'List Order Stock', active: true }]}
-      className="OrderStockPage"
+      title="List Order Bill"
+      breadcrumbs={[{ name: 'List Order Bill', active: true }]}
+      className="OrderBillPage"
     >
       <Row>
         <Col>
           <Card className="mb-3">
             <CardHeader>
-              <Link to="/admin/order_stocks/new">
+              <Link to="/admin/order_bills/new">
                 <Button color="success" active>
-                  Add new Order Stock
+                  Add new Order Bill
                 </Button>
               </Link>
             </CardHeader>
@@ -31,18 +31,19 @@ const ListOrderBill = props => {
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Supplier</th>
+                    <th>customer Name</th>
+                    <th>Phone</th>
                     <th>Date</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {props.data.map((row, i) => (
-                    <OrderStock
+                    <OrderBill
                       row={row}
                       suppliers={props.suppliers}
                       key={i}
-                      deleteOrderStock={props.deleteOrderStock}
+                      deleteOrderBill={props.deleteOrderBill}
                     />
                   ))}
                 </tbody>

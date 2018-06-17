@@ -447,7 +447,7 @@ const createOrderBill = async (token, body) => {
 
 const getListOrderBill = async (token, page, size = 10) => {
   try {
-    let res = await fetch(`${HOST}/stockReceivingOrder/list/${size}/${page}`, {
+    let res = await fetch(`${HOST}/orderBill/list/${size}/${page}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -463,7 +463,7 @@ const getListOrderBill = async (token, page, size = 10) => {
 
 const deleteOrderBill = async (token, id) => {
   try {
-    let res = await fetch(`${HOST}/stockReceivingOrder/delete/${id}`, {
+    let res = await fetch(`${HOST}/orderBill/delete/${id}`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
@@ -480,7 +480,7 @@ const deleteOrderBill = async (token, id) => {
 
 const getOrderBill = async (token, id) => {
   try {
-    let res = await fetch(`${HOST}/stockReceivingOrder/get/${id}`, {
+    let res = await fetch(`${HOST}/orderBill/get/${id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
