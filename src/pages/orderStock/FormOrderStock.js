@@ -73,7 +73,7 @@ class FormOrderStock extends Component {
 
     const buttonEdit =
       this.props.action === 'show' ? (
-        <Link to={`/admin/models/${this.props.id}/edit`}>
+        <Link to={`/admin/order_stocks/${this.props.id}/edit`}>
           <Button outline color="success">
             Edit
           </Button>
@@ -82,8 +82,8 @@ class FormOrderStock extends Component {
 
     const title =
       this.props.action === 'new'
-        ? 'New Model'
-        : this.props.action === 'show' ? 'Show Model' : 'Edit Model'
+        ? 'New Order Stock'
+        : this.props.action === 'show' ? 'Show Order Stock' : 'Edit Order Stock'
 
     let options = []
     options.push(<option key={''} value={''} />)
