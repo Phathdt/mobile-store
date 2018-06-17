@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
-import { Link } from 'react-router-dom'
+
+import Api from 'Api'
+
 import UserPageFooter from './UserPageFooter.js'
 import SideMenu from './SideMenu'
+import CartPage from './CartPage.js';
 import '../../styles/customs/customer.css'
 
-class UserPageBody extends Component{
 
+
+
+class UserPageBody extends Component{  
     render(){
         var settings = {
             autoPlay: true,
@@ -76,7 +81,7 @@ class UserPageBody extends Component{
                                 <div className="product-image-wrapper">
                                     <div class="productinfo">
                                         <img src={require("../../styles/images/phone_sample.png")} />
-                                        <p>Oppo S26255</p>
+                                        <p>Oppo S26255 Test</p>
                                     </div>
                                     <div class="product-overlay">
                                             <div class="overlay-content">
@@ -84,7 +89,7 @@ class UserPageBody extends Component{
                                                     <h2>Giá: 4.500.000đ</h2>
                                                     <p>Oppo S3564 D2</p>
                                                 </a>
-                                                <a href="/Cart" class="btn btn-default add-to-cart">
+                                                <a href="/cart" class="btn btn-default add-to-cart">
                                                     Thêm vào giỏ
                                                 </a>
                                             </div>

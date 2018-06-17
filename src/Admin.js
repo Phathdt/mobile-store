@@ -201,6 +201,7 @@ class Admin extends React.Component {
                 path="/admin/suppliers/:id"
                 component={ShowSupplierPage}
               />
+              
             </Switch>
             <Footer />
           </Content>
