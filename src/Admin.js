@@ -31,6 +31,11 @@ import NewSupplierPage from 'pages/supplier/NewSupplierPage'
 import ShowSupplierPage from 'pages/supplier/ShowSupplierPage'
 import EditSupplierPage from 'pages/supplier/EditSupplierPage'
 
+import ListOrderStockPage from 'pages/orderStock/ListOrderStockPage'
+import NewOrderStockPage from 'pages/orderStock/NewOrderStockPage'
+// import ShowSupplierPage from 'pages/orderStock/ShowSupplierPage'
+// import EditSupplierPage from 'pages/orderStock/EditSupplierPage'
+
 // comment
 import './styles/reduction.css'
 
@@ -201,7 +206,18 @@ class Admin extends React.Component {
                 path="/admin/suppliers/:id"
                 component={ShowSupplierPage}
               />
-              
+
+              <PrivateRoute
+                exact
+                path="/admin/order_stocks"
+                component={ListOrderStockPage}
+              />
+
+              <PrivateRoute
+                exact
+                path="/admin/order_stocks/new"
+                component={NewOrderStockPage}
+              />
             </Switch>
             <Footer />
           </Content>
