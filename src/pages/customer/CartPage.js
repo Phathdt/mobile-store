@@ -21,7 +21,6 @@ const Authen = {
   }
 }
 
-
 const PrivateRoute = ({ component: Component, customProps, ...rest }) => (
   <Route
     {...rest}
@@ -39,6 +38,7 @@ const PrivateRoute = ({ component: Component, customProps, ...rest }) => (
     }
   />
 )
+
 class CartPage extends Component {
   render() {
     return (
