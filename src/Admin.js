@@ -33,7 +33,7 @@ import EditSupplierPage from 'pages/supplier/EditSupplierPage'
 
 import ListOrderStockPage from 'pages/orderStock/ListOrderStockPage'
 import NewOrderStockPage from 'pages/orderStock/NewOrderStockPage'
-// import ShowSupplierPage from 'pages/orderStock/ShowSupplierPage'
+import ShowOrderStockPage from 'pages/orderStock/ShowOrderStockPage'
 // import EditSupplierPage from 'pages/orderStock/EditSupplierPage'
 
 // comment
@@ -217,6 +217,11 @@ class Admin extends React.Component {
                 exact
                 path="/admin/order_stocks/new"
                 component={NewOrderStockPage}
+              />
+
+              <PrivateRoute
+                path="/admin/order_stocks/:id"
+                component={ShowOrderStockPage}
               />
             </Switch>
             <Footer />

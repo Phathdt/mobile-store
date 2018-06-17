@@ -26,6 +26,7 @@ class FormOrderStock extends Component {
             id="imei"
             onChange={this.props.handleChangeItem(variantIdx, idx)}
             value={item.imei}
+            disabled={this.props.action == 'show'}
           />
         </FormGroup>
         <FormGroup className="col-md-3">
@@ -34,6 +35,7 @@ class FormOrderStock extends Component {
             type="text"
             id="serializerNumber"
             value={item.serializerNumber}
+            disabled={this.props.action == 'show'}
             onChange={this.props.handleChangeItem(variantIdx, idx)}
           />
         </FormGroup>
@@ -43,15 +45,18 @@ class FormOrderStock extends Component {
             type="text"
             id="note"
             value={item.note}
+            disabled={this.props.action == 'show'}
             onChange={this.props.handleChangeItem(variantIdx, idx)}
           />
         </FormGroup>
         <div className="col-md-3 remove-item">
-          <Col sm={{ size: 10 }}>
-            <Button onClick={this.props.handleRemoveItem(variantIdx, idx)}>
-              Remove Item
-            </Button>
-          </Col>
+          {this.props.action != 'show' ? (
+            <Col sm={{ size: 10 }}>
+              <Button onClick={this.props.handleRemoveItem(variantIdx, idx)}>
+                Remove Item
+              </Button>
+            </Col>
+          ) : null}
         </div>
       </div>
     ))
@@ -70,15 +75,6 @@ class FormOrderStock extends Component {
         </Col>
       </FormGroup>
     ) : null
-
-    const buttonEdit =
-      this.props.action === 'show' ? (
-        <Link to={`/admin/order_stocks/${this.props.id}/edit`}>
-          <Button outline color="success">
-            Edit
-          </Button>
-        </Link>
-      ) : null
 
     const title =
       this.props.action === 'new'
@@ -128,27 +124,33 @@ class FormOrderStock extends Component {
               </FormGroup>
             </div>
             <div className="col-md-2">
-              <Col sm={{ size: 10 }}>
-                <Button onClick={this.props.handleRemoveVariant(idx)}>
-                  Remove Variant
-                </Button>
-              </Col>
+              {this.props.action != 'show' ? (
+                <Col sm={{ size: 10 }}>
+                  <Button onClick={this.props.handleRemoveVariant(idx)}>
+                    Remove Variant
+                  </Button>
+                </Col>
+              ) : null}
             </div>
             <div className="col-md-1">
-              <Col sm={{ size: 10 }}>
-                <Button
-                  onClick={this.props.handleAddItem(idx)}
-                  disabled={rowVariant.variantId == ''}
-                >
-                  Add Item
-                </Button>
-              </Col>
+              {this.props.action != 'show' ? (
+                <Col sm={{ size: 10 }}>
+                  <Button
+                    onClick={this.props.handleAddItem(idx)}
+                    disabled={rowVariant.variantId == ''}
+                  >
+                    Add Item
+                  </Button>
+                </Col>
+              ) : null}
             </div>
             <div className="col-md-2">
               <h3>Quantity: {rowVariant.quantity}</h3>
             </div>
             <div className="col-md-3">
-              <h3>Price: {rowVariant.priceBought.toLocaleString()} VND</h3>
+              <h3 className="text-right">
+                Price: {rowVariant.priceBought.toLocaleString()} VND
+              </h3>
             </div>
           </div>
           <div className="rowItems">{this.renderItemList(rowVariant, idx)}</div>
@@ -160,10 +162,7 @@ class FormOrderStock extends Component {
       <Row>
         <Col xl={12} lg={12} md={12}>
           <Card>
-            <CardHeader>
-              {title}
-              {buttonEdit}
-            </CardHeader>
+            <CardHeader>{title}</CardHeader>
             <CardBody>
               <Form>
                 <FormGroup>
@@ -192,11 +191,13 @@ class FormOrderStock extends Component {
                 {stock}
                 <div className="row">
                   <div className="col-md-2">
-                    <Col sm={{ size: 10 }}>
-                      <Button onClick={this.props.handleAddVariant}>
-                        Add Variant
-                      </Button>
-                    </Col>
+                    {this.props.action != 'show' ? (
+                      <Col sm={{ size: 10 }}>
+                        <Button onClick={this.props.handleAddVariant}>
+                          Add Variant
+                        </Button>
+                      </Col>
+                    ) : null}
                   </div>
                 </div>
                 <div className="row">
