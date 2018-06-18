@@ -6,6 +6,8 @@ import SideMenu from './SideMenu'
 import '../../styles/customs/customer.css'
 import swal from 'sweetalert2'
 
+import { Link } from 'react-router-dom'
+
 class UserPageBody extends Component {
   constructor(props) {
     super(props)
@@ -117,10 +119,10 @@ class UserPageBody extends Component {
                     </div>
                     <div className="product-overlay">
                       <div className="overlay-content">
-                        <a href={`/variant/details/${i.variantId}`}>
+                        <Link to={`/variant/details/${i.variantId}`}>
                           <h2>Giá: {i.pricesold}</h2>
                           <p>{i.name}</p>
-                        </a>
+                        </Link>
                         <a
                           onClick={() => {
                             this.addToCart(i.variantId)

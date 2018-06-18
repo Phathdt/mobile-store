@@ -7,6 +7,7 @@ import Admin from './Admin'
 // pages
 import UserPage from 'pages/customer/UserPage'
 import SignInPage from 'pages/SignInPage'
+import SignUpPage from 'pages/SignUpPage'
 import ModelDetails from 'pages/customer/ModelDetails'
 import CartPage from 'pages/customer/CartPage'
 import ProductInBrand from 'pages/customer/ProductInBrand'
@@ -18,7 +19,7 @@ const Authen = {
   token: '',
   authenticate(cb) {
     let token = localStorage.getItem('token')
-    if (token && token.length === 158) {
+    if (token && token.length > 100) {
       this.isAuthenticated = true
       this.token = token
       return true
@@ -70,6 +71,7 @@ class App extends React.Component {
           <Switch>
             <OpenRoute exact path="/" component={UserPage} />
             <Route path="/signin" component={SignInPage} />
+            <Route path="/signup" component={SignUpPage} />
             <OpenRoute path="/variant/details/:id" component={ModelDetails} />
             <OpenRoute
               path="/model/listproducts/:modelID"

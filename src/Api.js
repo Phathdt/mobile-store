@@ -17,6 +17,23 @@ const signIn = async body => {
   }
 }
 
+const signUp = async body => {
+  try {
+    let res = await fetch(`${HOST}/users/sign-up`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const getListBrand = async (token, page, size = 10) => {
   try {
     let res = await fetch(`${HOST}/brand/list/${size}/${page}`, {
@@ -528,7 +545,7 @@ const checkOrderDetailValid = async (token, body) => {
   }
 }
 
-const getVariantByModel = async (page=0, id, size = 10) => {
+const getVariantByModel = async (page = 0, id, size = 10) => {
   try {
     let res = await fetch(`${HOST}/model/list-by-id/${id}`, {
       headers: {
@@ -544,7 +561,7 @@ const getVariantByModel = async (page=0, id, size = 10) => {
   }
 }
 
-const getVariantByBrand = async (page=0, id, size = 10) => {
+const getVariantByBrand = async (page = 0, id, size = 10) => {
   try {
     let res = await fetch(`${HOST}/brand/list-by-id/${id}`, {
       headers: {
@@ -562,6 +579,7 @@ const getVariantByBrand = async (page=0, id, size = 10) => {
 
 export default {
   signIn,
+  signUp,
   getListBrand,
   createBrand,
   getBrand,

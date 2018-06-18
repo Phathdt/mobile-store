@@ -5,6 +5,7 @@ import UserPageHeader from './UserPageHeader'
 import UserPageFooter from './UserPageFooter.js'
 import SideMenu from './SideMenu'
 import swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 
 import '../../styles/customs/customer.css'
 const brands = ['samsung', 'oppo', 'apple', 'nokia', 'xiaomi']
@@ -159,10 +160,10 @@ class ProductInBrand extends Component {
                       </div>
                       <div className="product-overlay">
                         <div className="overlay-content">
-                          <a href={`/variant/details/${i.variantId}`}>
+                          <Link to={`/variant/details/${i.variantId}`}>
                             <h3>{i.name}</h3>
                             <p>Giá: {i.pricesold} đ</p>
-                          </a>
+                          </Link>
                           <a
                             onClick={() => {
                               this.addToCart(i.variantId)

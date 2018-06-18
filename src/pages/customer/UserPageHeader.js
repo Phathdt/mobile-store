@@ -16,7 +16,7 @@ class UserPageHeader extends Component {
 
   async componentWillMount() {
     let token = localStorage.getItem('token')
-    if (token && token.length === 158) {
+    if (token && token.length > 100) {
       let name = localStorage.getItem('username')
       await this.setState({
         token: token,
