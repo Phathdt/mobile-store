@@ -3,6 +3,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
 import Api from 'Api'
+
+import "../styles/customs/signin.css"
+
 injectTapEventPlugin()
 
 class SignInPage extends Component {
@@ -50,35 +53,52 @@ class SignInPage extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="username" bsSize="large">
-            <ControlLabel>Username</ControlLabel>
-            <FormControl
-              autoFocus
-              type="text"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
-        </form>
-      </div>
+      <div className="login-page">
+        <div className="form">
+          <form className="register-form">
+            <input type="text" placeholder="name"/>
+            <input type="password" placeholder="password"/>
+            <input type="text" placeholder="email address"/>
+            <button>create</button>
+            <p className="message">Already registered? <a href="#">Sign In</a></p>
+          </form>
+          <form className="login-form">
+            <input type="text" placeholder="username"/>
+            <input type="password" placeholder="password"/>
+            <button>login</button>
+            <p className="message">Not registered? <a href="#">Create an account</a></p>
+          </form>
+        </div>
+    </div>
+      // <div className="Login">
+      //   <form onSubmit={this.handleSubmit}>
+      //     <FormGroup controlId="username" bsSize="large">
+      //       <ControlLabel>Username</ControlLabel>
+      //       <FormControl
+      //         autoFocus
+      //         type="text"
+      //         value={this.state.username}
+      //         onChange={this.handleChange}
+      //       />
+      //     </FormGroup>
+      //     <FormGroup controlId="password" bsSize="large">
+      //       <ControlLabel>Password</ControlLabel>
+      //       <FormControl
+      //         value={this.state.password}
+      //         onChange={this.handleChange}
+      //         type="password"
+      //       />
+      //     </FormGroup>
+      //     <Button
+      //       block
+      //       bsSize="large"
+      //       disabled={!this.validateForm()}
+      //       type="submit"
+      //     >
+      //       Login
+      //     </Button>
+      //   </form>
+      // </div>
     )
   }
 }

@@ -64,9 +64,9 @@ class SideMenu extends Component {
             </div>
             <div className="title">New Models</div>
             <div className="list-menu">
-            {this.state.data.slice(0,10).map(i=>(
-              <div className="list-item">{i.name}</div>
-            ))}
+              {this.state.data.slice(0,10).map(i=>(
+                <a href={`/listproducts/model/${i.modelID}`}><div className="list-item">{i.name}</div></a>
+              ))}
             </div>
       </div>
     )

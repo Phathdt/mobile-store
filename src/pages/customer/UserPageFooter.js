@@ -11,7 +11,7 @@ class UserPageFooter extends Component {
     render() {
       return (
         <div>
-              <div style={horizontalJustifyContent}>
+              <div style={horizontalJustifyContent} className="footerLink">
                 <div> 
                     <ul>
                         <li><a href="/tra-gop" title="Hướng dẫn mua trả góp">Tìm hiểu về mua trả góp</a></li>

@@ -27,7 +27,7 @@ class UserPageBody extends Component{
   async componentWillMount() {
     let response = await this.getListVariant(0)
     this.setState({
-      data: response.content,
+      data: response.content!=undefined?response.content:null,
       currentPage: response.number,
       totalPages: response.totalPages,
       totalElements: response.totalElements
@@ -54,38 +54,24 @@ class UserPageBody extends Component{
     let response = await this.getListVariant(page - 1)
     this.setState({
       currentPage: response.number,
-      data: response.content
+      data: response.content!=undefined?response.content:null
     })
   }
     render(){
-        var settings = {
-            autoPlay: true,
-            infinite: true,
-            autoplaySpeed: 1000,
-            speed: 500,
-        };
-        
         return (
             <div className="centerContent">
-                <div className="row">
-                    <div className="col-lg-9">
-                        <Slider {...settings}>
-                            <div>
-                                <img src={require("../../styles/images/slider1.png")}/>
-                            </div>
-                            <div>
-                                <img src={require("../../styles/images/slider2.png")}/>
-                            </div>
-                            <div>
-                                <img src={require("../../styles/images/slider3.png")}/>
-                            </div>
-                            <div>
-                                <img src={require("../../styles/images/slider4.png")}/>
-                            </div>
-                        </Slider>
+                <div className="row" style={{'margin-bottom':'10px'}}>
+                    <div className="col-lg-8">
+                        <div className="mainPR">
+                            <img src={require("../../styles/images/slider1.png")}/>
+                        </div>
                     </div>
-                    <div className="col-lg-3 vJustifySpace">
-                        <div className="cr-widget  card text-white">
+                    <div className="col-lg-4 vJustifySpace">
+                        <img src={require("../../styles/images/pr1.png")} />
+                        <img src={require("../../styles/images/pr2.png")} />
+                        <img src={require("../../styles/images/pr3.png")} />
+                    
+                        {/* <div className="cr-widget  card text-white">
                             <div className="card-body">
                                 <div className="card-title">Đảm bảo uy tín</div>
                                 <div className="card-subtitle">Đổi trả miễn phí nếu sản phẩm lỗi</div>
@@ -108,7 +94,8 @@ class UserPageBody extends Component{
                                 <div className="card-title">Giao hàng miễn phí</div>
                                 <div className="card-subtitle">Cho các đơn hàng trên 5 triệu đồng</div>
                             </div>
-                        </div>
+                        </div> */}
+
                     </div>
                 </div>
                 <div className="row">
@@ -125,15 +112,15 @@ class UserPageBody extends Component{
                             {this.state.data.map(i=>(
                                 <div className="col-lg-4">
                                 <div className="product-image-wrapper">
-                                    <div class="productinfo">
+                                    <div className="productinfo">
                                         <img src={i.images[0].imageURL} />
-                                        <p>{i.name}</p>
+                                        <h5>{i.name}</h5>
                                     </div>
-                                    <div class="product-overlay">
-                                            <div class="overlay-content">
+                                    <div className="product-overlay">
+                                            <div className="overlay-content">
                                                 <a href={`/variant/details/${i.variantId}`}>
-                                                    <h2>Giá: {i.pricesold}</h2>
-                                                    <p>{i.name}</p>
+                                                    <h3>{i.name}</h3>
+                                                    <p>Giá: {i.pricesold} đ</p>
                                                 </a>
                                                 <a href="/cart" class="btn btn-default add-to-cart">
                                                     Thêm vào giỏ
