@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Slider from "react-slick";
 
 import Api from 'Api'
 
 import UserPageFooter from './UserPageFooter.js'
 import SideMenu from './SideMenu'
-import CartPage from './CartPage.js';
 import '../../styles/customs/customer.css'
 
 
@@ -54,7 +52,7 @@ class UserPageBody extends Component{
     let response = await this.getListVariant(page - 1)
     this.setState({
       currentPage: response.number,
-      data: response.content!=undefined?response.content:null
+      data: response.content!==undefined?response.content:[]
     })
   }
     render(){

@@ -4,7 +4,6 @@ import Api from 'Api'
 import UserPageHeader from './UserPageHeader.js'
 import UserPageFooter from './UserPageFooter.js'
 import SideMenu from './SideMenu'
-import { Button } from 'reactstrap';
 
 import "../../styles/customs/model_details.css"
 

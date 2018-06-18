@@ -11,7 +11,7 @@ const OrderStock = props => {
       <td>
         {
           props.suppliers.find(
-            supplier => supplier.supplierID == props.row.supplierID
+            supplier => supplier.supplierID === props.row.supplierID
           ).name
         }
       </td>

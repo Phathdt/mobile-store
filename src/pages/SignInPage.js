@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, FormGroup, FormControl } from 'react-bootstrap'
 
 import Api from 'Api'
 

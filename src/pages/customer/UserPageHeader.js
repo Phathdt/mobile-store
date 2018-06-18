@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import SearchInput from 'components/SearchInput'
-import { Button } from 'reactstrap';
-import { Link } from 'react-router-dom'
 import '../../styles/customs/customer.css'
 
 

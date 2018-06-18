@@ -22,8 +22,8 @@ class UserPageFooter extends Component {
                 </div>
                 <div> 
                     <ul>
-                        <li><a href="http://mwg.vn" target="_blank" title="Giới thiệu công ty (mwg.vn)">Giới thiệu công ty <span>(mwg.vn)</span></a></li>
-                        <li><a href="//vieclam.thegioididong.com" target="_blank" title="Tuyển dụng">Tuyển dụng</a></li>
+                        <li><a href="http://mwg.vn" title="Giới thiệu công ty (mwg.vn)">Giới thiệu công ty <span>(mwg.vn)</span></a></li>
+                        <li><a href="//vieclam.thegioididong.com" title="Tuyển dụng">Tuyển dụng</a></li>
                         <li><a href="/lien-he" title="Gửi góp ý, khiếu nại">Gửi góp ý, khiếu nại</a></li>
                     </ul> 
                 </div>

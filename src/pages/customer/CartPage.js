@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import UserPageFooter from './UserPageFooter';
 
 const Authen = {

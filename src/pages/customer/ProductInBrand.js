@@ -4,7 +4,6 @@ import Api from 'Api'
 import UserPageHeader from './UserPageHeader'
 import UserPageFooter from './UserPageFooter.js'
 import SideMenu from './SideMenu'
-import { Button } from 'reactstrap';
 
 import '../../styles/customs/customer.css'
 
@@ -29,7 +28,7 @@ class ProductInBrand extends Component {
         let response = await this.getVariantByModel(this.props.match.params.modelID)
         await this.setState({
           id: this.props.match.params.modelID,
-          data: response.content!=undefined?response.content:null,
+          data: response.content!==undefined?response.content:[],
           currentPage: response.number,
           totalPages: response.totalPages,
           totalElements: response.totalElements
@@ -55,7 +54,7 @@ class ProductInBrand extends Component {
         let response = await this.getVariantByModel(page - 1)
         this.setState({
           currentPage: response.number,
-          data: response.content!=undefined?response.content:null
+          data: response.content!==undefined?response.content:[]
         })
       }
     
