@@ -175,7 +175,6 @@ class ShowOrderStockPage extends Component {
 
   handleSubmit = async event => {
     event.preventDefault()
-    console.log(this.state)
     let stockInfo = JSON.parse(
       JSON.stringify(this.state.stockReceivingItemList)
     )
