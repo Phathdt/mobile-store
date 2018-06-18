@@ -10,6 +10,7 @@ import SignInPage from 'pages/SignInPage'
 import ModelDetails from 'pages/customer/ModelDetails'
 import CartPage from 'pages/customer/CartPage'
 import ProductInBrand from 'pages/customer/ProductInBrand'
+import MyCart from 'pages/customer/MyCart'
 import './styles/reduction.css'
 
 const Authen = {
@@ -40,6 +41,25 @@ const OpenRoute = ({ component: Component, customProps, ...rest }) => (
   />
   
 )
+
+const PrivateRoute = ({ component: Component, customProps, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      Authen.authenticate() ? (
+        <Component {...props} token={Authen.token} customProps={customProps} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/signin',
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
+)
+
 class App extends React.Component {
   render() {
     return (
@@ -50,6 +70,7 @@ class App extends React.Component {
             <Route path="/signin" component={SignInPage} />
             <OpenRoute path="/variant/details/:id" component={ModelDetails} />
             <OpenRoute path="/listproducts/:name" component={ProductInBrand} />
+            <PrivateRoute path="/my_cart" component={MyCart} />
             <Route path="/cart" component={CartPage} />
           </Switch>
 
