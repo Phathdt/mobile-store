@@ -17,7 +17,6 @@ const sidebarBackground = {
 }
 
 const navItems = [
-  { to: '/admin/dashboard', name: 'dashboard', exact: true, Icon: MdDashboard },
   { to: '/admin/brands', name: 'brands', exact: true, Icon: MdDashboard },
   { to: '/admin/models', name: 'models', exact: true, Icon: MdDashboard },
   { to: '/admin/variants', name: 'variants', exact: true, Icon: MdDashboard },

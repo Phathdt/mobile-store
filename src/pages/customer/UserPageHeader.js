@@ -26,18 +26,30 @@ class UserPageHeader extends Component {
     }
   }
 
+  signOut = async () => {
+    await localStorage.removeItem('username')
+    await localStorage.removeItem('token')
+    await localStorage.removeItem('roles')
+    window.location.reload()
+  }
+
   render() {
     let name
     if (this.state.isAuthen) {
       name = (
         <div className="col-lg-3 vJustifyCenter">
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col-lg-4">
               <h3>{this.state.name}</h3>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-4">
               <Link to={'/my_cart'}>
                 <h3>My cart</h3>
+              </Link>
+            </div>
+            <div className="col-lg-4">
+              <Link to={'/my_cart'} onClick={this.signOut}>
+                <h3>Log Out</h3>
               </Link>
             </div>
           </div>

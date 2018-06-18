@@ -10,7 +10,7 @@ import { Header, Sidebar, Content, Footer } from 'components/Layout'
 import GAListener from 'components/GAListener'
 
 // pages
-import DashboardPage from 'pages/DashboardPage'
+// import DashboardPage from 'pages/DashboardPage'
 import ListBrandPage from 'pages/brand/ListBrandPage'
 import NewBrandPage from 'pages/brand/NewBrandPage'
 import ShowBrandPage from 'pages/brand/ShowBrandPage'
@@ -152,7 +152,7 @@ class Admin extends React.Component {
             <Header />
             <Switch>
               <Redirect exact from="/admin" to="/admin/dashboard" />
-              <PrivateRoute path="/admin/dashboard" component={DashboardPage} />
+              <PrivateRoute path="/admin/dashboard" component={ListBrandPage} />
 
               <PrivateRoute
                 exact
