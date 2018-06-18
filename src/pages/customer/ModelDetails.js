@@ -4,7 +4,6 @@ import Api from 'Api'
 import UserPageHeader from './UserPageHeader.js'
 import UserPageFooter from './UserPageFooter.js'
 import SideMenu from './SideMenu'
-import { Button } from 'reactstrap';
 
 import "../../styles/customs/model_details.css"
 
@@ -100,7 +99,7 @@ class ModelDetails extends Component {
                                         Thêm vào giỏ
                                     </a>
                                 </div>
-                                <p><b>Tình trạng tồn kho:</b>Còn Hàng</p>
+                                <p><b>Tình trạng tồn kho:</b> Còn Hàng</p>
                                 <p><b>Trạng thái sản phẩm:</b> Mới</p>
                                 <p><b>Màu sắc:</b> {this.state.color}</p>
                             </div>
@@ -111,7 +110,6 @@ class ModelDetails extends Component {
                         <button className="tablinks" onclick="showContent('details')">Thông số</button>
                         <button className="tablinks" onclick="showContent('reviews')">Đánh giá(5)</button>
                     </div>
-
                         <div id="descript" className="tabcontent">
                         <h3>{this.state.name}</h3>
                         <p>Siêu phẩm smartphone hàng đầu trong thế giới Android đã ra mắt với màn hình vô cực, camera chuyên nghiệp như máy ảnh và hàng loạt những tính năng cao cấp đầy hấp dẫn.

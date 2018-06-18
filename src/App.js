@@ -33,13 +33,15 @@ const Authen = {
 }
 
 const OpenRoute = ({ component: Component, customProps, ...rest }) => (
-  Authen.authenticate()?console.log("Da Dang Nhap"):console.log("Chua DN"),
-  <Route
-    {...rest}
-    render={props =>(<Component {...props} token={Authen.token} customProps={customProps} />)
-    }
-  />
-  
+  Authen.authenticate() ? console.log('Da Dang Nhap') : console.log('Chua DN'),
+  (
+    <Route
+      {...rest}
+      render={props => (
+        <Component {...props} token={Authen.token} customProps={customProps} />
+      )}
+    />
+  )
 )
 
 const PrivateRoute = ({ component: Component, customProps, ...rest }) => (
@@ -69,7 +71,14 @@ class App extends React.Component {
             <OpenRoute exact path="/" component={UserPage} />
             <Route path="/signin" component={SignInPage} />
             <OpenRoute path="/variant/details/:id" component={ModelDetails} />
-            <OpenRoute path="/listproducts/:name" component={ProductInBrand} />
+            <OpenRoute
+              path="/model/listproducts/:modelID"
+              component={ProductInBrand}
+            />
+            <OpenRoute
+              path="/brand/listproducts/:brandName"
+              component={ProductInBrand}
+            />
             <PrivateRoute path="/my_cart" component={MyCart} />
             <Route path="/cart" component={CartPage} />
           </Switch>
@@ -77,9 +86,6 @@ class App extends React.Component {
           <Switch>
             <Route path="/admin" component={Admin} />
           </Switch>
-
-         
-
         </div>
       </BrowserRouter>
     )

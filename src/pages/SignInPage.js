@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
-import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, FormGroup, FormControl } from 'react-bootstrap'
 
 import Api from 'Api'
+
+import "../styles/customs/signin.css"
+
 injectTapEventPlugin()
 
 class SignInPage extends Component {
@@ -64,35 +67,39 @@ class SignInPage extends Component {
 
   render() {
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="username" bsSize="large">
-            <ControlLabel>Username</ControlLabel>
-            <FormControl
-              autoFocus
-              type="text"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
-        </form>
-      </div>
+      <div className="login-page">
+        <div className="form">
+             <form className="login-form" onSubmit={this.handleSubmit}>
+              <FormGroup controlId="username">
+                <FormControl
+                  className="input"
+                  autoFocus
+                  type="text"
+                  placeholder="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+              <FormGroup controlId="password">
+                <FormControl
+                  placeholder="username"
+                  className="input"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  type="password"
+                />
+              </FormGroup>
+              <Button
+                className="loginBtn"
+                block
+                disabled={!this.validateForm()}
+                type="submit"
+              >
+                Login
+              </Button>
+         </form>
+        </div>
+    </div>
     )
   }
 }

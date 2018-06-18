@@ -528,6 +528,38 @@ const checkOrderDetailValid = async (token, body) => {
   }
 }
 
+const getVariantByModel = async (page=0, id, size = 10) => {
+  try {
+    let res = await fetch(`${HOST}/model/list-by-id/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: ''
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getVariantByBrand = async (page=0, id, size = 10) => {
+  try {
+    let res = await fetch(`${HOST}/brand/list-by-id/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: ''
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   signIn,
   getListBrand,
@@ -559,5 +591,7 @@ export default {
   deleteOrderBill,
   getOrderBill,
   checkOrderDetailValid,
-  getOrderBillDetail
+  getOrderBillDetail,
+  getVariantByModel,
+  getVariantByBrand
 }
