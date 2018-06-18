@@ -71,12 +71,12 @@ class UserPageHeader extends Component {
       <div>
         <div className="row headerStyle">
           <div className="col-lg-3" align="right">
-            <a href="/">
+            <Link to={'/'}>
               <img
                 src={require('../../styles/images/logo.png')}
                 style={{ maxHeight: '38px' }}
               />
-            </a>
+            </Link>
           </div>
           <div className="col-lg-6">
             <SearchInput size="40" />
