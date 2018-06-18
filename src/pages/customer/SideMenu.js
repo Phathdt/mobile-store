@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Api from 'Api'
 import { Link } from 'react-router-dom'
 
-import "../../styles/customs/customer.css"
+import '../../styles/customs/customer.css'
 
 class SideMenu extends Component {
   constructor(props) {
@@ -18,55 +18,67 @@ class SideMenu extends Component {
   }
 
   async componentWillMount() {
-    let response = await this.getListModel(0);
+    let response = await this.getListModel(0)
     this.setState({
       data: response.content,
       currentPage: response.number,
       totalPages: response.totalPages,
       totalElements: response.totalElements
-    });
+    })
   }
 
   getListModel = async page => {
     try {
-      let { token } = this.state;
-      let res = await Api.getListModel(token, page);
+      let { token } = this.state
+      let res = await Api.getListModel(token, page)
 
       if (res.status === 401) {
-        alert('something went wrong');
+        alert('something went wrong')
       } else {
-        let resJson = await res.json();
-        return resJson.data;
+        let resJson = await res.json()
+        return resJson.data
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   onPageChange = async page => {
-    let response = await this.getListModel(page - 1);
+    let response = await this.getListModel(page - 1)
     this.setState({
       currentPage: response.number,
       data: response.content
-    });
-  };
+    })
+  }
   render() {
     return (
       <div>
         <div className="title">Brands</div>
-            <div className="list-menu">
-                <a href="/brand/listproducts/samsung"><div className="list-item">Samsung</div></a>
-                <a href="/brand/listproducts/oppo"><div className="list-item">Oppo</div></a>
-                <a href="/brand/listproducts/apple"><div className="list-item">Apple</div></a>
-                <a href="/brand/listproducts/nokia"><div className="list-item">Nokia</div></a>
-                <a href="/brand/listproducts/xiaomi"><div className="list-item">Xiaomi</div></a>
-            </div>
-            <div className="title">New Models</div>
-            <div className="list-menu">
-              {this.state.data.slice(0,10).map(i=>(
-                <a href={`/model/listproducts/${i.modelID}`}><div className="list-item">{i.name}</div></a>
-              ))}
-            </div>
+        <div className="list-menu">
+          <a href="/brand/listproducts/samsung">
+            <div className="list-item">Samsung</div>
+          </a>
+          <a href="/brand/listproducts/oppo">
+            <div className="list-item">Oppo</div>
+          </a>
+          <a href="/brand/listproducts/apple">
+            <div className="list-item">Apple</div>
+          </a>
+          <a href="/brand/listproducts/nokia">
+            <div className="list-item">Nokia</div>
+          </a>
+          <a href="/brand/listproducts/xiaomi">
+            <div className="list-item">Xiaomi</div>
+          </a>
+        </div>
+        <div className="title">New Models</div>
+        <div className="list-menu">
+          {this.state.data.slice(0, 10).map((i, idx) => (
+            <a key={idx} href={`/model/listproducts/${i.modelID}`}>
+              <div className="list-item">{i.name}</div>
+            </a>
+          ))}
+        </div>
       </div>
     )
   }
