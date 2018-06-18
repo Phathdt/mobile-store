@@ -4,6 +4,7 @@ import Api from 'Api'
 import UserPageHeader from './UserPageHeader'
 import UserPageFooter from './UserPageFooter.js'
 import SideMenu from './SideMenu'
+import swal from 'sweetalert2'
 
 import '../../styles/customs/customer.css'
 const brands = ['samsung', 'oppo', 'apple', 'nokia', 'xiaomi']
@@ -110,6 +111,31 @@ class ProductInBrand extends Component {
     })
   }
 
+  addToCart = async variantId => {
+    if (this.state.token == undefined) {
+      swal('Cancelled', 'Your need to sign in', 'error')
+    } else {
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]')
+
+      let variant = cart.find(t => t.variantID == variantId)
+
+      if (variant) {
+        variant.countNumber += 1
+        variant.total =
+          parseInt(variant.countNumber) * parseInt(variant.priceEachUnit)
+      } else {
+        let item = this.state.data.find(t => t.variantId == variantId)
+        cart.push({
+          countNumber: 1,
+          priceEachUnit: item.pricesold,
+          variantID: item.variantId,
+          src: item.images[0].imageURL,
+          total: item.pricesold
+        })
+      }
+      await localStorage.setItem('cart', JSON.stringify(cart))
+    }
+  }
   render() {
     return (
       <div>
@@ -138,7 +164,9 @@ class ProductInBrand extends Component {
                             <p>Giá: {i.pricesold} đ</p>
                           </a>
                           <a
-                            href="/cart"
+                            onClick={() => {
+                              this.addToCart(i.variantId)
+                            }}
                             className="btn btn-default add-to-cart"
                           >
                             Thêm vào giỏ

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-
 import Api from 'Api'
 
 import UserPageFooter from './UserPageFooter.js'
 import SideMenu from './SideMenu'
 import '../../styles/customs/customer.css'
+import swal from 'sweetalert2'
 
 class UserPageBody extends Component {
   constructor(props) {
@@ -52,6 +52,33 @@ class UserPageBody extends Component {
       data: response.content
     })
   }
+
+  addToCart = async variantId => {
+    if (this.state.token == undefined) {
+      swal('Cancelled', 'Your need to sign in', 'error')
+    } else {
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]')
+
+      let variant = cart.find(t => t.variantID == variantId)
+
+      if (variant) {
+        variant.countNumber += 1
+        variant.total =
+          parseInt(variant.countNumber) * parseInt(variant.priceEachUnit)
+      } else {
+        let item = this.state.data.find(t => t.variantId == variantId)
+        cart.push({
+          countNumber: 1,
+          priceEachUnit: item.pricesold,
+          variantID: item.variantId,
+          src: item.images[0].imageURL,
+          total: item.pricesold
+        })
+      }
+      await localStorage.setItem('cart', JSON.stringify(cart))
+    }
+  }
+
   render() {
     return (
       <div className="centerContent">
@@ -65,31 +92,6 @@ class UserPageBody extends Component {
             <img src={require('../../styles/images/pr1.png')} />
             <img src={require('../../styles/images/pr2.png')} />
             <img src={require('../../styles/images/pr3.png')} />
-
-            {/* <div className="cr-widget  card text-white">
-                            <div className="card-body">
-                                <div className="card-title">Đảm bảo uy tín</div>
-                                <div className="card-subtitle">Đổi trả miễn phí nếu sản phẩm lỗi</div>
-                            </div>
-                        </div>
-                        <div className="cr-widget  card text-white">
-                            <div className="card-body header-widget">
-                                <div className="card-title">Trả góp 0%</div>
-                                <div className="card-subtitle">Áp dụng cho sản phẩm Oppo</div>
-                            </div>
-                        </div>
-                        <div className="cr-widget  card text-white">
-                            <div className="card-body header-widget">
-                                <div className="card-title">Bảo hành 2 năm</div>
-                                <div className="card-subtitle">Cho tất cả các sản phẩm điện thoại của Apple</div>
-                            </div>
-                        </div>
-                        <div className="cr-widget  card text-white">
-                            <div className="card-body header-widget">
-                                <div className="card-title">Giao hàng miễn phí</div>
-                                <div className="card-subtitle">Cho các đơn hàng trên 5 triệu đồng</div>
-                            </div>
-                        </div> */}
           </div>
         </div>
         <div className="row">
@@ -111,15 +113,20 @@ class UserPageBody extends Component {
                   <div className="product-image-wrapper">
                     <div className="productinfo">
                       <img src={i.images[0].imageURL} />
-                      <h5>{i.name}</h5>
+                      <p>{i.name}</p>
                     </div>
                     <div className="product-overlay">
                       <div className="overlay-content">
                         <a href={`/variant/details/${i.variantId}`}>
-                          <h3>{i.name}</h3>
-                          <p>Giá: {i.pricesold} đ</p>
+                          <h2>Giá: {i.pricesold}</h2>
+                          <p>{i.name}</p>
                         </a>
-                        <a href="/cart" className="btn btn-default add-to-cart">
+                        <a
+                          onClick={() => {
+                            this.addToCart(i.variantId)
+                          }}
+                          className="btn btn-default add-to-cart"
+                        >
                           Thêm vào giỏ
                         </a>
                       </div>

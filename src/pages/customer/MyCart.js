@@ -16,10 +16,16 @@ import {
   Form,
   FormGroup,
   Label,
-  Input
+  Input,
+  Table
 } from 'reactstrap'
 import { AvForm, AvField } from 'availity-reactstrap-validation'
 import swal from 'sweetalert2'
+
+import UserPageHeader from './UserPageHeader.js'
+import UserPageFooter from './UserPageFooter.js'
+
+import '../../styles/customs/customer.css'
 
 class MyCart extends Component {
   constructor(props) {
@@ -38,7 +44,6 @@ class MyCart extends Component {
       variantOptions: [],
       modal: false,
       modal_backdrop: false,
-      variantOptions: [],
       backdrop: true
     }
   }
@@ -162,81 +167,129 @@ class MyCart extends Component {
     return options
   }
 
+  getItemName = id => {
+    let item = this.state.variantOptions.find(i => i.variantId == id)
+    return item.name
+  }
+
   render() {
     return (
-      <Row>
-        <Button onClick={this.toggle('backdrop')}>Launch Modal</Button>
-        <Modal
-          isOpen={this.state.modal_backdrop}
-          toggle={this.toggle('backdrop')}
-          backdrop={this.state.backdrop}
-        >
-          <ModalHeader toggle={this.toggle('backdrop')}>
-            Customer Infomation
-          </ModalHeader>
-          <ModalBody>
-            <AvForm>
-              <FormGroup>
-                <Label for="address">Customer Name</Label>
-                <Input
-                  type="text"
-                  id="customerName"
-                  required
-                  value={this.state.customerName}
-                  onChange={this.handleChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="address">Address</Label>
-                <Input
-                  type="text"
-                  id="address"
-                  required
-                  value={this.state.address}
-                  onChange={this.handleChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <AvField
-                  name="email"
-                  label="Email"
-                  type="email"
-                  required
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="address">phone</Label>
-                <Input
-                  type="text"
-                  id="phone"
-                  required
-                  value={this.state.phone}
-                  onChange={this.handleChange}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="address">Note</Label>
-                <Input
-                  type="text"
-                  id="note"
-                  value={this.state.note}
-                  onChange={this.handleChange}
-                />
-              </FormGroup>
-            </AvForm>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.handleSubmit}>
-              OK
-            </Button>{' '}
-            <Button color="secondary" onClick={this.toggle('backdrop')}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </Modal>
-      </Row>
+      <div>
+        <UserPageHeader />
+        <div className="centerContent">
+          <h2 className="brand-title">Your cart</h2>
+          <Table responsive {...{ hover: true, bordered: true }}>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Images</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Total</th>
+                <th>Drop All</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.orderDetailBindingModelList.map((row, i) => (
+                <tr>
+                  <th scope="row">{row.variantID}</th>
+                  <td>
+                    <img src={row.src} width="100px" height="100px" />
+                  </td>
+                  <td>{this.getItemName(row.variantID)}</td>
+                  <td>{row.priceEachUnit}</td>
+                  <td>{row.countNumber}</td>
+                  <td>{row.total}</td>
+                  <td>
+                    <Button
+                      outline
+                      color="danger"
+                      onClick={this.handleRemoveVariant(row.id)}
+                    >
+                      Delete
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+          <Row>
+            <Button onClick={this.toggle('backdrop')}>Thanh toan</Button>
+            <Modal
+              isOpen={this.state.modal_backdrop}
+              toggle={this.toggle('backdrop')}
+              backdrop={this.state.backdrop}
+            >
+              <ModalHeader toggle={this.toggle('backdrop')}>
+                Customer Infomation
+              </ModalHeader>
+              <ModalBody>
+                <AvForm>
+                  <FormGroup>
+                    <Label for="address">Customer Name</Label>
+                    <Input
+                      type="text"
+                      id="customerName"
+                      required
+                      value={this.state.customerName}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="address">Address</Label>
+                    <Input
+                      type="text"
+                      id="address"
+                      required
+                      value={this.state.address}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <AvField
+                      name="email"
+                      label="Email"
+                      type="email"
+                      required
+                      value={this.state.email}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="address">phone</Label>
+                    <Input
+                      type="text"
+                      id="phone"
+                      required
+                      value={this.state.phone}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="address">Note</Label>
+                    <Input
+                      type="text"
+                      id="note"
+                      value={this.state.note}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>
+                </AvForm>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onClick={this.handleSubmit}>
+                  OK
+                </Button>{' '}
+                <Button color="secondary" onClick={this.toggle('backdrop')}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </Row>
+          <UserPageFooter />
+        </div>
+      </div>
     )
   }
 }
