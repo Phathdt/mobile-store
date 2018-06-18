@@ -443,6 +443,22 @@ const getVariantByModel = async (page=0, id, size = 10) => {
   }
 }
 
+const getVariantByBrand = async (page=0, id, size = 10) => {
+  try {
+    let res = await fetch(`${HOST}/brand/list-by-id/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: ''
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   signIn,
   getListBrand,
@@ -469,5 +485,6 @@ export default {
   getListOrderStock,
   deleteOrderStock,
   getOrderStock,
-  getVariantByModel
+  getVariantByModel,
+  getVariantByBrand
 }

@@ -52,7 +52,7 @@ class UserPageBody extends Component{
     let response = await this.getListVariant(page - 1)
     this.setState({
       currentPage: response.number,
-      data: response.content!==undefined?response.content:[]
+      data: response.content
     })
   }
     render(){

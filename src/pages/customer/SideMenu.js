@@ -58,7 +58,6 @@ class SideMenu extends Component {
                 <a href="/brand/listproducts/samsung"><div className="list-item">Samsung</div></a>
                 <a href="/brand/listproducts/oppo"><div className="list-item">Oppo</div></a>
                 <a href="/brand/listproducts/apple"><div className="list-item">Apple</div></a>
-                <a href="/brand/listproducts/qmobile"><div className="list-item">Q-Mobile</div></a>
                 <a href="/brand/listproducts/nokia"><div className="list-item">Nokia</div></a>
                 <a href="/brand/listproducts/xiaomi"><div className="list-item">Xiaomi</div></a>
             </div>
