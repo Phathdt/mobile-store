@@ -427,6 +427,22 @@ const getOrderStock = async (token, id) => {
   }
 }
 
+const getVariantByModel = async (page=0, id, size = 10) => {
+  try {
+    let res = await fetch(`${HOST}/model/list-by-id/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: ''
+      }
+    })
+
+    return res
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default {
   signIn,
   getListBrand,
@@ -452,5 +468,6 @@ export default {
   createStockOrder,
   getListOrderStock,
   deleteOrderStock,
-  getOrderStock
+  getOrderStock,
+  getVariantByModel
 }

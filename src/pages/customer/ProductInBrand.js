@@ -17,15 +17,45 @@ class ProductInBrand extends Component {
     
         this.state = {
           token: this.props.token,
-          name: '',
+          id: '',
+          currentPage: 0,
+          totalPages: 0,
+          totalElements: 0,
+          data: []
         }
       }
     
       async componentWillMount() {
-        console.log(this.props.match.params.name)
+        let response = await this.getVariantByModel(this.props.match.params.modelID)
         await this.setState({
-          name: this.props.match.params.name,
-          
+          id: this.props.match.params.modelID,
+          data: response.content!=undefined?response.content:null,
+          currentPage: response.number,
+          totalPages: response.totalPages,
+          totalElements: response.totalElements
+        })
+      }
+      getVariantByModel = async id => {
+        try {
+          let { token } = this.state
+          let res = await Api.getVariantByModel(token, id)
+    
+          if (res.status === 401) {
+            alert('something went wrong')
+          } else {
+            let resJson = await res.json()
+            return resJson.data
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      }
+    
+      onPageChange = async page => {
+        let response = await this.getVariantByModel(page - 1)
+        this.setState({
+          currentPage: response.number,
+          data: response.content!=undefined?response.content:null
         })
       }
     
@@ -40,7 +70,30 @@ class ProductInBrand extends Component {
                 <SideMenu/> 
             </div>
             <div className="col-lg-9">
-              <h2 className="brand-title">{this.state.name}</h2>
+              <h2 className="brand-title">All products  >  ModelID: {this.state.id}</h2>
+              <div className="row">
+                            {this.state.data.map(i=>(
+                                <div className="col-lg-4">
+                                <div className="product-image-wrapper">
+                                    <div className="productinfo">
+                                        <img src={i.images[0].imageURL} />
+                                        <h5>{i.name}</h5>
+                                    </div>
+                                    <div className="product-overlay">
+                                            <div className="overlay-content">
+                                                <a href={`/variant/details/${i.variantId}`}>
+                                                    <h3>{i.name}</h3>
+                                                    <p>Giá: {i.pricesold} đ</p>
+                                                </a>
+                                                <a href="/cart" class="btn btn-default add-to-cart">
+                                                    Thêm vào giỏ
+                                                </a>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            ))}
+                        </div>
             </div>
           </div>
           <UserPageFooter/>

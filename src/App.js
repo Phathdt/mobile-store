@@ -49,7 +49,8 @@ class App extends React.Component {
             <OpenRoute exact path="/" component={UserPage} />
             <Route path="/signin" component={SignInPage} />
             <OpenRoute path="/variant/details/:id" component={ModelDetails} />
-            <OpenRoute path="/listproducts/:name" component={ProductInBrand} />
+            <OpenRoute path="/model/listproducts/:modelID" component={ProductInBrand} />
+            <OpenRoute path="/brand/listproducts/:brandName" component={ProductInBrand} />
             <Route path="/cart" component={CartPage} />
           </Switch>
 

@@ -55,17 +55,17 @@ class SideMenu extends Component {
       <div>
         <div className="title">Brands</div>
             <div className="list-menu">
-                <a href="/listproducts/samsung"><div className="list-item">Samsung</div></a>
-                <a href="/listproducts/oppo"><div className="list-item">Oppo</div></a>
-                <a href="/listproducts/apple"><div className="list-item">Apple</div></a>
-                <a href="/listproducts/qmobile"><div className="list-item">Q-Mobile</div></a>
-                <a href="/listproducts/nokia"><div className="list-item">Nokia</div></a>
-                <a href="/listproducts/xiaomi"><div className="list-item">Xiaomi</div></a>
+                <a href="/brand/listproducts/samsung"><div className="list-item">Samsung</div></a>
+                <a href="/brand/listproducts/oppo"><div className="list-item">Oppo</div></a>
+                <a href="/brand/listproducts/apple"><div className="list-item">Apple</div></a>
+                <a href="/brand/listproducts/qmobile"><div className="list-item">Q-Mobile</div></a>
+                <a href="/brand/listproducts/nokia"><div className="list-item">Nokia</div></a>
+                <a href="/brand/listproducts/xiaomi"><div className="list-item">Xiaomi</div></a>
             </div>
             <div className="title">New Models</div>
             <div className="list-menu">
               {this.state.data.slice(0,10).map(i=>(
-                <a href={`/listproducts/model/${i.modelID}`}><div className="list-item">{i.name}</div></a>
+                <a href={`/model/listproducts/${i.modelID}`}><div className="list-item">{i.name}</div></a>
               ))}
             </div>
       </div>

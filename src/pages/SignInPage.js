@@ -55,50 +55,37 @@ class SignInPage extends Component {
     return (
       <div className="login-page">
         <div className="form">
-          <form className="register-form">
-            <input type="text" placeholder="name"/>
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
-            <p className="message">Already registered? <a href="#">Sign In</a></p>
-          </form>
-          <form className="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>login</button>
-            <p className="message">Not registered? <a href="#">Create an account</a></p>
-          </form>
+             <form className="login-form" onSubmit={this.handleSubmit}>
+              <FormGroup controlId="username">
+                <FormControl
+                  className="input"
+                  autoFocus
+                  type="text"
+                  placeholder="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+              <FormGroup controlId="password">
+                <FormControl
+                  placeholder="username"
+                  className="input"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  type="password"
+                />
+              </FormGroup>
+              <Button
+                className="loginBtn"
+                block
+                disabled={!this.validateForm()}
+                type="submit"
+              >
+                Login
+              </Button>
+         </form>
         </div>
     </div>
-      // <div className="Login">
-      //   <form onSubmit={this.handleSubmit}>
-      //     <FormGroup controlId="username" bsSize="large">
-      //       <ControlLabel>Username</ControlLabel>
-      //       <FormControl
-      //         autoFocus
-      //         type="text"
-      //         value={this.state.username}
-      //         onChange={this.handleChange}
-      //       />
-      //     </FormGroup>
-      //     <FormGroup controlId="password" bsSize="large">
-      //       <ControlLabel>Password</ControlLabel>
-      //       <FormControl
-      //         value={this.state.password}
-      //         onChange={this.handleChange}
-      //         type="password"
-      //       />
-      //     </FormGroup>
-      //     <Button
-      //       block
-      //       bsSize="large"
-      //       disabled={!this.validateForm()}
-      //       type="submit"
-      //     >
-      //       Login
-      //     </Button>
-      //   </form>
-      // </div>
     )
   }
 }
